@@ -102,9 +102,23 @@ Será possível fazer as seguintes interações:
 
 - Email - VARCHAR (100);
 
-- User - VARCHAR (50);
+- Username - VARCHAR (50);
 
 - Senha - VARCHAR (300);
+
+<br>
+<h3>PERMISSÃO:</h3>
+
+- Id Permissão (PK) - _INT AUTOINCREMENT_;
+
+- Descrição - _VARCHAR (100)_;
+
+<br>
+<h3>PERMISSÃO-LOGIN:</h3>
+
+- Id Permissão (FK) - _INT AUTOINCREMENT_;
+
+- Id Login (FK) - _INT AUTOINCREMENT_;
 
 <br>
 <h3>MUSEUS:</h3>
