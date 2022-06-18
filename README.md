@@ -89,16 +89,33 @@ Será possível fazer as seguintes interações:
 
 - Sobrenome - VARCHAR (45);
 
-- Administrador - BOOLEANO;
-
-- Pontuação - INT;
-
 <br>
+	
+<h3>USER:</h3>
+
+- Id User (PK) - INT AUTOINCREMENT;
+
+- Id Pessoa (FK) - INT AUTOINCREMENT;
+
+- Pontuação - INT;	
+
+<br>	
+	
+<h3>ADMNISTRADOR:</h3>
+
+- Id Adm (PK) - INT AUTOINCREMENT;
+
+- Id Pessoa (FK) - INT AUTOINCREMENT;
+	
+<br>
+	
 <h3>LOGIN:</h3>
 
 - Id Login (PK) - INT AUTOINCREMENT;
 
-- Id Pessoa (FK) - INT AUTOINCREMENT;
+- Id User (FK) - INT AUTOINCREMENT;
+	
+- Id Adm (FK) - INT AUTOINCREMENT;
 
 - Email - VARCHAR (100);
 
@@ -114,6 +131,7 @@ Será possível fazer as seguintes interações:
 - Descrição - _VARCHAR (100)_;
 
 <br>
+	
 <h3>PERMISSÃO-LOGIN:</h3>
 
 - Id Permissão (FK) - _INT AUTOINCREMENT_;
@@ -121,6 +139,7 @@ Será possível fazer as seguintes interações:
 - Id Login (FK) - _INT AUTOINCREMENT_;
 
 <br>
+	
 <h3>MUSEUS:</h3>
 
 - Id Museu (PK) - INT AUTOINCREMENT;
@@ -134,8 +153,9 @@ Será possível fazer as seguintes interações:
 - Foto - BLOB (2048);
 
 - Funcionamento - VARCHAR (500);
-
+	
 <br>
+	
 <h3>ENDEREÇO MUSEU:</h3>
 
 - Id Endereço (PK) - INT AUTOINCREMENT;
@@ -155,11 +175,24 @@ Será possível fazer as seguintes interações:
 - País - VARCHAR (45);
 
 <br>
+	
+<h3>PRESENÇA MUSEU:</h3>
+	
+- Id Presença Museu (PK) - INT AUTOINCREMENT;
+	
+- Id Museu (FK) - INT AUTOINCREMENT;
+	
+- Id User (FK) - INT AUTOINCREMENT;
+	
+- Data - DATETIME;
+	
+<br>
+	
 <h3>AVALIAÇÃO MUSEU:</h3>
 
 - Id Avaliação (PK) - INT AUTOINCREMENT;
 
-- Id Pessoa (FK) - INT AUTOINCREMENT;
+- Id User (FK) - INT AUTOINCREMENT;
 
 - Id Museu (FK) - INT AUTOINCREMENT;
 
