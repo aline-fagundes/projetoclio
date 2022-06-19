@@ -1,0 +1,25 @@
+#MySql
+spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/passaporte_clio?createDatabaseIfNotExist=true&serverTimezone=true&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=#110598amn
+
+#Flyway
+spring.flyway.url=jdbc:mysql://localhost:3306
+spring.flyway.schemas=passaporte_clio
+spring.flyway.user=root
+spring.flyway.password=#110598amn
+
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+
+#JPA Settings
+spring.jpa.hibernate.ddl-auto = update
+spring.jpa.show-sql=false
+
+##FileStorage
+#spring.servlet.multipart.enabled=true
+#spring.servlet.multipart.file-size-threshold=2KB
+#spring.servlet.multipart.max-file-size=200MB
+#	spring.servlet.multipart.max-request-size=215MB
+
+#file.upload-dir=/DH/UploadDir

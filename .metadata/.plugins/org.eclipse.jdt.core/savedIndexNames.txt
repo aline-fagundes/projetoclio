@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+C:\Users\acmna\Documents\PROGRAMAÇÃO\projetoclio\.metadata\.plugins\org.eclipse.jdt.core

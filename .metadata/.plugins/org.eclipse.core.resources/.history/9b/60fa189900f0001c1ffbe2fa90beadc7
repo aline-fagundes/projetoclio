@@ -1,0 +1,14 @@
+CREATE TABLE tb_login (
+  id_login int NOT NULL AUTO_INCREMENT,
+  email varchar(100) NOT NULL,
+  username varchar(50) NOT NULL,
+  senha varchar(300) DEFAULT NULL,
+--  fk_id_usuario int NOT NULL,
+--  fk_id_adm int NOT NULL,
+	fk_id_pessoa int NOT NULL,
+  PRIMARY KEY (id_login),
+--  KEY fk_id_usuario (fk_id_usuario),
+--  KEY fk_id_adm (fk_id_adm),
+--  CONSTRAINT fk_id_adm FOREIGN KEY (fk_id_adm) REFERENCES tb_adm (id_adm),
+--  CONSTRAINT fk_id_usuario FOREIGN KEY (fk_id_usuario) REFERENCES tb_usuarios (id_usuario)
+)

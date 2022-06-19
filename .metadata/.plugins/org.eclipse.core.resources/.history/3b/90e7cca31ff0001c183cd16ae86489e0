@@ -1,0 +1,26 @@
+package br.com.passaporteclio.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.passaporteclio.repository.UserRepository;
+import br.com.passaporteclio.security.CredenciaisLogin;
+import br.com.passaporteclio.security.jwt.JwtProvider;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = "Teste")
+@RestController
+@RequestMapping("/api")
+public class ControllerTeste {
+
+	@PostMapping(value = "/testando", produces = { "application/json", "application/xml" }, consumes = {
+			"application/json", "application/xml" })
+	public ResponseEntity signin(@RequestBody CredenciaisLogin cred) {
+
+	}
+}

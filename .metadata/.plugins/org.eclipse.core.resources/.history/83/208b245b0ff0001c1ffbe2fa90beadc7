@@ -1,0 +1,5 @@
+package br.com.passaporteclio.security.jwt;
+
+public class JwtProvider {
+
+}
