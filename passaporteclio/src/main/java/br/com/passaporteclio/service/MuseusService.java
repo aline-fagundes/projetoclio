@@ -1,5 +1,6 @@
 package br.com.passaporteclio.service;
 
+import br.com.passaporteclio.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,24 +9,30 @@ import org.springframework.stereotype.Service;
 import br.com.passaporteclio.adapter.DozerConverter;
 import br.com.passaporteclio.domain.entity.Endereco;
 import br.com.passaporteclio.domain.entity.Museus;
-import br.com.passaporteclio.domain.vo.EnderecoVO;
 import br.com.passaporteclio.domain.vo.MuseusVO;
 import br.com.passaporteclio.repository.MuseusRepository;
 import br.com.passaporteclio.exception.ResourceNotFoundException;
 
-
-
 @Service
 public class MuseusService {
-
-
-@Autowired
+	@Autowired
 	MuseusRepository repository;
 
+	@Autowired
+	EnderecoRepository enderecoRepository;
+
 	public MuseusVO inserir(MuseusVO museus) {
+		System.out.println("Gravando endereço");
+		var enderecoGravado = enderecoRepository.save(DozerConverter.parseObject(museus.getEndereco(), Endereco.class));
+		System.out.println("Endereço gravado com sucesso");
+
+		System.out.println("Gravando museu");
 		var entity = DozerConverter.parseObject(museus, Museus.class);
+		entity.getEndereco().setId(enderecoGravado.getId());
 		var vo = DozerConverter.parseObject(repository.save(entity),MuseusVO.class);
-	return vo;
+		System.out.println("Museu gravado com sucesso");
+
+		return vo;
 	}
 	
 	public Page<MuseusVO> buscarTodos(Pageable pageable) {
