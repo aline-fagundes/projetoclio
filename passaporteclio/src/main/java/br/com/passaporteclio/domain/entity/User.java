@@ -49,7 +49,6 @@ public class User implements UserDetails, Serializable {
 	}
 
 	public User(Long idLogin, String email, String username, String password, List<Permission> permissoes) {
-		super();
 		this.idLogin = idLogin;
 		this.email = email;
 		this.username = username;
