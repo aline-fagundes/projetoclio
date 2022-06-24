@@ -51,7 +51,7 @@ public class MuseusController {
 			Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "nome"));
 			Page<MuseusVO> museusVO = service.buscarTodos(pageable);
 			museusVO.stream()
-					.forEach(p -> p.add(linkTo(methodOn(MuseusController.class).findById(p.getKey())).withSelfRel()));
+					.forEach(p -> p.add(linkTo(methodOn(MuseusController.class).findById(p.getId())).withSelfRel()));
 			return ResponseEntity.ok(CollectionModel.of(museusVO));
 		}
 
@@ -75,26 +75,24 @@ public class MuseusController {
 			Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "nome"));
 			Page<MuseusVO> museusVO = service.findByName(nome, pageable);
 			museusVO.stream()
-					.forEach(p -> p.add(linkTo(methodOn(MuseusController.class).findById(p.getKey())).withSelfRel()));
+					.forEach(p -> p.add(linkTo(methodOn(MuseusController.class).findById(p.getId())).withSelfRel()));
 			return ResponseEntity.ok(CollectionModel.of(museusVO));
 		}
 
 		@PostMapping(consumes = { "application/json", "application/xml" }, produces = { "application/json",
 				"application/xml" })
 		@ResponseStatus(value = HttpStatus.CREATED)
-		public MuseusVO create(@Valid @RequestBody MuseusVO museu) {
+		public ResponseEntity<MuseusVO> create(@Valid @RequestBody MuseusVO museu) {
 			MuseusVO museuVO = service.inserir(museu);
-			museuVO.add(linkTo(methodOn(MuseusController.class).findById(museuVO.getKey())).withSelfRel());
-			return museuVO;
+			return ResponseEntity.ok(museuVO);
 		}
 
 		@PutMapping(consumes = { "application/json", "application/xml" }, produces = { "application/json",
 				"application/xml" })
 		@ResponseStatus(value = HttpStatus.OK)
-		public MuseusVO update(@Valid @RequestBody MuseusVO museu) {
+		public ResponseEntity<MuseusVO> update(@Valid @RequestBody MuseusVO museu) {
 			MuseusVO museuVO = service.atualizar(museu);
-			museuVO.add(linkTo(methodOn(MuseusController.class).findById(museuVO.getKey())).withSelfRel());
-			return museuVO;
+			return ResponseEntity.ok(museuVO);
 		}
 
 		@DeleteMapping(value = "/{id}")

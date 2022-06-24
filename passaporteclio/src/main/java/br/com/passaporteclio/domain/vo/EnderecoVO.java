@@ -1,32 +1,30 @@
 package br.com.passaporteclio.domain.vo;
 
-import java.io.Serializable;
-
-
-import org.springframework.hateoas.RepresentationModel;
-import com.github.dozermapper.core.Mapping;
-
-
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.hateoas.RepresentationModel;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @EqualsAndHashCode(callSuper=false)
 @Data
 public class EnderecoVO extends RepresentationModel<EnderecoVO> implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
+	private Long id;
 
-	@Mapping("id")
-	private Long key;
-	
-
+	@NotBlank
 	private String cep;
+	@NotBlank
 	private String rua;
-	private int numero;
+	@NotNull
+	private Integer numero;
+	@NotBlank
 	private String bairro;
+	@NotBlank
 	private String cidade;
+	@NotBlank
 	private String estado;
+	@NotBlank
 	private String pais;
-	
 }

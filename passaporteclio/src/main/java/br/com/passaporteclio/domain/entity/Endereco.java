@@ -1,29 +1,18 @@
 package br.com.passaporteclio.domain.entity;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+@Data
 @Entity
 @Table(name="tb_endereco_museus")
-@Data
-@NoArgsConstructor
 public class Endereco implements Serializable {
-	 
-	 
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_endereco")
@@ -42,7 +31,7 @@ public class Endereco implements Serializable {
 	
 	@NotNull
 	@Column(name="numero")
-	private int numero;
+	private Integer numero;
 	
 	@NotBlank
 	@Size(max=45)
@@ -63,6 +52,9 @@ public class Endereco implements Serializable {
 	@Size(max=45)
 	@Column(name="pais")
 	private String pais;
-	
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "fk_id_museu")
+	@JsonBackReference
+	private Museus museu;
 }

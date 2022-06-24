@@ -1,38 +1,32 @@
 package br.com.passaporteclio.service;
 
-import br.com.passaporteclio.repository.EnderecoRepository;
+import br.com.passaporteclio.adapter.DozerConverter;
+import br.com.passaporteclio.domain.entity.Museus;
+import br.com.passaporteclio.domain.vo.MuseusVO;
+import br.com.passaporteclio.exception.ResourceNotFoundException;
+import br.com.passaporteclio.repository.MuseusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import br.com.passaporteclio.adapter.DozerConverter;
-import br.com.passaporteclio.domain.entity.Endereco;
-import br.com.passaporteclio.domain.entity.Museus;
-import br.com.passaporteclio.domain.vo.MuseusVO;
-import br.com.passaporteclio.repository.MuseusRepository;
-import br.com.passaporteclio.exception.ResourceNotFoundException;
 
 @Service
 public class MuseusService {
 	@Autowired
 	MuseusRepository repository;
 
-	@Autowired
-	EnderecoRepository enderecoRepository;
+	public MuseusVO inserir(MuseusVO museuVo) {
+		System.out.println("Iniciando método inserir");
 
-	public MuseusVO inserir(MuseusVO museus) {
-		System.out.println("Gravando endereço");
-		var enderecoGravado = enderecoRepository.save(DozerConverter.parseObject(museus.getEndereco(), Endereco.class));
-		System.out.println("Endereço gravado com sucesso");
+		var museuEntity = DozerConverter.parseObject(museuVo, Museus.class);
 
-		System.out.println("Gravando museu");
-		var entity = DozerConverter.parseObject(museus, Museus.class);
-		entity.getEndereco().setId(enderecoGravado.getId());
-		var vo = DozerConverter.parseObject(repository.save(entity),MuseusVO.class);
-		System.out.println("Museu gravado com sucesso");
+		var enderecoEntity  = museuEntity.getEndereco();
+		enderecoEntity.setMuseu(museuEntity);
 
-		return vo;
+		var museuGravado = DozerConverter.parseObject(repository.save(museuEntity),MuseusVO.class);
+
+		System.out.println("Finalizando método inserir");
+		return museuGravado;
 	}
 	
 	public Page<MuseusVO> buscarTodos(Pageable pageable) {
@@ -55,15 +49,26 @@ public class MuseusService {
 	}
 
 	public MuseusVO atualizar (MuseusVO museus) {
-		var entity = repository.findById(museus.getKey())
+		System.out.println("iniciando método atualizar");
+
+		var entityMuseu = repository.findById(museus.getId())
 			.orElseThrow(()-> new ResourceNotFoundException("Não foi encontrado registro com esse Id"));
-		entity.setNome(museus.getNome());
-		entity.setDescricaoMuseu(museus.getDescricaoMuseu());
-		entity.setFuncionamentoMuseu(museus.getFuncionamentoMuseu());
-		entity.setFotoMuseu(museus.getFotoMuseu());
-		entity.setEndereco(DozerConverter.parseObject(museus.getEndereco(),Endereco.class));
-		var vo = DozerConverter.parseObject(repository.save(entity),MuseusVO.class);
-		return vo;
+		entityMuseu.setNome(museus.getNome());
+		entityMuseu.setDescricaoMuseu(museus.getDescricaoMuseu());
+		entityMuseu.setFuncionamentoMuseu(museus.getFuncionamentoMuseu());
+		entityMuseu.setFotoMuseu(museus.getFotoMuseu());
+		entityMuseu.getEndereco().setBairro(museus.getEndereco().getBairro());
+		entityMuseu.getEndereco().setCep(museus.getEndereco().getCep());
+		entityMuseu.getEndereco().setCidade(museus.getEndereco().getCidade());
+		entityMuseu.getEndereco().setEstado(museus.getEndereco().getEstado());
+		entityMuseu.getEndereco().setNumero(museus.getEndereco().getNumero());
+		entityMuseu.getEndereco().setRua(museus.getEndereco().getRua());
+		entityMuseu.getEndereco().setPais(museus.getEndereco().getPais());
+
+		var museuAlterado = DozerConverter.parseObject(repository.save(entityMuseu),MuseusVO.class);
+
+		System.out.println("Finalizando método atualizar");
+		return museuAlterado;
 	}
 	
 	public Page<MuseusVO> findByName(String nome, Pageable pageable){
