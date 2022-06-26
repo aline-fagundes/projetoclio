@@ -9,7 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Teste")
 @RestController
 @RequestMapping("/api")
-public class ControllerTeste {
+public class TestController {
 
 	
 	@GetMapping(value = "/testando", produces = { "application/json", "application/xml" })
