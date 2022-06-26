@@ -6,6 +6,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import br.com.passaporteclio.exception.handler.ExceptionHandlerFilter;
+
 public class JwtConfigurer extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 	@Autowired
 	private JwtProvider jwtProvider;
@@ -16,8 +18,9 @@ public class JwtConfigurer extends SecurityConfigurerAdapter<DefaultSecurityFilt
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		JwtTokenFilter customFilter = new JwtTokenFilter(jwtProvider);
-		http.addFilterBefore(customFilter, UsernamePasswordAuthenticationFilter.class);
+		JwtTokenFilter jwtFilter = new JwtTokenFilter(jwtProvider);
+		ExceptionHandlerFilter handlerFilter = new ExceptionHandlerFilter(); 
+		http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+		http.addFilterBefore(handlerFilter, JwtTokenFilter.class);
 	}
-
 }
