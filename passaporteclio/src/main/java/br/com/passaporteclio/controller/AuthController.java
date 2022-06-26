@@ -41,7 +41,7 @@ public class AuthController {
 			var username = cred.getUsername();
 			var password = cred.getPassword();
 
-			//authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 
 			var user = repository.findByUsername(username);
 			var token = "";
