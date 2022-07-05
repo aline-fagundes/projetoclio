@@ -31,8 +31,6 @@ O site apresentará as seguintes informações de cada instituição:
 
 - [x] Foto oficial do museu;
 
-Para isso, criaremos uma API com as informações sobre cada instituição.
-
 <br>
  <h3>FUNCIONALIDADES USUÁRIO</h3>
 
@@ -52,7 +50,7 @@ Será possível fazer as seguintes interações:
 
 - [x] Denunciar comentários indevidos para que o conteúdo seja revisado por um administrador;
 
-- [x] Registrar presença (check-in sem validação, afirmação simples de que esteve na instituição);
+- [x] Registrar presença (check-in sem validação);
 
 A partir de determinadas interações (realizar cadastro, postar avaliações, registrar presença e dar notas aos museus), será possível acumular pontos e, então, receber títulos.
 
@@ -113,9 +111,7 @@ Será possível fazer as seguintes interações:
 
 - Id Login (PK) - INT AUTOINCREMENT;
 
-- Id User (FK) - INT AUTOINCREMENT;
-	
-- Id Adm (FK) - INT AUTOINCREMENT;
+- Id Pessoa (FK) - INT AUTOINCREMENT;
 
 - Email - VARCHAR (100);
 
@@ -215,6 +211,7 @@ Será possível fazer as seguintes interações:
 Ferramentas que serão usadas na construção do projeto:
 
 - [Spring](https://spring.io/)
+- [Angular](https://angular.io/)
   
   <br>
 
