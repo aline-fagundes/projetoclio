@@ -2,11 +2,14 @@ package br.com.passaporteclio.domain.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -29,11 +32,13 @@ public class Avaliacao implements Serializable {
 	@Column(name="id_avaliacao")
 	private Long id;
 	
-	// @ManyToOne
+	//@ManyToOne
 	// private Usuario usuario;
 	
-	// fazer relacionamento na classe museu
-	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name ="fk_id_museu_avaliacao")
+	private Museus museu;
+		
 	@NotNull
 	@Column(name="nota")
 	private int nota;
