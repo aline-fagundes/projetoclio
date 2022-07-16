@@ -11,11 +11,12 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table
 @Data
 @NoArgsConstructor
 public class Museus implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_museu")
