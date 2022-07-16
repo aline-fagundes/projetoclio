@@ -98,7 +98,7 @@ public class MuseusController {
 		@DeleteMapping(value = "/{id}")
 		@ResponseStatus(value = HttpStatus.OK)
 		public void delete(@PathVariable("id") Long id) {
-			service.delete(id);
+			service.deletar(id);
 		}
 	}
 

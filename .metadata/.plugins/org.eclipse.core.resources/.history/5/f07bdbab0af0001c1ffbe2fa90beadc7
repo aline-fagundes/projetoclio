@@ -1,3 +1,0 @@
-INSERT INTO tb_permissao (decricao) VALUES
-	('Adm'),
-	('User');

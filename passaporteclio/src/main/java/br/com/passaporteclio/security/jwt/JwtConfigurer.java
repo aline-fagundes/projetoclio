@@ -9,6 +9,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import br.com.passaporteclio.exception.handler.ExceptionHandlerFilter;
 
 public class JwtConfigurer extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
+	
 	@Autowired
 	private JwtProvider jwtProvider;
 

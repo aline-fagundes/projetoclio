@@ -14,6 +14,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 public class Museus implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_museu")

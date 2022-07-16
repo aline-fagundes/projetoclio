@@ -1,5 +1,0 @@
-package br.com.passaporteclio.exception;
-
-public class InvalidJwtAuthenticationException {
-
-}

@@ -12,11 +12,15 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper=false)
 @Data
 public class MuseusVO extends RepresentationModel<MuseusVO> implements Serializable {
+	
 	private Long id;
+	
 	@NotBlank
 	private String nome;
+	
 	@NotBlank
 	private String descricaoMuseu;
+	
 	@NotBlank
 	private String funcionamentoMuseu;
 	@NotBlank

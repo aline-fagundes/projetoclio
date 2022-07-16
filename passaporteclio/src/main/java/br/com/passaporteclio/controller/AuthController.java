@@ -18,47 +18,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.passaporteclio.repository.UserRepository;
-import br.com.passaporteclio.security.CredenciaisLogin;
+import br.com.passaporteclio.security.LoginForm;
 import br.com.passaporteclio.security.jwt.JwtProvider;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = "Authentication Endpoint")
+@Tag(name = "Autenticação Endpoint")
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
+	
 	@Autowired
-	AuthenticationManager authenticationManager;
+	AuthenticationManager authManager;
+	
 	@Autowired
 	JwtProvider tokenProvider;
+	
 	@Autowired
-	UserRepository repository;
+	UserRepository userRepository;
 
-	@PostMapping(value = "/signin", produces = { "application/json", "application/xml" }, consumes = {
+	@PostMapping(produces = { "application/json", "application/xml" }, consumes = {
 			"application/json", "application/xml" })
-	public ResponseEntity signin(@RequestBody CredenciaisLogin cred) {
+	public ResponseEntity<?> signin(@RequestBody LoginForm login) {
 
 		try {
-			var username = cred.getUsername();
-			var password = cred.getPassword();
+			var email = login.getEmail();
+			var senha = login.getSenha();
 
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+			authManager.authenticate(new UsernamePasswordAuthenticationToken(email, senha));
 
-			var user = repository.findByUsername(username);
+			var user = userRepository.findByEmail(email);
 			var token = "";
 
-			if (user != null) {
-				token = tokenProvider.createToken(username, user.getRoles());
+			if(user != null) {
+				token = tokenProvider.createToken(email, user.getRoles());
 			} else {
-				throw new UsernameNotFoundException("User " + username + "não localizado");
+				throw new UsernameNotFoundException("Email " + email + "não localizado!");
 			}
 			Map<Object, Object> model = new HashMap<>();
-			model.put("username", username);
+			model.put("username", email);
 			model.put("token", token);
 
 			return ok(model);
 		} catch (AuthenticationException e) {
-			throw new BadCredentialsException("User ou senha incorretos!");
+			throw new BadCredentialsException("Email ou senha incorretos!");
 		}
-
 	}
 }
