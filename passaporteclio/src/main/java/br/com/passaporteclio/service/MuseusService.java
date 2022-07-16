@@ -56,7 +56,7 @@ public class MuseusService {
 		entityMuseu.setNome(museus.getNome());
 		entityMuseu.setDescricaoMuseu(museus.getDescricaoMuseu());
 		entityMuseu.setFuncionamentoMuseu(museus.getFuncionamentoMuseu());
-		entityMuseu.setFotoMuseu(museus.getFotoMuseu());
+		entityMuseu.setUrlFoto(museus.getUrlFoto());
 		entityMuseu.getEndereco().setBairro(museus.getEndereco().getBairro());
 		entityMuseu.getEndereco().setCep(museus.getEndereco().getCep());
 		entityMuseu.getEndereco().setCidade(museus.getEndereco().getCidade());

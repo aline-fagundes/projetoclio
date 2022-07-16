@@ -1,6 +1,6 @@
 package br.com.passaporteclio.domain.entity;
 
-import com.mysql.cj.jdbc.Blob;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -34,9 +34,9 @@ public class Museus implements Serializable {
 	@Column(name = "funcionamento")
 	private String funcionamentoMuseu;
 	
-	@Lob
+	@NotBlank
 	@Column(name = "foto")
-	private Blob fotoMuseu;
+	private String urlFoto;
 
 	@OneToOne(mappedBy = "museu", cascade = CascadeType.ALL)
 	private Endereco endereco;
