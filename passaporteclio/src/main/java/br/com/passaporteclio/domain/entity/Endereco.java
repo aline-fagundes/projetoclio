@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name="tb_endereco_museus")
+@Table
 public class Endereco implements Serializable {
 	
 	@Id
@@ -21,37 +21,30 @@ public class Endereco implements Serializable {
 	
 	@NotBlank
 	@Size(max=8)
-	@Column(name="cep")
 	private String cep;
 	
 	@NotBlank
 	@Size(max=45)
-	@Column(name="rua")
 	private String rua;
 	
 	
 	@NotNull
-	@Column(name="numero")
 	private Integer numero;
 	
 	@NotBlank
 	@Size(max=45)
-	@Column(name="bairro")
 	private String bairro;
 	
 	@NotBlank
 	@Size(max=45)
-	@Column(name="cidade")
 	private String cidade;
 	
 	@NotBlank
 	@Size(max=2)
-	@Column(name="estado")
 	private String estado;
 	
 	@NotBlank
 	@Size(max=45)
-	@Column(name="pais")
 	private String pais;
 
 	@OneToOne(cascade = CascadeType.ALL)

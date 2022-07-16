@@ -40,7 +40,7 @@ public class MuseusController {
 		@Autowired
 		MuseusService service;
 
-		@CrossOrigin("localhost:8080") 
+		
 		@RequestMapping(method = RequestMethod.GET, produces = { "application/json", "application/xml" })
 		@Operation(summary = "Listar todos os museus")
 		@ResponseStatus(value = HttpStatus.OK)
@@ -55,7 +55,7 @@ public class MuseusController {
 			return ResponseEntity.ok(CollectionModel.of(museusVO));
 		}
 
-		@CrossOrigin({ "localhost:8080"}) 
+		
 		@GetMapping(value = "/{id}", produces = { "application/json", "application/xml" })
 		@ResponseStatus(value = HttpStatus.OK)
 		public MuseusVO findById(@PathVariable("id") Long id) {
@@ -64,7 +64,7 @@ public class MuseusController {
 			return museuVO;
 		}
 
-		@CrossOrigin("localhost:8080")
+		
 		@Operation(summary = "Listar museus por nome")
 		@GetMapping(value = "/buscarPorNome/{nome}", produces = { "application/json", "application/xml" })
 		public ResponseEntity<CollectionModel<MuseusVO>> findMuseumByName(@PathVariable("nome") String nome,
