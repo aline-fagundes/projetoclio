@@ -33,16 +33,16 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Museus Endpoint")
 @RestController
-@RequestMapping("api/museus")
+@RequestMapping("/museus")
 public class MuseusController {
 
 
 		@Autowired
 		MuseusService service;
 
-		@CrossOrigin("localhost:8080") 
+		
 		@RequestMapping(method = RequestMethod.GET, produces = { "application/json", "application/xml" })
-		@Operation(summary = "Listar todas os museus")
+		@Operation(summary = "Listar todos os museus")
 		@ResponseStatus(value = HttpStatus.OK)
 		public ResponseEntity<CollectionModel<MuseusVO>> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
 				@RequestParam(value = "limit", defaultValue = "9") int limit,
@@ -55,7 +55,7 @@ public class MuseusController {
 			return ResponseEntity.ok(CollectionModel.of(museusVO));
 		}
 
-		@CrossOrigin({ "localhost:8080"}) 
+		
 		@GetMapping(value = "/{id}", produces = { "application/json", "application/xml" })
 		@ResponseStatus(value = HttpStatus.OK)
 		public MuseusVO findById(@PathVariable("id") Long id) {
@@ -64,7 +64,7 @@ public class MuseusController {
 			return museuVO;
 		}
 
-		@CrossOrigin("localhost:8080")
+		
 		@Operation(summary = "Listar museus por nome")
 		@GetMapping(value = "/buscarPorNome/{nome}", produces = { "application/json", "application/xml" })
 		public ResponseEntity<CollectionModel<MuseusVO>> findMuseumByName(@PathVariable("nome") String nome,

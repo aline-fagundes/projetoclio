@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
-@Table(name="tb_museus")
+@Table
 @Data
 @NoArgsConstructor
 public class Museus implements Serializable {
