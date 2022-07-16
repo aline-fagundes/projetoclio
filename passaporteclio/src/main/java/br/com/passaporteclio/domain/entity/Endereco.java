@@ -13,6 +13,7 @@ import java.io.Serializable;
 @Entity
 @Table(name="tb_endereco_museus")
 public class Endereco implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_endereco")

@@ -1,2 +1,0 @@
-INSERT INTO tb_login (email, username, senha,  fk_id_pessoa)
-VALUES ('aline.napoli@teste.com', 'aline.napoli', '$2a$12$LUeVW.fS1lOho08q9lj90uKrwRTsQ3QPKTZgaYHLhRrHT4dmlzlsm', 1), ('debora.mattos@teste.com', 'debora.mattos', '321', 2);

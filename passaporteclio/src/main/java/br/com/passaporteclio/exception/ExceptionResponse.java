@@ -10,7 +10,9 @@ public class ExceptionResponse implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private OffsetDateTime timestamp;
+	
 	private String mensagem;
+
 	private String descricao;
 	
 	public ExceptionResponse() {
@@ -22,28 +24,36 @@ public class ExceptionResponse implements Serializable{
 		this.mensagem = mensagem;
 		this.descricao = descricao;
 	}
+	
 	public OffsetDateTime getTimestamp() {
 		return timestamp;
 	}
+	
 	public void setTimestamp(OffsetDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
+	
 	public String getMensagem() {
 		return mensagem;
 	}
+	
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
 	}
+	
 	public String getDescricao() {
 		return descricao;
 	}
+	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(descricao, mensagem, timestamp);
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

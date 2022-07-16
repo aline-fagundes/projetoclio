@@ -1,5 +1,0 @@
-package br.com.passaporteclio.domain.entity;
-
-public class Permission {
-
-}

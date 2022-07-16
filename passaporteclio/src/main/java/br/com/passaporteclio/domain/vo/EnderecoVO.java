@@ -11,20 +11,27 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper=false)
 @Data
 public class EnderecoVO extends RepresentationModel<EnderecoVO> implements Serializable{
+
 	private Long id;
 
 	@NotBlank
 	private String cep;
+	
 	@NotBlank
 	private String rua;
+	
 	@NotNull
 	private Integer numero;
+	
 	@NotBlank
 	private String bairro;
+	
 	@NotBlank
 	private String cidade;
+	
 	@NotBlank
 	private String estado;
+	
 	@NotBlank
 	private String pais;
 }

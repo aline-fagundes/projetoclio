@@ -12,47 +12,46 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MuseusService {
+	
 	@Autowired
 	MuseusRepository repository;
 
 	public MuseusVO inserir(MuseusVO museuVo) {
-		System.out.println("Iniciando método inserir");
+		System.out.println("Iniciando método inserir...");
 
 		var museuEntity = DozerConverter.parseObject(museuVo, Museus.class);
 
-		var enderecoEntity  = museuEntity.getEndereco();
+		var enderecoEntity = museuEntity.getEndereco();
 		enderecoEntity.setMuseu(museuEntity);
 
-		var museuGravado = DozerConverter.parseObject(repository.save(museuEntity),MuseusVO.class);
+		var museuGravado = DozerConverter.parseObject(repository.save(museuEntity), MuseusVO.class);
 
-		System.out.println("Finalizando método inserir");
+		System.out.println("Finalizando método inserir...");
 		return museuGravado;
 	}
-	
+
 	public Page<MuseusVO> buscarTodos(Pageable pageable) {
-		var page = 	repository.findAll(pageable);
+		var page = repository.findAll(pageable);
 		return page.map(this::convertToMuseusVO);
 	}
 
-	
 	public MuseusVO buscarPorId(Long id) {
 		var entity = repository.findById(id)
-				.orElseThrow(()-> new ResourceNotFoundException("Não foi encontrado registro com esse Id"));
-		return DozerConverter.parseObject(entity,MuseusVO.class);
+				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
+		return DozerConverter.parseObject(entity, MuseusVO.class);
 	}
-	
-	public void delete(Long id) {
+
+	public void deletar(Long id) {
 		var entity = repository.findById(id)
-				.orElseThrow(() ->
-				new ResourceNotFoundException("Não foi encontrado registro com esse Id"));
+				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
 		repository.delete(entity);
 	}
 
-	public MuseusVO atualizar (MuseusVO museus) {
-		System.out.println("iniciando método atualizar");
+	public MuseusVO atualizar(MuseusVO museus) {
+		System.out.println("Iniciando método atualizar...");
 
 		var entityMuseu = repository.findById(museus.getId())
-			.orElseThrow(()-> new ResourceNotFoundException("Não foi encontrado registro com esse Id"));
+				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
 		entityMuseu.setNome(museus.getNome());
 		entityMuseu.setDescricaoMuseu(museus.getDescricaoMuseu());
 		entityMuseu.setFuncionamentoMuseu(museus.getFuncionamentoMuseu());
@@ -65,21 +64,18 @@ public class MuseusService {
 		entityMuseu.getEndereco().setRua(museus.getEndereco().getRua());
 		entityMuseu.getEndereco().setPais(museus.getEndereco().getPais());
 
-		var museuAlterado = DozerConverter.parseObject(repository.save(entityMuseu),MuseusVO.class);
+		var museuAlterado = DozerConverter.parseObject(repository.save(entityMuseu), MuseusVO.class);
 
-		System.out.println("Finalizando método atualizar");
+		System.out.println("Finalizando método atualizar...");
 		return museuAlterado;
 	}
-	
-	public Page<MuseusVO> findByName(String nome, Pageable pageable){
+
+	public Page<MuseusVO> findByName(String nome, Pageable pageable) {
 		var page = repository.findByNome(nome, pageable);
 		return page.map(this::convertToMuseusVO);
-		
 	}
 
-	
 	private MuseusVO convertToMuseusVO(Museus entity) {
 		return DozerConverter.parseObject(entity, MuseusVO.class);
 	}
-
 }

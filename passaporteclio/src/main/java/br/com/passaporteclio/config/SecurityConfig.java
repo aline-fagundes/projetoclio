@@ -3,8 +3,10 @@ package br.com.passaporteclio.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,16 +14,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import br.com.passaporteclio.security.jwt.JwtConfigurer;
 import br.com.passaporteclio.security.jwt.JwtProvider;
 
+@EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private JwtProvider jwtProvider;
-
+	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
-		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-		return bCryptPasswordEncoder;
+		return new BCryptPasswordEncoder();
 	}
 
 	@Bean
@@ -31,9 +33,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	protected void configure(HttpSecurity http) throws Exception {
-		http.httpBasic().disable().csrf().disable().sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/auth/signin", "/api-docs/**", "/swagger-ui.html").permitAll().antMatchers("/api/**")
-				.authenticated().antMatchers("/users").denyAll().and().apply(new JwtConfigurer(jwtProvider));
+		http.authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/museus").permitAll()
+        .antMatchers(HttpMethod.GET, "/museus/*").permitAll()
+        .antMatchers(HttpMethod.POST, "/auth").permitAll()
+        .antMatchers(HttpMethod.POST, "/museus").hasRole("ADMINISTRADOR")
+        .antMatchers(HttpMethod.PUT, "/museus/*").hasRole("ADMINISTRADOR")
+        .antMatchers(HttpMethod.DELETE, "/museus/*").hasRole("ADMINISTRADOR")
+        .anyRequest().authenticated()
+        .and().csrf().disable()
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		.and().apply(new JwtConfigurer(jwtProvider));
 	}
 }
