@@ -1,7 +1,5 @@
 package br.com.passaporteclio.service;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.data.domain.Page;
@@ -10,11 +8,9 @@ import org.springframework.stereotype.Service;
 
 import br.com.passaporteclio.adapter.DozerConverter;
 import br.com.passaporteclio.domain.entity.Avaliacao;
-import br.com.passaporteclio.domain.entity.Museus;
 import br.com.passaporteclio.domain.vo.AtualizarAvaliavaoVO;
 import br.com.passaporteclio.domain.vo.AvaliacaoVO;
 import br.com.passaporteclio.domain.vo.CriacaoAvaliacaoVO;
-import br.com.passaporteclio.domain.vo.MuseusVO;
 import br.com.passaporteclio.exception.ResourceNotFoundException;
 import br.com.passaporteclio.repository.AvaliacaoRepository;
 import lombok.AllArgsConstructor;

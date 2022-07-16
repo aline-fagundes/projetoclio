@@ -1,12 +1,10 @@
 package br.com.passaporteclio.controller;
 
-import java.util.Arrays;
-import java.util.List;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import javax.validation.Valid;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -26,27 +24,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.passaporteclio.domain.entity.Avaliacao;
 import br.com.passaporteclio.domain.vo.AtualizarAvaliavaoVO;
 import br.com.passaporteclio.domain.vo.AvaliacaoVO;
 import br.com.passaporteclio.domain.vo.CriacaoAvaliacaoVO;
-import br.com.passaporteclio.domain.vo.MuseusVO;
 import br.com.passaporteclio.service.AvaliacaoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 
-@Tag(name = "Avaliacao Endpoint")
+@Tag(name = "Avaliação Endpoint")
 @AllArgsConstructor
 @RestController
-// @RequestMapping("avaliacao")
+@RequestMapping("/avaliacao")
 public class AvaliacaoController {
 
 	private AvaliacaoService avaliacaoService;
 
-	@GetMapping(path = "/avaliacao", produces = { "application/json", "application/xml" }, consumes = {
+	@GetMapping(produces = { "application/json", "application/xml" }, consumes = {
 			"application/json", "application/xml" })
-	@Operation(summary = "Listar todas as avaliacao")
+	@Operation(summary = "Listar todas as avaliacoes")
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<CollectionModel<AvaliacaoVO>> getAvaliacao(
 			@RequestParam(value = "page", defaultValue = "0") int page,
@@ -60,7 +56,7 @@ public class AvaliacaoController {
 		return ResponseEntity.ok(CollectionModel.of(avaliacaoVO));
 	}
 
-	@GetMapping(value = "avaliacao/{id}", produces = { "application/json", "application/xml" })
+	@GetMapping(value = "/{id}", produces = { "application/json", "application/xml" })
 	@ResponseStatus(value = HttpStatus.OK)
 	public AvaliacaoVO findById(@PathVariable("id") Long id) {
 		AvaliacaoVO avaliacaoVO = avaliacaoService.getById(id);
@@ -68,7 +64,7 @@ public class AvaliacaoController {
 		return avaliacaoVO;
 	}
 
-	@PostMapping(value = "avaliacao", consumes = { "application/json", "application/xml" }, produces = {
+	@PostMapping(consumes = { "application/json", "application/xml" }, produces = {
 			"application/json", "application/xml" })
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public ResponseEntity<CriacaoAvaliacaoVO> create(@Valid @RequestBody CriacaoAvaliacaoVO avaliacao) {
@@ -76,7 +72,7 @@ public class AvaliacaoController {
 		return ResponseEntity.ok(avaliacaoVO);
 	}
 
-	@PutMapping(value = "avaliacao", consumes = { "application/json", "application/xml" }, produces = {
+	@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, produces = {
 			"application/json", "application/xml" })
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<AtualizarAvaliavaoVO> update(@Valid @RequestBody AtualizarAvaliavaoVO avaliacao) {
@@ -84,7 +80,7 @@ public class AvaliacaoController {
 		return ResponseEntity.ok(avaliacaoVO);
 	}
 
-	@DeleteMapping(value = "avaliacao/{id}")
+	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
 	public void delete(@PathVariable("id") Long id) {
 		avaliacaoService.delete(id);

@@ -13,7 +13,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -87,7 +86,7 @@ public class MuseusController {
 			return ResponseEntity.ok(museuVO);
 		}
 
-		@PutMapping(consumes = { "application/json", "application/xml" }, produces = { "application/json",
+		@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, produces = { "application/json",
 				"application/xml" })
 		@ResponseStatus(value = HttpStatus.OK)
 		public ResponseEntity<MuseusVO> update(@Valid @RequestBody MuseusVO museu) {
