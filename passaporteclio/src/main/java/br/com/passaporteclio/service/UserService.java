@@ -10,7 +10,7 @@ import br.com.passaporteclio.repository.UserRepository;
 
 @Service
 public class UserService implements UserDetailsService {
-	
+
 	@Autowired
 	UserRepository repository;
 
@@ -19,13 +19,15 @@ public class UserService implements UserDetailsService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		var user = repository.findByUsername(username);
+	public UserDetails loadUserByUsername(String email) 
+			throws UsernameNotFoundException {
 
-		if (user != null) {
+		var user = repository.findByEmail(email);
+
+		if(user != null) {
 			return user;
 		} else {
-			throw new UsernameNotFoundException("Username " + username + " não localizado!");
+			throw new UsernameNotFoundException("Email " + email + " incorreto!");
 		}
 	}
 }

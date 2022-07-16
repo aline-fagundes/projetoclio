@@ -1,5 +1,0 @@
-package br.com.passaporteclio.exception.handler;
-
-public class ExceptionHandler {
-
-}

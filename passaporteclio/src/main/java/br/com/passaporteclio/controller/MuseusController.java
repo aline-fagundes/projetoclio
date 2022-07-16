@@ -33,7 +33,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Museus Endpoint")
 @RestController
-@RequestMapping("api/museus")
+@RequestMapping("/museus")
 public class MuseusController {
 
 
@@ -42,7 +42,7 @@ public class MuseusController {
 
 		@CrossOrigin("localhost:8080") 
 		@RequestMapping(method = RequestMethod.GET, produces = { "application/json", "application/xml" })
-		@Operation(summary = "Listar todas os museus")
+		@Operation(summary = "Listar todos os museus")
 		@ResponseStatus(value = HttpStatus.OK)
 		public ResponseEntity<CollectionModel<MuseusVO>> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
 				@RequestParam(value = "limit", defaultValue = "9") int limit,
@@ -98,7 +98,7 @@ public class MuseusController {
 		@DeleteMapping(value = "/{id}")
 		@ResponseStatus(value = HttpStatus.OK)
 		public void delete(@PathVariable("id") Long id) {
-			service.delete(id);
+			service.deletar(id);
 		}
 	}
 

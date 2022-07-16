@@ -1,5 +1,0 @@
-CREATE TABLE `tb_permissao` (
-  `id_permissao` int NOT NULL AUTO_INCREMENT,
-  `descricao` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_permissao`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
