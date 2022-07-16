@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table
@@ -41,4 +42,7 @@ public class Museus implements Serializable {
 
 	@OneToOne(mappedBy = "museu", cascade = CascadeType.ALL)
 	private Endereco endereco;
+	
+	@OneToMany(mappedBy = "museu", cascade = CascadeType.ALL)
+	private List<Avaliacao> avaliacoes;
 }
