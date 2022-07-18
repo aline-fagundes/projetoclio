@@ -47,10 +47,10 @@ public class MuseusService {
 		repository.delete(entity);
 	}
 
-	public MuseusVO atualizar(MuseusVO museus) {
+	public MuseusVO atualizar(Long id, MuseusVO museus) {
 		System.out.println("Iniciando método atualizar...");
 
-		var entityMuseu = repository.findById(museus.getId())
+		var entityMuseu = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
 		entityMuseu.setNome(museus.getNome());
 		entityMuseu.setDescricaoMuseu(museus.getDescricaoMuseu());

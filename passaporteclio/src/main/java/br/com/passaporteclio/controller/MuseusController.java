@@ -89,8 +89,8 @@ public class MuseusController {
 		@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, produces = { "application/json",
 				"application/xml" })
 		@ResponseStatus(value = HttpStatus.OK)
-		public ResponseEntity<MuseusVO> update(@Valid @RequestBody MuseusVO museu) {
-			MuseusVO museuVO = service.atualizar(museu);
+		public ResponseEntity<MuseusVO> update(@PathVariable("id") Long id, @Valid @RequestBody MuseusVO museu) {
+			MuseusVO museuVO = service.atualizar(id, museu);
 			return ResponseEntity.ok(museuVO);
 		}
 
