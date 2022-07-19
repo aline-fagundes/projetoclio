@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.passaporteclio.repository.UserRepository;
 import br.com.passaporteclio.security.LoginForm;
 import br.com.passaporteclio.security.jwt.JwtProvider;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Autenticação Endpoint")
@@ -38,6 +39,7 @@ public class AuthController {
 
 	@PostMapping(produces = { "application/json", "application/xml" }, consumes = {
 			"application/json", "application/xml" })
+	@Operation(summary = "Logar com email e senha")
 	public ResponseEntity<?> signin(@RequestBody LoginForm login) {
 
 		try {

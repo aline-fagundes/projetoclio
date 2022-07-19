@@ -25,10 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.passaporteclio.domain.vo.VisitanteAlterarSenhaDTO;
-import br.com.passaporteclio.domain.vo.VisitanteAlterarDTO;
-import br.com.passaporteclio.domain.vo.VisitanteRetornoDTO;
-import br.com.passaporteclio.domain.vo.VisitanteDTO;
+import br.com.passaporteclio.domain.dto.VisitanteAlterarSenhaDto;
+import br.com.passaporteclio.domain.dto.VisitanteAlterarDto;
+import br.com.passaporteclio.domain.dto.VisitanteRetornoDto;
+import br.com.passaporteclio.domain.dto.VisitanteDto;
 import br.com.passaporteclio.service.VisitanteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -43,37 +43,37 @@ public class VisitanteController {
 	@PostMapping(consumes = { "application/json", "application/xml" }, produces = { "application/json",
 			"application/xml" })
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public ResponseEntity<VisitanteRetornoDTO> create(@Valid @RequestBody VisitanteDTO visitante) {
-		VisitanteRetornoDTO visitanteGravado = service.inserir(visitante);
+	public ResponseEntity<VisitanteRetornoDto> create(@Valid @RequestBody VisitanteDto visitante) {
+		VisitanteRetornoDto visitanteGravado = service.inserir(visitante);
 		return ResponseEntity.ok(visitanteGravado);
 	}
 
 	@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, produces = { "application/json",
 			"application/xml" })
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<VisitanteRetornoDTO> update(@PathVariable("id") Long id,
-			@Valid @RequestBody VisitanteAlterarDTO visitante) {
-		VisitanteRetornoDTO visitanteAtualizado = service.atualizar(id, visitante);
+	public ResponseEntity<VisitanteRetornoDto> update(@PathVariable("id") Long id,
+			@Valid @RequestBody VisitanteAlterarDto visitante) {
+		VisitanteRetornoDto visitanteAtualizado = service.atualizar(id, visitante);
 		return ResponseEntity.ok(visitanteAtualizado);
 	}
 
 	@PutMapping(value = "/{id}/alterar-senha", consumes = { "application/json", "application/xml" }, produces = { "application/json",
 			"application/xml" })
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<VisitanteRetornoDTO> updatePassword(@PathVariable("id") Long id,
-			@Valid @RequestBody VisitanteAlterarSenhaDTO visitante) {
-		VisitanteRetornoDTO visitanteAtualizado = service.atualizarSenha(id, visitante);
+	public ResponseEntity<VisitanteRetornoDto> updatePassword(@PathVariable("id") Long id,
+			@Valid @RequestBody VisitanteAlterarSenhaDto visitante) {
+		VisitanteRetornoDto visitanteAtualizado = service.atualizarSenha(id, visitante);
 		return ResponseEntity.ok(visitanteAtualizado);
 	}
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json", "application/xml" })
 	@Operation(summary = "Listar todos os visitantes")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<CollectionModel<VisitanteRetornoDTO>> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
+	public ResponseEntity<CollectionModel<VisitanteRetornoDto>> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
 			@RequestParam(value = "limit", defaultValue = "9") int limit,
 			@RequestParam(value = "direction", defaultValue = "asc") String direction) {
 		var sortDirection = "desc".equalsIgnoreCase(direction) ? Direction.DESC : Direction.ASC;
 		Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "nome"));
-		Page<VisitanteRetornoDTO> visitanteAtualizado = service.buscarTodos(pageable);
+		Page<VisitanteRetornoDto> visitanteAtualizado = service.buscarTodos(pageable);
 		visitanteAtualizado.stream()
 				.forEach(p -> p.add(linkTo(methodOn(VisitanteController.class).findById(p.getId())).withSelfRel()));
 		return ResponseEntity.ok(CollectionModel.of(visitanteAtualizado));
@@ -82,8 +82,8 @@ public class VisitanteController {
 	@GetMapping(value = "/{id}", produces = { "application/json", "application/xml" })
 	@Operation(summary = "Buscar visitante por id")
 	@ResponseStatus(value = HttpStatus.OK)
-	public VisitanteRetornoDTO findById(@PathVariable("id") Long id) {
-		VisitanteRetornoDTO visitanteAtualizado = service.buscarPorId(id);
+	public VisitanteRetornoDto findById(@PathVariable("id") Long id) {
+		VisitanteRetornoDto visitanteAtualizado = service.buscarPorId(id);
 		visitanteAtualizado.add(linkTo(methodOn(VisitanteController.class).findById(id)).withSelfRel());
 		return visitanteAtualizado;
 	}

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -34,9 +35,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
+		.antMatchers("/swagger-ui/**", "/swagger-ui.html").permitAll()
         .antMatchers(HttpMethod.GET, "/museus").permitAll()
         .antMatchers(HttpMethod.GET, "/museus/*").permitAll()
         .antMatchers(HttpMethod.POST, "/auth").permitAll()
+        .antMatchers(HttpMethod.GET, "/avaliacao").permitAll()
+        .antMatchers(HttpMethod.GET, "/avaliacao/*").permitAll()
+        .antMatchers(HttpMethod.POST, "/avaliacao").authenticated()
+        .antMatchers(HttpMethod.PUT, "/avaliacao/*").authenticated()
+        .antMatchers(HttpMethod.DELETE, "/avaliacao/*").authenticated()
         .antMatchers(HttpMethod.POST, "/museus").hasRole("ADMINISTRADOR")
         .antMatchers(HttpMethod.PUT, "/museus/*").hasRole("ADMINISTRADOR")
         .antMatchers(HttpMethod.DELETE, "/museus/*").hasRole("ADMINISTRADOR")
@@ -44,5 +51,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .and().csrf().disable()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().apply(new JwtConfigurer(jwtProvider));
+	}
+	
+	@Override 
+	public void configure(WebSecurity web) throws Exception { 
+	    web.ignoring() 
+	        .antMatchers("/swagger-ui/**", "/v3/api-docs/**"); 
 	}
 }

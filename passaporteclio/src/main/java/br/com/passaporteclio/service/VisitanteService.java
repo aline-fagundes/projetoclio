@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 import br.com.passaporteclio.adapter.DozerConverter;
 import br.com.passaporteclio.domain.entity.Permission;
 import br.com.passaporteclio.domain.entity.Visitante;
-import br.com.passaporteclio.domain.vo.VisitanteAlterarDTO;
-import br.com.passaporteclio.domain.vo.VisitanteAlterarSenhaDTO;
-import br.com.passaporteclio.domain.vo.VisitanteDTO;
-import br.com.passaporteclio.domain.vo.VisitanteRetornoDTO;
+import br.com.passaporteclio.domain.dto.VisitanteAlterarDto;
+import br.com.passaporteclio.domain.dto.VisitanteAlterarSenhaDto;
+import br.com.passaporteclio.domain.dto.VisitanteDto;
+import br.com.passaporteclio.domain.dto.VisitanteRetornoDto;
 import br.com.passaporteclio.exception.ResourceNotFoundException;
 import br.com.passaporteclio.repository.PermissionRepository;
 import br.com.passaporteclio.repository.UserRepository;
@@ -36,7 +36,7 @@ public class VisitanteService {
 	private String PERFIL_VISITANTE = "Visitante";
 	private String ROLE_VISITANTE = "ROLE_VISITANTE";
 	
-	public VisitanteRetornoDTO inserir(VisitanteDTO visitanteDTO) {
+	public VisitanteRetornoDto inserir(VisitanteDto visitanteDTO) {
 		System.out.println("Iniciando método inserir...");
 		
 		if(userRepository.findByEmail(visitanteDTO.getUser().getEmail()) != null){
@@ -54,13 +54,13 @@ public class VisitanteService {
 		
 		visitanteEntity.setUser(userGravado);
 
-		var visitanteGravado = DozerConverter.parseObject(visitanteRepository.save(visitanteEntity), VisitanteRetornoDTO.class);
+		var visitanteGravado = DozerConverter.parseObject(visitanteRepository.save(visitanteEntity), VisitanteRetornoDto.class);
 
 		System.out.println("Finalizando método inserir...");
 		return visitanteGravado;
 	}
 	
-	public VisitanteRetornoDTO atualizar(Long id, VisitanteAlterarDTO visitanteAlterarDTO) {
+	public VisitanteRetornoDto atualizar(Long id, VisitanteAlterarDto visitanteAlterarDTO) {
 		System.out.println("Iniciando método atualizar...");
 		
 		var entityVisitante = visitanteRepository.findById(id)
@@ -70,14 +70,14 @@ public class VisitanteService {
 		entityVisitante.setSobrenome(visitanteAlterarDTO.getSobrenome());
 
 		var visitanteGravado = DozerConverter.parseObject(
-				visitanteRepository.save(entityVisitante), VisitanteRetornoDTO.class
+				visitanteRepository.save(entityVisitante), VisitanteRetornoDto.class
 		);
 
 		System.out.println("Finalizando método atualizar...");
 		return visitanteGravado;
 	}
 	
-	public VisitanteRetornoDTO atualizarSenha(Long id, VisitanteAlterarSenhaDTO visitanteAlterarSenhaDTO) {
+	public VisitanteRetornoDto atualizarSenha(Long id, VisitanteAlterarSenhaDto visitanteAlterarSenhaDTO) {
 		System.out.println("Iniciando método atualizarSenha...");
 		
 		var passwordEncoder = new BCryptPasswordEncoder();
@@ -103,21 +103,21 @@ public class VisitanteService {
 		userRepository.save(userEntity);
 	
 
-		var visitanteGravado = DozerConverter.parseObject(entityVisitante, VisitanteRetornoDTO.class);
+		var visitanteGravado = DozerConverter.parseObject(entityVisitante, VisitanteRetornoDto.class);
 
 		System.out.println("Finalizando método atualizarSenha...");
 		return visitanteGravado;
 	}
 
-	public Page<VisitanteRetornoDTO> buscarTodos(Pageable pageable) {
+	public Page<VisitanteRetornoDto> buscarTodos(Pageable pageable) {
 		var page = visitanteRepository.findAll(pageable);
 		return page.map(this::convertToVisitanteDTO);
 	}
 
-	public VisitanteRetornoDTO buscarPorId(Long id) {
+	public VisitanteRetornoDto buscarPorId(Long id) {
 		var entity = visitanteRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
-		return DozerConverter.parseObject(entity, VisitanteRetornoDTO.class);
+		return DozerConverter.parseObject(entity, VisitanteRetornoDto.class);
 	}
 	
 
@@ -133,7 +133,7 @@ public class VisitanteService {
 		return list;
 	}
 	
-	private VisitanteRetornoDTO convertToVisitanteDTO(Visitante entity) {
-		return DozerConverter.parseObject(entity, VisitanteRetornoDTO.class);
+	private VisitanteRetornoDto convertToVisitanteDTO(Visitante entity) {
+		return DozerConverter.parseObject(entity, VisitanteRetornoDto.class);
 	}
 }
