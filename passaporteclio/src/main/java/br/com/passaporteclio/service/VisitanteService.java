@@ -38,6 +38,10 @@ public class VisitanteService {
 	
 	public VisitanteRetornoDTO inserir(VisitanteDTO visitanteDTO) {
 		System.out.println("Iniciando método inserir...");
+		
+		if(userRepository.findByEmail(visitanteDTO.getUser().getEmail()) != null){
+			throw new IllegalArgumentException("Ja existe um usuario cadastrado com o e-mail informado!");
+		}
 
 		var visitanteEntity = DozerConverter.parseObject(visitanteDTO, Visitante.class);
 

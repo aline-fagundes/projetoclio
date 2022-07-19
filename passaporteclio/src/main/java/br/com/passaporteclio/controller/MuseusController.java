@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.passaporteclio.domain.vo.MuseusVO;
+import br.com.passaporteclio.domain.vo.MuseusDTO;
 import br.com.passaporteclio.service.MuseusService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -43,12 +43,12 @@ public class MuseusController {
 		@RequestMapping(method = RequestMethod.GET, produces = { "application/json", "application/xml" })
 		@Operation(summary = "Listar todos os museus")
 		@ResponseStatus(value = HttpStatus.OK)
-		public ResponseEntity<CollectionModel<MuseusVO>> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
+		public ResponseEntity<CollectionModel<MuseusDTO>> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
 				@RequestParam(value = "limit", defaultValue = "9") int limit,
 				@RequestParam(value = "direction", defaultValue = "asc") String direction) {
 			var sortDirection = "desc".equalsIgnoreCase(direction) ? Direction.DESC : Direction.ASC;
 			Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "nome"));
-			Page<MuseusVO> museusVO = service.buscarTodos(pageable);
+			Page<MuseusDTO> museusVO = service.buscarTodos(pageable);
 			museusVO.stream()
 					.forEach(p -> p.add(linkTo(methodOn(MuseusController.class).findById(p.getId())).withSelfRel()));
 			return ResponseEntity.ok(CollectionModel.of(museusVO));
@@ -57,8 +57,8 @@ public class MuseusController {
 		
 		@GetMapping(value = "/{id}", produces = { "application/json", "application/xml" })
 		@ResponseStatus(value = HttpStatus.OK)
-		public MuseusVO findById(@PathVariable("id") Long id) {
-			MuseusVO museuVO = service.buscarPorId(id);
+		public MuseusDTO findById(@PathVariable("id") Long id) {
+			MuseusDTO museuVO = service.buscarPorId(id);
 			museuVO.add(linkTo(methodOn(MuseusController.class).findById(id)).withSelfRel());
 			return museuVO;
 		}
@@ -66,13 +66,13 @@ public class MuseusController {
 		
 		@Operation(summary = "Listar museus por nome")
 		@GetMapping(value = "/buscarPorNome/{nome}", produces = { "application/json", "application/xml" })
-		public ResponseEntity<CollectionModel<MuseusVO>> findMuseumByName(@PathVariable("nome") String nome,
+		public ResponseEntity<CollectionModel<MuseusDTO>> findMuseumByName(@PathVariable("nome") String nome,
 				@RequestParam(value = "page", defaultValue = "0") int page,
 				@RequestParam(value = "limit", defaultValue = "10") int limit,
 				@RequestParam(value = "direction", defaultValue = "asc") String direction) {
 			var sortDirection = "desc".equalsIgnoreCase(direction) ? Direction.DESC : Direction.ASC;
 			Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "nome"));
-			Page<MuseusVO> museusVO = service.findByName(nome, pageable);
+			Page<MuseusDTO> museusVO = service.findByName(nome, pageable);
 			museusVO.stream()
 					.forEach(p -> p.add(linkTo(methodOn(MuseusController.class).findById(p.getId())).withSelfRel()));
 			return ResponseEntity.ok(CollectionModel.of(museusVO));
@@ -81,16 +81,16 @@ public class MuseusController {
 		@PostMapping(consumes = { "application/json", "application/xml" }, produces = { "application/json",
 				"application/xml" })
 		@ResponseStatus(value = HttpStatus.CREATED)
-		public ResponseEntity<MuseusVO> create(@Valid @RequestBody MuseusVO museu) {
-			MuseusVO museuVO = service.inserir(museu);
+		public ResponseEntity<MuseusDTO> create(@Valid @RequestBody MuseusDTO museu) {
+			MuseusDTO museuVO = service.inserir(museu);
 			return ResponseEntity.ok(museuVO);
 		}
 
 		@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, produces = { "application/json",
 				"application/xml" })
 		@ResponseStatus(value = HttpStatus.OK)
-		public ResponseEntity<MuseusVO> update(@PathVariable("id") Long id, @Valid @RequestBody MuseusVO museu) {
-			MuseusVO museuVO = service.atualizar(id, museu);
+		public ResponseEntity<MuseusDTO> update(@PathVariable("id") Long id, @Valid @RequestBody MuseusDTO museu) {
+			MuseusDTO museuVO = service.atualizar(id, museu);
 			return ResponseEntity.ok(museuVO);
 		}
 

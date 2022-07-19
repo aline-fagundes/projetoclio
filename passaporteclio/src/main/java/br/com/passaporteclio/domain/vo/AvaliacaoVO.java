@@ -24,7 +24,7 @@ public class AvaliacaoVO extends RepresentationModel<AvaliacaoVO> implements Ser
 	private String avaliacao;
 	
 	@NotBlank
-	private MuseusVO museu;
+	private MuseusDTO museu;
 	
 
 }
