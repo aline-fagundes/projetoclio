@@ -29,11 +29,9 @@ public class Avaliacao implements Serializable {
 	@Column(name="id_avaliacao")
 	private Long id;
 	
-	//@ManyToOne
-	// private Usuario usuario;
-	
+	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="fk_id_museu_avaliacao")
+	@JoinColumn(name = "fk_id_museu_avaliacao")
 	private Museus museu;
 		
 	@NotNull
@@ -42,6 +40,9 @@ public class Avaliacao implements Serializable {
 	@NotBlank
 	@Size(max=300)
 	private String avaliacao;
-
 	
+	@NotNull
+	@ManyToOne
+	private User autor;
+		
 }
