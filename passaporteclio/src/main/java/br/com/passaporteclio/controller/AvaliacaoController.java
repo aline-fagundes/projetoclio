@@ -46,8 +46,7 @@ public class AvaliacaoController {
 	@GetMapping(produces = { "application/json", "application/xml" })
 	@Operation(summary = "Listar todas as avaliações ou apenas a do museu especificado")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<CollectionModel<AvaliacaoDto>> findAll(
-			@RequestParam(required = false) Long idMuseu,
+	public ResponseEntity<CollectionModel<AvaliacaoDto>> findAll(@RequestParam(required = false) Long idMuseu,
 			@PageableDefault(sort = "nota", direction = Direction.DESC, page = 0, size = 3) Pageable paginacao) {
 
 		if (idMuseu == null) {
@@ -72,36 +71,36 @@ public class AvaliacaoController {
 		return avaliacaoDto;
 	}
 
-	@PostMapping(consumes = { "application/json", "application/xml" }, 
-			produces = { "application/json", "application/xml" })
+	@PostMapping(consumes = { "application/json", "application/xml" }, produces = { "application/json",
+			"application/xml" })
 	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Cadastrar avaliação")
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public ResponseEntity<CriaAvaliacaoDto> create(@Valid @RequestBody CriaAvaliacaoDto avaliacao) {
-		
+
 		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long idUsuarioLogado = usuarioLogado.getId();
-		
+
 		CriaAvaliacaoUserDto autor = new CriaAvaliacaoUserDto();
 		autor.setId(idUsuarioLogado);
 		avaliacao.setAutor(autor);
-		
+		avaliacao.setDenunciada(false);
+
 		CriaAvaliacaoDto avaliacaoDto = service.inserir(avaliacao);
 		return ResponseEntity.ok(avaliacaoDto);
 	}
 
-	@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, 
-			produces = { "application/json", "application/xml" })
+	@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, produces = { "application/json",
+			"application/xml" })
 	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Alterar avaliação")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<AtualizaAvaliacaoDto> update(
-			@PathVariable("id") Long id,
+	public ResponseEntity<AtualizaAvaliacaoDto> update(@PathVariable("id") Long id,
 			@Valid @RequestBody AtualizaAvaliacaoDto avaliacao) {
-		
+
 		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long idUsuarioLogado = usuarioLogado.getId();
-		
+
 		AtualizaAvaliacaoDto avaliacaoDto = service.atualizar(id, avaliacao, idUsuarioLogado);
 		return ResponseEntity.ok(avaliacaoDto);
 	}
@@ -111,12 +110,34 @@ public class AvaliacaoController {
 	@Operation(summary = "Deletar avaliação")
 	@ResponseStatus(value = HttpStatus.OK)
 	public void delete(@PathVariable("id") Long id) {
-		
+
 		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long idUsuarioLogado = usuarioLogado.getId();
 		String perfilUsuarioLogado = usuarioLogado.getPerfil();
-		
+
 		service.deletar(id, idUsuarioLogado, perfilUsuarioLogado);
 	}
-	
+
+	@PostMapping(value = "denunciar/{id}", consumes = { "application/json", "application/xml" })
+	@SecurityRequirement(name = "bearer-key")
+	@Operation(summary = "Denunciar avaliação")
+	@ResponseStatus(value = HttpStatus.OK)
+	public void report(@PathVariable("id") Long id) {
+
+		service.denunciar(id);
+	}
+
+	@GetMapping(value = "/denuncias", produces = { "application/json", "application/xml" })
+	@Operation(summary = "Listar todas as avaliações denunciadas")
+	@ResponseStatus(value = HttpStatus.OK)
+	public ResponseEntity<CollectionModel<AvaliacaoDto>> findAllReported(
+			@PageableDefault(sort = "nota", direction = Direction.ASC, page = 0, size = 5) Pageable paginacao) {
+
+		Page<AvaliacaoDto> avaliacoesDenunciadasDto = service.buscarAvaliacoesDenunciadas(paginacao);
+
+		avaliacoesDenunciadasDto.stream()
+				.forEach(p -> p.add(linkTo(methodOn(AvaliacaoController.class).findById(p.getId())).withSelfRel()));
+
+		return ResponseEntity.ok(CollectionModel.of(avaliacoesDenunciadasDto));
+	}
 }

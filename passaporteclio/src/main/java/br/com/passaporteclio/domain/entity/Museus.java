@@ -55,4 +55,5 @@ public class Museus implements Serializable {
 	
 	@OneToMany(mappedBy = "museu", cascade = CascadeType.ALL)
 	private List<Avaliacao> avaliacoes = new ArrayList();
+	
 }

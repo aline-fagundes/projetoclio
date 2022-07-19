@@ -1,14 +1,16 @@
 package br.com.passaporteclio.service;
 
-import br.com.passaporteclio.adapter.DozerConverter;
-import br.com.passaporteclio.domain.dto.MuseusDto;
-import br.com.passaporteclio.domain.entity.Museus;
-import br.com.passaporteclio.exception.ResourceNotFoundException;
-import br.com.passaporteclio.repository.MuseusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import br.com.passaporteclio.adapter.DozerConverter;
+import br.com.passaporteclio.domain.dto.MuseusDto;
+import br.com.passaporteclio.domain.dto.NotaMediaMuseuDto;
+import br.com.passaporteclio.domain.entity.Museus;
+import br.com.passaporteclio.exception.ResourceNotFoundException;
+import br.com.passaporteclio.repository.MuseusRepository;
 
 @Service
 public class MuseusService {
@@ -35,9 +37,9 @@ public class MuseusService {
 	}
 
 	public MuseusDto buscarPorId(Long id) {
-		var entity = repository.findById(id)
+		var entityMuseu = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
-		return DozerConverter.parseObject(entity, MuseusDto.class);
+		return DozerConverter.parseObject(entityMuseu, MuseusDto.class);
 	}
 
 	public Page<MuseusDto> findByName(String nome, Pageable pageable) {
@@ -71,14 +73,30 @@ public class MuseusService {
 	public void deletar(Long id) {
 		System.out.println("Iniciando método deletar...");
 		
-		var entity = repository.findById(id)
+		var entityMuseu = repository.findById(id)
 				.orElseThrow(() -> 
 				new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
-		repository.delete(entity);
+		repository.delete(entityMuseu);
 		
 		System.out.println("Finalizando método atualizar...");
 	}
 
+
+
+	public NotaMediaMuseuDto calculaMedia(Long id) {
+		
+		repository.findById(id)
+				.orElseThrow(() -> 
+				new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
+		
+		double notaMedia = repository.getNotaMedia(id);
+		
+		NotaMediaMuseuDto notaMediaMuseuDto = new NotaMediaMuseuDto();
+		notaMediaMuseuDto.setNotaMedia(notaMedia);
+		
+		return notaMediaMuseuDto;
+	}
+	
 	private MuseusDto convertToMuseusDto(Museus entity) {
 		return DozerConverter.parseObject(entity, MuseusDto.class);
 	}

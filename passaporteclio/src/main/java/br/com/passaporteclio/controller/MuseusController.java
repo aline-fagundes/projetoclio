@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.passaporteclio.domain.dto.MuseusDto;
+import br.com.passaporteclio.domain.dto.NotaMediaMuseuDto;
 import br.com.passaporteclio.service.MuseusService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -67,6 +68,14 @@ public class MuseusController {
 				.forEach(p -> p.add(linkTo(methodOn(MuseusController.class).findById(p.getId())).withSelfRel()));
 		return ResponseEntity.ok(CollectionModel.of(museuDto));
 	}
+	
+	@GetMapping(value = "/notaMedia/{id}", produces = { "application/json", "application/xml" })
+	@Operation(summary = "Exibir nota do museu por id")
+	public ResponseEntity<NotaMediaMuseuDto> getNotaMediaMuseu(
+			@PathVariable("id") Long id) {
+		NotaMediaMuseuDto notaMediaDto = service.calculaMedia(id);
+		return ResponseEntity.ok(notaMediaDto);
+	}
 
 	@PostMapping(consumes = { "application/json", "application/xml" }, 
 			produces = { "application/json", "application/xml" })
@@ -97,4 +106,5 @@ public class MuseusController {
 	public void delete(@PathVariable("id") Long id) {
 		service.deletar(id);
 	}
+	
 }
