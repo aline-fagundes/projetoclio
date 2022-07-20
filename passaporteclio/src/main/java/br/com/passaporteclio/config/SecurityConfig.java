@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -34,15 +35,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-        .antMatchers(HttpMethod.GET, "/museus").permitAll()
-        .antMatchers(HttpMethod.GET, "/museus/*").permitAll()
-        .antMatchers(HttpMethod.POST, "/auth").permitAll()
+		.antMatchers("/swagger-ui/**", "/swagger-ui.html").permitAll()
+		.antMatchers(HttpMethod.POST, "/auth").permitAll()
+        .antMatchers(HttpMethod.GET, "/museus").authenticated()
+        .antMatchers(HttpMethod.GET, "/museus/notaMedia/*").authenticated()
         .antMatchers(HttpMethod.POST, "/museus").hasRole("ADMINISTRADOR")
         .antMatchers(HttpMethod.PUT, "/museus/*").hasRole("ADMINISTRADOR")
         .antMatchers(HttpMethod.DELETE, "/museus/*").hasRole("ADMINISTRADOR")
+        .antMatchers(HttpMethod.POST, "/visitante").permitAll()
+        .antMatchers(HttpMethod.PUT, "/visitante/*").authenticated()
+        .antMatchers(HttpMethod.PUT, "/visitante/alterar-senha/*").authenticated()
+        .antMatchers(HttpMethod.GET, "/visitante").hasRole("ADMINISTRADOR")
+        .antMatchers(HttpMethod.GET, "/visitante/*").hasRole("ADMINISTRADOR")
+        .antMatchers(HttpMethod.GET, "/avaliacao").authenticated()
+        .antMatchers(HttpMethod.GET, "/avaliacao/denuncias").hasRole("ADMINISTRADOR")
+        .antMatchers(HttpMethod.GET, "/avaliacao/*").authenticated()
+        .antMatchers(HttpMethod.POST, "/avaliacao").authenticated()
+        .antMatchers(HttpMethod.PUT, "/avaliacao/*").authenticated()
+        .antMatchers(HttpMethod.POST, "/avaliacao/denunciar/*").authenticated()
+        .antMatchers(HttpMethod.DELETE, "/avaliacao/*").authenticated()
         .anyRequest().authenticated()
         .and().csrf().disable()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().apply(new JwtConfigurer(jwtProvider));
+	}
+	
+	@Override 
+	public void configure(WebSecurity web) throws Exception { 
+	    web.ignoring() 
+	        .antMatchers("/swagger-ui/**", "/v3/api-docs/**"); 
 	}
 }

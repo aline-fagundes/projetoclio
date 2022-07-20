@@ -1,4 +1,4 @@
-package br.com.passaporteclio.domain.vo;
+package br.com.passaporteclio.domain.dto;
 
 
 import lombok.Data;
@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 @EqualsAndHashCode(callSuper=false)
 @Data
-public class MuseusVO extends RepresentationModel<MuseusVO> implements Serializable {
+public class MuseusDto extends RepresentationModel<MuseusDto> implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -25,9 +25,11 @@ public class MuseusVO extends RepresentationModel<MuseusVO> implements Serializa
 	
 	@NotBlank
 	private String funcionamentoMuseu;
+	
 	@NotBlank
 	private String urlFoto;
 
 	@Valid
-	private EnderecoVO endereco;
+	private EnderecoDto endereco;
+	
 }

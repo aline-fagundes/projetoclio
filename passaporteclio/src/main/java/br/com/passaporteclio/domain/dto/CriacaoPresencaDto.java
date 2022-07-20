@@ -1,4 +1,4 @@
-package br.com.passaporteclio.domain.vo;
+package br.com.passaporteclio.domain.dto;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -10,18 +10,18 @@ import org.springframework.hateoas.RepresentationModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode
 @Data
-public class PresencaDto extends RepresentationModel<PresencaDto> implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class CriacaoPresencaDto extends RepresentationModel<CriacaoPresencaDto> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
 	
 	@NotNull
-	private MuseusVO museu;
+	private CriacaoPresencaMuseuDto museu;
 
-	@NotNull
+
 	private LocalDateTime data;
 	
 }

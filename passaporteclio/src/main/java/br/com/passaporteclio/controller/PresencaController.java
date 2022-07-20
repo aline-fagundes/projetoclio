@@ -23,15 +23,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.passaporteclio.domain.vo.CriacaoPresencaDto;
-import br.com.passaporteclio.domain.vo.CriacaoPresencaMuseuDto;
-import br.com.passaporteclio.domain.vo.PresencaDto;
+import br.com.passaporteclio.domain.dto.CriacaoPresencaDto;
+import br.com.passaporteclio.domain.dto.CriacaoPresencaMuseuDto;
+import br.com.passaporteclio.domain.dto.PresencaDto;
 import br.com.passaporteclio.service.PresencaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Tag(name = "Presença Endpoint")
 @RestController

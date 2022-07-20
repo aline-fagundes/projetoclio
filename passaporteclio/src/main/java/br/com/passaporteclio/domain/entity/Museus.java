@@ -1,14 +1,23 @@
 package br.com.passaporteclio.domain.entity;
 
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
-import java.util.List;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
@@ -45,8 +54,8 @@ public class Museus implements Serializable {
 	private Endereco endereco;
 	
 	@OneToMany(mappedBy = "museu", cascade = CascadeType.ALL)
-	private List<Avaliacao> avaliacoes;
-	
+	private List<Avaliacao> avaliacoes = new ArrayList();
+
 	@OneToMany(mappedBy = "museu", cascade = CascadeType.ALL)
 	private List<Presenca> presencas;
 }

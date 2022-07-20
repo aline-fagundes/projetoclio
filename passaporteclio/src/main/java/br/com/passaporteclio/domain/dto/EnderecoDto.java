@@ -1,4 +1,4 @@
-package br.com.passaporteclio.domain.vo;
+package br.com.passaporteclio.domain.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 @EqualsAndHashCode(callSuper=false)
 @Data
-public class EnderecoVO extends RepresentationModel<EnderecoVO> implements Serializable{
+public class EnderecoDto extends RepresentationModel<EnderecoDto> implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 

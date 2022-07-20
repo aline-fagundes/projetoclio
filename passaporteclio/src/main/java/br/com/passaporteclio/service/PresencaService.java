@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import br.com.passaporteclio.adapter.DozerConverter;
 import br.com.passaporteclio.domain.entity.Presenca;
-import br.com.passaporteclio.domain.vo.CriacaoPresencaDto;
-import br.com.passaporteclio.domain.vo.PresencaDto;
+import br.com.passaporteclio.domain.dto.CriacaoPresencaDto;
+import br.com.passaporteclio.domain.dto.PresencaDto;
 import br.com.passaporteclio.exception.ResourceNotFoundException;
 import br.com.passaporteclio.repository.PresencaRepository;
 import lombok.AllArgsConstructor;
