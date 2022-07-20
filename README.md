@@ -9,7 +9,6 @@ Site que tem como proposta conectar pessoas a museus. Nele será possível conhe
   • <a href="#Features">Features</a> <br>
   • <a href="https://miro.com/app/board/uXjVO2d8Fmg=/">Diagrama de funcionalidades</a> <br>
   • <a href="https://miro.com/app/board/uXjVO0p2LbU=/">Diagrama de Classes e tabela de regras</a> <br>
-  • <a href="#Banco de dados">Banco de dados</a> <br>
   • <a href="#Status">Status</a> <br>
   • <a href="#Tecnologias">Tecnologias</a> <br>
   • <a href="#Team">Team</a> <br>
