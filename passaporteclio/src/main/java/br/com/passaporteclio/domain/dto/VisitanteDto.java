@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
-public class MuseusDto extends RepresentationModel<MuseusDto> implements Serializable {
+public class VisitanteDto extends RepresentationModel<VisitanteDto> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -18,21 +18,11 @@ public class MuseusDto extends RepresentationModel<MuseusDto> implements Seriali
 
 	@NotBlank
 	private String nome;
-
+	
 	@NotBlank
-	private String descricaoMuseu;
-
-	@NotBlank
-	private String funcionamentoMuseu;
-
-	@NotBlank
-	private String urlFoto;
-
-	private String urlSite;
-
-	@NotBlank
-	private String urlInstagram;
-
+	private String sobrenome;
+	
 	@Valid
-	private EnderecoDto endereco;
+	private UserDto user;
+
 }

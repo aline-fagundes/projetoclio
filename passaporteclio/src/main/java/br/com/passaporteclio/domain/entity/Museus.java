@@ -49,7 +49,14 @@ public class Museus implements Serializable {
 	@NotBlank
 	@Column(name = "foto")
 	private String urlFoto;
-
+	
+	@Column(name = "site")
+	private String urlSite;
+	
+	@NotBlank
+	@Column(name = "instagram")
+	private String urlInstagram;
+	
 	@OneToOne(mappedBy = "museu", cascade = CascadeType.ALL)
 	private Endereco endereco;
 	
