@@ -57,7 +57,7 @@ public class VisitanteController {
 		return ResponseEntity.ok(visitanteAtualizado);
 	}
 
-	@PutMapping(value = "/{id}/alterar-senha", consumes = { "application/json", "application/xml" }, produces = { "application/json",
+	@PutMapping(value = "/alterar-senha/{id}", consumes = { "application/json", "application/xml" }, produces = { "application/json",
 			"application/xml" })
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<VisitanteRetornoDto> updatePassword(@PathVariable("id") Long id,
