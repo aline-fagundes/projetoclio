@@ -223,7 +223,6 @@ Ferramentas que serão usadas na construção do projeto:
     <td align="center"><a href="https://github.com/brendabba"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/48896682?v=4" width="100px;" alt=""/><br /><sub><b>Brenda Alcântara</b></sub></a><br />
     <td align="center"><a href="https://github.com/deboraamattos"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/86445351?v=4" width="100px;" alt=""/><br /><sub><b>Débora Mattos</b></sub></a><br />
     <td align="center"><a href="https://github.com/bela-mad"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/97325464?v=4" width="100px;" alt=""/><br /><sub><b>Isabela Madureira</b></sub></a><br />
-    <td align="center"><a href="https://github.com/julia-sousaa"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/93545198?v=4" width="100px;" alt=""/><br /><sub><b>Júlia Sousa</b></sub></a><br />
     <td align="center"><a href="https://github.com/PamelaBSNunes"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102122167?v=4" width="100px;" alt=""/><br /><sub><b>Pâmela Nunes</b></sub></a><br /></td>
   </tr>
 </table>

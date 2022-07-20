@@ -14,4 +14,7 @@
     <fullyQualifiedTypeName name="org.springframework.security.core.Authentication"/>
     <fullyQualifiedTypeName name="br.com.passaporteclio.domain.entity.User"/>
     <fullyQualifiedTypeName name="br.com.passaporteclio.domain.vo.CriaAvaliacaoUserDto"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="br.com.passaporteclio.exception.OperationNotAllowedException"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
 </qualifiedTypeNameHistroy>

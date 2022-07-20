@@ -81,7 +81,22 @@ public class AvaliacaoService {
 			System.out.println("Finalizando método deletar...");
 		}
 	
+	public void denunciar(Long id) {
+		
+		var entityAvaliacao = repository.findById(id)
+				.orElseThrow(() ->
+				new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
+		
+		entityAvaliacao.setDenunciada(true);
+		repository.save(entityAvaliacao);
+	}		
+	
 	private AvaliacaoDto convertToAvaliacaoDto(Avaliacao entity) {
 		return DozerConverter.parseObject(entity, AvaliacaoDto.class);
-	}		
+	}
+
+	public Page<AvaliacaoDto> buscarAvaliacoesDenunciadas(Pageable paginacao) {
+		var page = repository.findByDenunciada(true, paginacao);
+		return page.map(this::convertToAvaliacaoDto);
+	}
 }

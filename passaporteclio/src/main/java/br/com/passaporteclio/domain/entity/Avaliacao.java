@@ -42,6 +42,9 @@ public class Avaliacao implements Serializable {
 	private String avaliacao;
 	
 	@NotNull
+	private boolean denunciada;
+	
+	@NotNull
 	@ManyToOne
 	private User autor;
 		

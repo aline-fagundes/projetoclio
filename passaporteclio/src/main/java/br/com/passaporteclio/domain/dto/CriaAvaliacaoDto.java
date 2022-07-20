@@ -29,6 +29,8 @@ public class CriaAvaliacaoDto extends RepresentationModel<CriaAvaliacaoDto> impl
 	
 	private CriaAvaliacaoUserDto autor;
 	
+	private boolean denunciada;
+	
 }
 
 @EqualsAndHashCode(callSuper = false)
