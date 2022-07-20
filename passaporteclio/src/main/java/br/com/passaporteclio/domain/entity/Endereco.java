@@ -57,7 +57,7 @@ public class Endereco implements Serializable {
 	private String pais;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_id_museu")
+	@JoinColumn(name = "fk_id_museu_endereco")
 	@JsonBackReference
 	private Museus museu;
 }

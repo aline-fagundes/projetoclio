@@ -12,6 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 import br.com.passaporteclio.exception.ExceptionResponse;
 //import br.com.passaporteclio.exception.ResourceNotFoundException;
 import br.com.passaporteclio.exception.InvalidJwtAuthenticationException;
+import br.com.passaporteclio.exception.OperationNotAllowedException;
 import br.com.passaporteclio.exception.ResourceNotFoundException;
 
 @ControllerAdvice
@@ -40,6 +41,14 @@ public class GlobalExceptionHandler {
 		ExceptionResponse exceptionResponse = 
 				new ExceptionResponse(OffsetDateTime.now(), ex.getMessage(),
 				request.getDescription(false));
-		return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(OperationNotAllowedException.class)
+	public final ResponseEntity<ExceptionResponse> OperationNotAllowedException(Exception ex, WebRequest request) {
+		ExceptionResponse exceptionResponse = 
+				new ExceptionResponse(OffsetDateTime.now(), ex.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.FORBIDDEN);
 	}
 }
