@@ -5,7 +5,7 @@ import java.time.OffsetDateTime;
 import java.util.Objects;
 
 
-public class ExceptionResponse implements Serializable{
+public class ExceptionResponse implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

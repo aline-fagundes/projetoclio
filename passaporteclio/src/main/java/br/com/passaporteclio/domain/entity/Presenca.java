@@ -29,16 +29,14 @@ public class Presenca implements Serializable {
 	private Long id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="fk_id_museu_presenca")
+	@JoinColumn(name ="museu_id_presenca")
 	private Museus museu;
-	
-//	@NotNull
-//	@ManyToOne
-//	private User autor;
 	
 	@NotNull
 	@Column(name="data")
 	private LocalDateTime data;
 	
-
+	@NotNull
+	@ManyToOne
+	private User autor;
 }

@@ -16,5 +16,4 @@ public interface MuseusRepository extends JpaRepository<Museus, Long> {
 	
 	@Query("SELECT AVG(a.nota) FROM Avaliacao a WHERE a.museu.id = :id_museu")
 	Double getNotaMedia(@Param("id_museu") Long idMuseu);
-	
 }

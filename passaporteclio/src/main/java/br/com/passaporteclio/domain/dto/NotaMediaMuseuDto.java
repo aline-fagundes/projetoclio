@@ -14,5 +14,4 @@ public class NotaMediaMuseuDto extends RepresentationModel<NotaMediaMuseuDto> im
 	private static final long serialVersionUID = 1L;
 	
 	private double notaMedia;
-
 }

@@ -30,22 +30,26 @@ public class MuseusService {
 		System.out.println("Finalizando método inserir...");
 		return museuGravado;
 	}
+	
 
-	public Page<MuseusDto> buscarTodos(Pageable pageable) {
-		var page = repository.findAll(pageable);
+	public Page<MuseusDto> buscarTodos(Pageable paginacao) {
+		var page = repository.findAll(paginacao);
 		return page.map(this::convertToMuseusDto);
 	}
 
+	
 	public MuseusDto buscarPorId(Long id) {
-		var entityMuseu = repository.findById(id)
+		var museuEntity = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
-		return DozerConverter.parseObject(entityMuseu, MuseusDto.class);
+		return DozerConverter.parseObject(museuEntity, MuseusDto.class);
 	}
 
-	public Page<MuseusDto> findByName(String nome, Pageable pageable) {
-		var page = repository.findByNome(nome, pageable);
+	
+	public Page<MuseusDto> findByName(String nome, Pageable paginacao) {
+		var page = repository.findByNome(nome, paginacao);
 		return page.map(this::convertToMuseusDto);
 	}
+	
 	
 	public MuseusDto atualizar(Long id, MuseusDto museus) {
 		System.out.println("Iniciando método atualizar...");
@@ -71,22 +75,21 @@ public class MuseusService {
 		System.out.println("Finalizando método atualizar...");
 		return museuAlterado;
 	}
+	
 
 	public void deletar(Long id) {
 		System.out.println("Iniciando método deletar...");
 		
-		var entityMuseu = repository.findById(id)
+		var museuEntity = repository.findById(id)
 				.orElseThrow(() -> 
 				new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
-		repository.delete(entityMuseu);
+		repository.delete(museuEntity);
 		
 		System.out.println("Finalizando método atualizar...");
 	}
 
 
-
 	public NotaMediaMuseuDto calculaMedia(Long id) {
-		
 		repository.findById(id)
 				.orElseThrow(() -> 
 				new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
@@ -98,6 +101,7 @@ public class MuseusService {
 		
 		return notaMediaMuseuDto;
 	}
+	
 	
 	private MuseusDto convertToMuseusDto(Museus entity) {
 		return DozerConverter.parseObject(entity, MuseusDto.class);

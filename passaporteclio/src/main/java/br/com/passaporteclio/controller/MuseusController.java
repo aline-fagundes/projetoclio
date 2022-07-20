@@ -43,6 +43,7 @@ public class MuseusController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<CollectionModel<MuseusDto>> findAll(
 			@PageableDefault(sort = "nome", direction = Direction.ASC, page = 0, size = 9) Pageable paginacao) {
+		
 		Page<MuseusDto> museusDto = service.buscarTodos(paginacao);
 		museusDto.stream()
 				.forEach(p -> p.add(linkTo(methodOn(MuseusController.class).findById(p.getId())).withSelfRel()));
@@ -53,6 +54,7 @@ public class MuseusController {
 	@Operation(summary = "Exibir museu por Id")
 	@ResponseStatus(value = HttpStatus.OK)
 	public MuseusDto findById(@PathVariable("id") Long id) {
+		
 		MuseusDto museuVO = service.buscarPorId(id);
 		museuVO.add(linkTo(methodOn(MuseusController.class).findById(id)).withSelfRel());
 		return museuVO;
@@ -63,6 +65,7 @@ public class MuseusController {
 	public ResponseEntity<CollectionModel<MuseusDto>> findMuseuByNome(
 			@PathVariable("nome") String nome,
 			@PageableDefault(sort = "nome", direction = Direction.ASC, page = 0, size = 9) Pageable paginacao) {
+		
 		Page<MuseusDto> museuDto = service.findByName(nome, paginacao);
 		museuDto.stream()
 				.forEach(p -> p.add(linkTo(methodOn(MuseusController.class).findById(p.getId())).withSelfRel()));
@@ -71,8 +74,8 @@ public class MuseusController {
 	
 	@GetMapping(value = "/notaMedia/{id}", produces = { "application/json", "application/xml" })
 	@Operation(summary = "Exibir nota do museu por id")
-	public ResponseEntity<NotaMediaMuseuDto> getNotaMediaMuseu(
-			@PathVariable("id") Long id) {
+	public ResponseEntity<NotaMediaMuseuDto> getNotaMediaMuseu(@PathVariable("id") Long id) {
+		
 		NotaMediaMuseuDto notaMediaDto = service.calculaMedia(id);
 		return ResponseEntity.ok(notaMediaDto);
 	}
@@ -83,11 +86,13 @@ public class MuseusController {
 	@SecurityRequirement(name = "bearer-key")
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public ResponseEntity<MuseusDto> create(@Valid @RequestBody MuseusDto museu) {
+		
 		MuseusDto museuDto = service.inserir(museu);
 		return ResponseEntity.ok(museuDto);
 	}
 
-	@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, produces = { "application/json",
+	@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, 
+			produces = { "application/json",
 			"application/xml" })
 	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Alterar museu")
@@ -95,6 +100,7 @@ public class MuseusController {
 	public ResponseEntity<MuseusDto> update(
 			@PathVariable("id") Long id, 
 			@Valid @RequestBody MuseusDto museu) {
+		
 		MuseusDto museuDto = service.atualizar(id, museu);
 		return ResponseEntity.ok(museuDto);
 	}
@@ -104,7 +110,7 @@ public class MuseusController {
 	@Operation(summary = "Deletar museu")
 	@ResponseStatus(value = HttpStatus.OK)
 	public void delete(@PathVariable("id") Long id) {
+		
 		service.deletar(id);
 	}
-	
 }

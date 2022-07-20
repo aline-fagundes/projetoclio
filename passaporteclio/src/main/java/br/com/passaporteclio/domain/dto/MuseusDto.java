@@ -28,6 +28,7 @@ public class MuseusDto extends RepresentationModel<MuseusDto> implements Seriali
 	@NotBlank
 	private String urlFoto;
 
+	@NotBlank
 	private String urlSite;
 
 	@NotBlank

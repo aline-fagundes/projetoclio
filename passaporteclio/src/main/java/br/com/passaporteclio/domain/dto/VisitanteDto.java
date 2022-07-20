@@ -24,5 +24,4 @@ public class VisitanteDto extends RepresentationModel<VisitanteDto> implements S
 	
 	@Valid
 	private UserDto user;
-
 }

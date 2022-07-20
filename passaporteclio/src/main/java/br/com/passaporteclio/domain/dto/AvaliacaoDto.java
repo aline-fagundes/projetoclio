@@ -4,12 +4,12 @@ package br.com.passaporteclio.domain.dto;
 import java.io.Serializable;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.hateoas.RepresentationModel;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
 
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -19,7 +19,7 @@ public class AvaliacaoDto extends RepresentationModel<AvaliacaoDto> implements S
 
 	private Long id;
 
-	@NotBlank
+	@NotNull
 	private int nota;
 
 	@NotBlank
@@ -27,5 +27,4 @@ public class AvaliacaoDto extends RepresentationModel<AvaliacaoDto> implements S
 	
 	@NotBlank
 	private MuseusDto museu;
-
 }

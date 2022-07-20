@@ -9,5 +9,4 @@ import br.com.passaporteclio.domain.entity.Permission;
 public interface PermissionRepository extends JpaRepository<Permission, Long> {
 	
 	Permission findFirstByPerfil(String perfil);
-
 }

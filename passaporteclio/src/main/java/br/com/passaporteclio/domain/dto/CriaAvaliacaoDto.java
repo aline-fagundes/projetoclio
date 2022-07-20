@@ -29,17 +29,5 @@ public class CriaAvaliacaoDto extends RepresentationModel<CriaAvaliacaoDto> impl
 	
 	private CriaAvaliacaoUserDto autor;
 	
-	private boolean denunciada;
-	
+	private boolean denunciada;	
 }
-
-@EqualsAndHashCode(callSuper = false)
-@Data
-class CriaAvaliacaoMuseuDto extends RepresentationModel<CriaAvaliacaoMuseuDto> implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-	
-	@NotNull
-	private Long id;
-}
-
