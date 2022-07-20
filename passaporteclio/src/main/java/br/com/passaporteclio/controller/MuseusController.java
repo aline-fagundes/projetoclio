@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.passaporteclio.domain.vo.MuseusVO;
 import br.com.passaporteclio.service.MuseusService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Museus Endpoint")
@@ -80,6 +81,7 @@ public class MuseusController {
 
 		@PostMapping(consumes = { "application/json", "application/xml" }, produces = { "application/json",
 				"application/xml" })
+		@SecurityRequirement(name = "bearer-key") //Swagger
 		@ResponseStatus(value = HttpStatus.CREATED)
 		public ResponseEntity<MuseusVO> create(@Valid @RequestBody MuseusVO museu) {
 			MuseusVO museuVO = service.inserir(museu);
@@ -88,6 +90,7 @@ public class MuseusController {
 
 		@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, produces = { "application/json",
 				"application/xml" })
+		@SecurityRequirement(name = "bearer-key") //Swagger
 		@ResponseStatus(value = HttpStatus.OK)
 		public ResponseEntity<MuseusVO> update(@Valid @RequestBody MuseusVO museu) {
 			MuseusVO museuVO = service.atualizar(museu);
@@ -95,6 +98,7 @@ public class MuseusController {
 		}
 
 		@DeleteMapping(value = "/{id}")
+		@SecurityRequirement(name = "bearer-key") //Swagger
 		@ResponseStatus(value = HttpStatus.OK)
 		public void delete(@PathVariable("id") Long id) {
 			service.deletar(id);
