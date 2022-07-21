@@ -11,4 +11,7 @@ import br.com.passaporteclio.domain.entity.Presenca;
 public interface PresencaRepository extends JpaRepository<Presenca, Long> {
 	
 	Page<Presenca> findByMuseuId(Long museuId, Pageable pageable);
+	
+	Page<Presenca> findByAutorId(Long autorId, Pageable pageable);
+	
 }

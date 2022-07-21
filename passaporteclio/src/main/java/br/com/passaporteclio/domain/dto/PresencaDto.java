@@ -24,4 +24,6 @@ public class PresencaDto extends RepresentationModel<PresencaDto> implements Ser
 
 	@NotNull
 	private LocalDateTime data;
+	
+	private CriaPresencaUserDto autor;
 }

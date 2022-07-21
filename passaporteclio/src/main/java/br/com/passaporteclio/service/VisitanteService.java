@@ -10,12 +10,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.passaporteclio.adapter.DozerConverter;
+import br.com.passaporteclio.domain.dto.AlteraSenhaVisitanteDto;
+import br.com.passaporteclio.domain.dto.AlteraVisitanteDto;
+import br.com.passaporteclio.domain.dto.CriaVisitanteDto;
+import br.com.passaporteclio.domain.dto.VisitanteDto;
 import br.com.passaporteclio.domain.entity.Permission;
 import br.com.passaporteclio.domain.entity.Visitante;
-import br.com.passaporteclio.domain.dto.AlteraVisitanteDto;
-import br.com.passaporteclio.domain.dto.AlteraSenhaVisitanteDto;
-import br.com.passaporteclio.domain.dto.VisitanteDto;
-import br.com.passaporteclio.domain.dto.CriaVisitanteDto;
+import br.com.passaporteclio.exception.OperationNotAllowedException;
 import br.com.passaporteclio.exception.ResourceNotFoundException;
 import br.com.passaporteclio.repository.PermissionRepository;
 import br.com.passaporteclio.repository.UserRepository;
@@ -61,12 +62,16 @@ public class VisitanteService {
 	}
 	
 	
-	public CriaVisitanteDto atualizar(Long id, AlteraVisitanteDto visitanteAlterarDTO) {
+	public CriaVisitanteDto atualizar(Long id, AlteraVisitanteDto visitanteAlterarDTO, Long idUsuarioLogado) {
 		System.out.println("Iniciando método atualizar...");
 		
 		var entityVisitante = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
 
+		if(idUsuarioLogado != entityVisitante.getUser().getId()) {
+			throw new OperationNotAllowedException("Não é possível alterar o perfil de outro visitante!");
+		}
+		
 		entityVisitante.setNome(visitanteAlterarDTO.getNome());
 		entityVisitante.setSobrenome(visitanteAlterarDTO.getSobrenome());
 
@@ -79,13 +84,17 @@ public class VisitanteService {
 	}
 	
 	
-	public CriaVisitanteDto atualizarSenha(Long id, AlteraSenhaVisitanteDto visitanteAlterarSenhaDTO) {
-		System.out.println("Iniciando método atualizarSenha...");
+	public CriaVisitanteDto atualizarSenha(Long id, AlteraSenhaVisitanteDto visitanteAlterarSenhaDTO, Long idUsuarioLogado) {
+		System.out.println("Iniciando método atualizar senha...");
 		
 		var passwordEncoder = new BCryptPasswordEncoder();
 		
 		var entityVisitante = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
+		
+		if(idUsuarioLogado != entityVisitante.getUser().getId()) {
+			throw new OperationNotAllowedException("Não é possível alterar a senha de outro visitante!");
+		}
 		
 		if(!passwordEncoder.matches(visitanteAlterarSenhaDTO.getSenhaAntiga(), entityVisitante.getUser().getSenha())) {
 			throw new IllegalArgumentException("Senha antiga informada não confere!");
@@ -107,7 +116,7 @@ public class VisitanteService {
 
 		var visitanteGravado = DozerConverter.parseObject(entityVisitante, CriaVisitanteDto.class);
 
-		System.out.println("Finalizando método atualizarSenha...");
+		System.out.println("Finalizando método atualizar senha...");
 		return visitanteGravado;
 	}
 
@@ -119,11 +128,18 @@ public class VisitanteService {
 	}
 
 	
-	public CriaVisitanteDto buscarPorId(Long id) {
-		
-		var entity = repository.findById(id)
+	public CriaVisitanteDto buscarPorId(Long id, Long idUsuarioLogado, String perfilUsuarioLogado) {
+			
+		var entityVisitante = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
-		return DozerConverter.parseObject(entity, CriaVisitanteDto.class);
+	
+		Long idUrl = entityVisitante.getUser().getId();
+		
+		if(!perfilUsuarioLogado.equals("Administrador") && idUsuarioLogado.equals(idUrl)) {
+			throw new OperationNotAllowedException("Não é possível consultar perfil de outro visitante!");
+		}
+		
+		return DozerConverter.parseObject(entityVisitante, CriaVisitanteDto.class);
 	}
 	
 

@@ -123,7 +123,7 @@ public class AvaliacaoController {
 		service.deletar(id, idUsuarioLogado, perfilUsuarioLogado);
 	}
 
-	@PostMapping(value = "denunciar/{id}", consumes = { "application/json", "application/xml" })
+	@PostMapping(value = "denunciar/{id}")
 	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Denunciar avaliação")
 	@ResponseStatus(value = HttpStatus.OK)

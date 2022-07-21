@@ -13,6 +13,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,12 +23,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.passaporteclio.domain.dto.AlteraVisitanteDto;
 import br.com.passaporteclio.domain.dto.AlteraSenhaVisitanteDto;
-import br.com.passaporteclio.domain.dto.VisitanteDto;
+import br.com.passaporteclio.domain.dto.AlteraVisitanteDto;
 import br.com.passaporteclio.domain.dto.CriaVisitanteDto;
+import br.com.passaporteclio.domain.dto.VisitanteDto;
+import br.com.passaporteclio.domain.entity.User;
 import br.com.passaporteclio.service.VisitanteService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Visitante Endpoint")
@@ -39,6 +42,7 @@ public class VisitanteController {
 	VisitanteService service;
 
 	@GetMapping(produces = { "application/json", "application/xml" })
+	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Listar todos os visitantes")
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<CollectionModel<CriaVisitanteDto>> findAll(
@@ -55,9 +59,13 @@ public class VisitanteController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public CriaVisitanteDto findById(@PathVariable("id") Long id) {
 		
-		CriaVisitanteDto visitanteAtualizado = service.buscarPorId(id);
-		visitanteAtualizado.add(linkTo(methodOn(VisitanteController.class).findById(id)).withSelfRel());
-		return visitanteAtualizado;
+		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Long idUsuarioLogado = usuarioLogado.getId();
+		String perfilUsuarioLogado = usuarioLogado.getPerfil();
+		
+		CriaVisitanteDto visitanteDto = service.buscarPorId(id, idUsuarioLogado, perfilUsuarioLogado);
+		visitanteDto.add(linkTo(methodOn(VisitanteController.class).findById(id)).withSelfRel());
+		return visitanteDto;
 	}
 	
 	@PostMapping(consumes = { "application/json", "application/xml" }, 
@@ -72,23 +80,31 @@ public class VisitanteController {
 
 	@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, 
 			produces = { "application/json", "application/xml" })
+	@Operation(summary = "Alterar nome e sobrenome")
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<CriaVisitanteDto> update(
 			@PathVariable("id") Long id,
 			@Valid @RequestBody AlteraVisitanteDto visitante) {
 		
-		CriaVisitanteDto visitanteAtualizado = service.atualizar(id, visitante);
+		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Long idUsuarioLogado = usuarioLogado.getId();
+		
+		CriaVisitanteDto visitanteAtualizado = service.atualizar(id, visitante, idUsuarioLogado);
 		return ResponseEntity.ok(visitanteAtualizado);
 	}
 
 	@PutMapping(value = "/alterar-senha/{id}", consumes = { "application/json", "application/xml" }, 
 			produces = { "application/json", "application/xml" })
+	@Operation(summary = "Alterar senha")
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<CriaVisitanteDto> updatePassword(
 			@PathVariable("id") Long id,
 			@Valid @RequestBody AlteraSenhaVisitanteDto visitante) {
 		
-		CriaVisitanteDto visitanteAtualizado = service.atualizarSenha(id, visitante);
+		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Long idUsuarioLogado = usuarioLogado.getId();
+		
+		CriaVisitanteDto visitanteAtualizado = service.atualizarSenha(id, visitante, idUsuarioLogado);
 		return ResponseEntity.ok(visitanteAtualizado);
 	}
 }

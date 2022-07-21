@@ -69,13 +69,27 @@ public class PresencaController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public PresencaDto buscarPorId(@PathVariable("id") Long id) {
 		
+		PresencaDto presencaDto = service.buscarPorId(id);
+		presencaDto.add(linkTo(methodOn(PresencaController.class).buscarPorId(id)).withSelfRel());
+		return presencaDto;
+	}
+	
+	@GetMapping(value = "doVisitante/{id}", produces = { "application/json", "application/xml" })
+	@SecurityRequirement(name = "bearer-key")
+	@Operation(summary = "Exibir presenças de um visitante por Id")
+	@ResponseStatus(value = HttpStatus.OK)
+	public ResponseEntity<CollectionModel<PresencaDto>> buscarPorIdVisitante(
+			@PathVariable("id") Long id,
+			@PageableDefault(sort = "data", direction = Direction.DESC, page = 0, size = 3) Pageable paginacao) {
+		
 		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long idUsuarioLogado = usuarioLogado.getId();
 		String perfilUsuarioLogado = usuarioLogado.getPerfil();
 		
-		PresencaDto presencaDto = service.buscarPorId(id);
-		presencaDto.add(linkTo(methodOn(PresencaController.class).buscarPorId(id)).withSelfRel());
-		return presencaDto;
+		Page<PresencaDto> presencasDto = service.buscarPorVisitante(id, idUsuarioLogado, perfilUsuarioLogado, paginacao);
+		presencasDto.stream().forEach(
+				p -> p.add(linkTo(methodOn(PresencaController.class).buscarPorId(p.getId())).withSelfRel()));
+		return ResponseEntity.ok(CollectionModel.of(presencasDto));
 	}
 	
 	@PostMapping(consumes = { "application/json", "application/xml" }, 
