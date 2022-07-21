@@ -69,7 +69,11 @@ public class PresencaController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public PresencaDto buscarPorId(@PathVariable("id") Long id) {
 		
-		PresencaDto presencaDto = service.buscarPorId(id);
+		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Long idUsuarioLogado = usuarioLogado.getId();
+		String perfilUsuarioLogado = usuarioLogado.getPerfil();
+		
+		PresencaDto presencaDto = service.buscarPorId(id, idUsuarioLogado, perfilUsuarioLogado);
 		presencaDto.add(linkTo(methodOn(PresencaController.class).buscarPorId(id)).withSelfRel());
 		return presencaDto;
 	}

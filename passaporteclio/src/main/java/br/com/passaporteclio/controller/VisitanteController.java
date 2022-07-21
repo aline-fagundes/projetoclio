@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.passaporteclio.domain.dto.AlteraSenhaVisitanteDto;
 import br.com.passaporteclio.domain.dto.AlteraVisitanteDto;
-import br.com.passaporteclio.domain.dto.CriaVisitanteDto;
+import br.com.passaporteclio.domain.dto.RetornoVisitanteDto;
 import br.com.passaporteclio.domain.dto.VisitanteDto;
 import br.com.passaporteclio.domain.entity.User;
 import br.com.passaporteclio.service.VisitanteService;
@@ -45,10 +45,10 @@ public class VisitanteController {
 	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Listar todos os visitantes")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<CollectionModel<CriaVisitanteDto>> findAll(
+	public ResponseEntity<CollectionModel<RetornoVisitanteDto>> findAll(
 			@PageableDefault(sort = "nome", direction = Direction.ASC, page = 0, size = 5) Pageable paginacao) {
 		
-		Page<CriaVisitanteDto> visitanteAtualizado = service.buscarTodos(paginacao);
+		Page<RetornoVisitanteDto> visitanteAtualizado = service.buscarTodos(paginacao);
 		visitanteAtualizado.stream()
 				.forEach(p -> p.add(linkTo(methodOn(VisitanteController.class).findById(p.getId())).withSelfRel()));
 		return ResponseEntity.ok(CollectionModel.of(visitanteAtualizado));
@@ -57,13 +57,13 @@ public class VisitanteController {
 	@GetMapping(value = "/{id}", produces = { "application/json", "application/xml" })
 	@Operation(summary = "Exibir visitante por id")
 	@ResponseStatus(value = HttpStatus.OK)
-	public CriaVisitanteDto findById(@PathVariable("id") Long id) {
+	public RetornoVisitanteDto findById(@PathVariable("id") Long id) {
 		
 		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long idUsuarioLogado = usuarioLogado.getId();
 		String perfilUsuarioLogado = usuarioLogado.getPerfil();
 		
-		CriaVisitanteDto visitanteDto = service.buscarPorId(id, idUsuarioLogado, perfilUsuarioLogado);
+		RetornoVisitanteDto visitanteDto = service.buscarPorId(id, idUsuarioLogado, perfilUsuarioLogado);
 		visitanteDto.add(linkTo(methodOn(VisitanteController.class).findById(id)).withSelfRel());
 		return visitanteDto;
 	}
@@ -72,9 +72,9 @@ public class VisitanteController {
 			produces = { "application/json", "application/xml" })
 	@Operation(summary = "Cadastrar visitante")
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public ResponseEntity<CriaVisitanteDto> create(@Valid @RequestBody VisitanteDto visitante) {
+	public ResponseEntity<RetornoVisitanteDto> create(@Valid @RequestBody VisitanteDto visitante) {
 		
-		CriaVisitanteDto visitanteGravado = service.inserir(visitante);
+		RetornoVisitanteDto visitanteGravado = service.inserir(visitante);
 		return ResponseEntity.ok(visitanteGravado);
 	}
 
@@ -82,14 +82,14 @@ public class VisitanteController {
 			produces = { "application/json", "application/xml" })
 	@Operation(summary = "Alterar nome e sobrenome")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<CriaVisitanteDto> update(
+	public ResponseEntity<RetornoVisitanteDto> update(
 			@PathVariable("id") Long id,
 			@Valid @RequestBody AlteraVisitanteDto visitante) {
 		
 		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long idUsuarioLogado = usuarioLogado.getId();
 		
-		CriaVisitanteDto visitanteAtualizado = service.atualizar(id, visitante, idUsuarioLogado);
+		RetornoVisitanteDto visitanteAtualizado = service.atualizar(id, visitante, idUsuarioLogado);
 		return ResponseEntity.ok(visitanteAtualizado);
 	}
 
@@ -97,14 +97,14 @@ public class VisitanteController {
 			produces = { "application/json", "application/xml" })
 	@Operation(summary = "Alterar senha")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<CriaVisitanteDto> updatePassword(
+	public ResponseEntity<RetornoVisitanteDto> updatePassword(
 			@PathVariable("id") Long id,
 			@Valid @RequestBody AlteraSenhaVisitanteDto visitante) {
 		
 		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long idUsuarioLogado = usuarioLogado.getId();
 		
-		CriaVisitanteDto visitanteAtualizado = service.atualizarSenha(id, visitante, idUsuarioLogado);
+		RetornoVisitanteDto visitanteAtualizado = service.atualizarSenha(id, visitante, idUsuarioLogado);
 		return ResponseEntity.ok(visitanteAtualizado);
 	}
 }

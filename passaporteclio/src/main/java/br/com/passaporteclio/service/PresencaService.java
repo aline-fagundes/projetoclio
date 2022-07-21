@@ -19,12 +19,17 @@ public class PresencaService {
 
 	private PresencaRepository repository;
 
-	public PresencaDto buscarPorId(Long id) {
+	public PresencaDto buscarPorId(Long id, Long idUsuarioLogado, String perfilUsuarioLogado) {
 		var presencaEntity = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Presença não encontrada!"));
+		
+		if(!perfilUsuarioLogado.equals("Administrador") && idUsuarioLogado != presencaEntity.getAutor().getId()) {
+			   throw new OperationNotAllowedException("Não é possível consultar presenças de outro visitante!");
+			   }
+		
 		return DozerConverter.parseObject(presencaEntity, PresencaDto.class);
 	}
-
+	
 	
 	public Page<PresencaDto> buscarTodas(Pageable pageable) {
 		var page = repository.findAll(pageable);
