@@ -56,6 +56,7 @@ public class AuthController {
 			} else {
 				throw new UsernameNotFoundException("Email " + email + "não localizado!");
 			}
+			
 			Map<Object, Object> model = new HashMap<>();
 			model.put("username", email);
 			model.put("token", token);

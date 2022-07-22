@@ -46,9 +46,10 @@ public class AvaliacaoController {
 	@GetMapping(produces = { "application/json", "application/xml" })
 	@Operation(summary = "Listar todas as avaliações ou apenas a do museu especificado")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<CollectionModel<AvaliacaoDto>> findAll(@RequestParam(required = false) Long idMuseu,
+	public ResponseEntity<CollectionModel<AvaliacaoDto>> findAll(
+			@RequestParam(required = false) Long idMuseu,
 			@PageableDefault(sort = "nota", direction = Direction.DESC, page = 0, size = 3) Pageable paginacao) {
-
+		
 		if (idMuseu == null) {
 			Page<AvaliacaoDto> avaliacoesDto = service.buscarTodas(paginacao);
 			avaliacoesDto.stream()
@@ -66,18 +67,20 @@ public class AvaliacaoController {
 	@Operation(summary = "Exibir avaliação por Id")
 	@ResponseStatus(value = HttpStatus.OK)
 	public AvaliacaoDto findById(@PathVariable("id") Long id) {
+		
 		AvaliacaoDto avaliacaoDto = service.buscarPorId(id);
 		avaliacaoDto.add(linkTo(methodOn(AvaliacaoController.class).findById(id)).withSelfRel());
 		return avaliacaoDto;
 	}
 
-	@PostMapping(consumes = { "application/json", "application/xml" }, produces = { "application/json",
+	@PostMapping(consumes = { "application/json", "application/xml" }, 
+			produces = { "application/json",
 			"application/xml" })
 	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Cadastrar avaliação")
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public ResponseEntity<CriaAvaliacaoDto> create(@Valid @RequestBody CriaAvaliacaoDto avaliacao) {
-
+		
 		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long idUsuarioLogado = usuarioLogado.getId();
 
@@ -90,14 +93,16 @@ public class AvaliacaoController {
 		return ResponseEntity.ok(avaliacaoDto);
 	}
 
-	@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, produces = { "application/json",
+	@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, 
+			produces = { "application/json",
 			"application/xml" })
 	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Alterar avaliação")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<AtualizaAvaliacaoDto> update(@PathVariable("id") Long id,
+	public ResponseEntity<AtualizaAvaliacaoDto> update(
+			@PathVariable("id") Long id,
 			@Valid @RequestBody AtualizaAvaliacaoDto avaliacao) {
-
+		
 		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long idUsuarioLogado = usuarioLogado.getId();
 
@@ -118,7 +123,7 @@ public class AvaliacaoController {
 		service.deletar(id, idUsuarioLogado, perfilUsuarioLogado);
 	}
 
-	@PostMapping(value = "denunciar/{id}", consumes = { "application/json", "application/xml" })
+	@PostMapping(value = "denunciar/{id}")
 	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Denunciar avaliação")
 	@ResponseStatus(value = HttpStatus.OK)
@@ -128,6 +133,7 @@ public class AvaliacaoController {
 	}
 
 	@GetMapping(value = "/denuncias", produces = { "application/json", "application/xml" })
+	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Listar todas as avaliações denunciadas")
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<CollectionModel<AvaliacaoDto>> findAllReported(

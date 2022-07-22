@@ -31,7 +31,7 @@ public class Avaliacao implements Serializable {
 	
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_id_museu_avaliacao")
+	@JoinColumn(name = "museu_id_avaliacao")
 	private Museus museu;
 		
 	@NotNull

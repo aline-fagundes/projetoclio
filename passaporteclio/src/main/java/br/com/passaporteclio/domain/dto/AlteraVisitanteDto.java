@@ -11,16 +11,13 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
-public class VisitanteAlterarSenhaDto extends RepresentationModel<VisitanteAlterarSenhaDto> implements Serializable {
+public class AlteraVisitanteDto extends RepresentationModel<AlteraVisitanteDto> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@NotBlank
-	private String senhaAntiga;
+	private String nome;
 	
 	@NotBlank
-	private String senhaNova;
-	
-	@NotBlank
-	private String confirmaSenhaNova;
+	private String sobrenome;
 }

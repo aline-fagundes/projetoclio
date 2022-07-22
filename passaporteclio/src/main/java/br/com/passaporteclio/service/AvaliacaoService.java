@@ -30,73 +30,80 @@ public class AvaliacaoService {
 		return avaliacaoGravada;
 	}
 
-	public Page<AvaliacaoDto> buscarTodas(Pageable pageable) {
-		var page = repository.findAll(pageable);
+	
+	public Page<AvaliacaoDto> buscarTodas(Pageable paginacao) {
+		var page = repository.findAll(paginacao);
 		return page.map(this::convertToAvaliacaoDto);
 	}
 
+	
 	public AvaliacaoDto buscarPorId(Long id) {
-		var entity = repository.findById(id)
+		var avaliacaoEntity = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
-		return DozerConverter.parseObject(entity, AvaliacaoDto.class);
+		return DozerConverter.parseObject(avaliacaoEntity, AvaliacaoDto.class);
 	}
+	
 	
 	public Page<AvaliacaoDto> buscarPorMuseu(Long idMuseu, Pageable paginacao) {
 		var page = repository.findByMuseuId(idMuseu, paginacao);
 		return page.map(this::convertToAvaliacaoDto);
 	}
 
+	
 	public AtualizaAvaliacaoDto atualizar(Long id, AtualizaAvaliacaoDto avaliacao, Long idUsuarioLogado) {
 		System.out.println("Iniciando método atualizar...");
 		
-		var entityAvaliacao = repository.findById(id)
+		var avaliacaoEntity = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
 		
-		if(idUsuarioLogado != entityAvaliacao.getAutor().getId()) {
+		if(idUsuarioLogado != avaliacaoEntity.getAutor().getId()) {
 			throw new OperationNotAllowedException("Não é possível alterar uma avaliação de outro visitante!");
 		}
 		
-		entityAvaliacao.setNota(avaliacao.getNota());
-		entityAvaliacao.setAvaliacao(avaliacao.getAvaliacao());
+		avaliacaoEntity.setNota(avaliacao.getNota());
+		avaliacaoEntity.setAvaliacao(avaliacao.getAvaliacao());
 	
-		var avaliacaoAlterada = DozerConverter.parseObject(repository.save(entityAvaliacao), AtualizaAvaliacaoDto.class);
+		var avaliacaoAlterada = DozerConverter.parseObject(repository.save(avaliacaoEntity), AtualizaAvaliacaoDto.class);
 		
 		System.out.println("Finalizando método atualizar...");
 		return avaliacaoAlterada;
 	}
 
+	
 	public void deletar(Long id, Long idUsuarioLogado, String perfilUsuarioLogado) {
 		System.out.println("Iniciando método deletar...");
 		
-		var entityAvaliacao = repository.findById(id)
+		var avaliacaoEntity = repository.findById(id)
 					.orElseThrow(() ->
 					new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
 			
-		if(!perfilUsuarioLogado.equals("Administrador") && idUsuarioLogado != entityAvaliacao.getAutor().getId()) {
+		if(!perfilUsuarioLogado.equals("Administrador") && idUsuarioLogado != avaliacaoEntity.getAutor().getId()) {
 			throw new OperationNotAllowedException("Não é possível deletar uma avaliação de outro visitante!");
 		}
 		
-		repository.delete(entityAvaliacao);
+		repository.delete(avaliacaoEntity);
 			
 			System.out.println("Finalizando método deletar...");
 		}
 	
+	
 	public void denunciar(Long id) {
-		
-		var entityAvaliacao = repository.findById(id)
+		var avaliacaoEntity = repository.findById(id)
 				.orElseThrow(() ->
 				new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
 		
-		entityAvaliacao.setDenunciada(true);
-		repository.save(entityAvaliacao);
+		avaliacaoEntity.setDenunciada(true);
+		repository.save(avaliacaoEntity);
 	}		
 	
-	private AvaliacaoDto convertToAvaliacaoDto(Avaliacao entity) {
-		return DozerConverter.parseObject(entity, AvaliacaoDto.class);
-	}
-
+	
 	public Page<AvaliacaoDto> buscarAvaliacoesDenunciadas(Pageable paginacao) {
 		var page = repository.findByDenunciada(true, paginacao);
 		return page.map(this::convertToAvaliacaoDto);
+	}
+	
+	
+	private AvaliacaoDto convertToAvaliacaoDto(Avaliacao entity) {
+		return DozerConverter.parseObject(entity, AvaliacaoDto.class);
 	}
 }

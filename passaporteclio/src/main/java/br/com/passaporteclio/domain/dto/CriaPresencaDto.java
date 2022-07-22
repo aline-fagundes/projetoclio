@@ -1,6 +1,7 @@
 package br.com.passaporteclio.domain.dto;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotNull;
 
@@ -11,11 +12,16 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class CriacaoPresencaMuseuDto extends RepresentationModel<CriacaoPresencaMuseuDto> implements Serializable {
-	
+public class CriaPresencaDto extends RepresentationModel<CriaPresencaDto> implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	
-	@NotNull
 	private Long id;
-
+	
+	@NotNull
+	private CriaPresencaMuseuDto museu;
+	
+	private LocalDateTime data;	
+	
+	private CriaPresencaUserDto autor;
 }

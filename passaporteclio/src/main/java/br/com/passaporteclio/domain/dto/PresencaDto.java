@@ -1,8 +1,8 @@
 package br.com.passaporteclio.domain.dto;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.hateoas.RepresentationModel;
@@ -18,10 +18,11 @@ public class PresencaDto extends RepresentationModel<PresencaDto> implements Ser
 	
 	private Long id;
 	
-	@NotNull
+	@NotBlank
 	private MuseusDto museu;
 
 	@NotNull
-	private LocalDateTime data;
+	private String data;
 	
+	private CriaPresencaUserDto autor;
 }

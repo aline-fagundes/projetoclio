@@ -141,6 +141,5 @@ public class User implements UserDetails, Serializable {
 			roles.add(permissao.getPerfil());
 		}
 		return roles;
-	}
-	
+	}	
 }

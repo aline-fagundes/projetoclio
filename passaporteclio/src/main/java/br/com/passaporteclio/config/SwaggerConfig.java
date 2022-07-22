@@ -24,6 +24,6 @@ public class SwaggerConfig {
 								.addSecuritySchemes("bearer-key", new SecurityScheme()
 										.type(SecurityScheme.Type.HTTP)
 										.scheme("bearer")
-										.in(SecurityScheme.In.HEADER).bearerFormat("JWT")));		
+										.in(SecurityScheme.In.HEADER).bearerFormat("JWT")));
 	}
 }

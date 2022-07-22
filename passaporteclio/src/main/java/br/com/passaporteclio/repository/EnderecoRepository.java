@@ -11,5 +11,4 @@ import br.com.passaporteclio.domain.entity.Endereco;
 public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
 	
 	Page<Endereco> findByCep(String cep,Pageable pageable);
-
 }
