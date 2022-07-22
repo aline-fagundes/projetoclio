@@ -31,8 +31,8 @@ public class PresencaService {
 	}
 	
 	
-	public Page<PresencaDto> buscarTodas(Pageable pageable) {
-		var page = repository.findAll(pageable);
+	public Page<PresencaDto> buscarTodas(Pageable paginacao) {
+		var page = repository.findAll(paginacao);
 		return page.map(presenca -> DozerConverter.parseObject(presenca, PresencaDto.class));
 	}
 

@@ -21,7 +21,7 @@ public class CriaPresencaDto extends RepresentationModel<CriaPresencaDto> implem
 	@NotNull
 	private CriaPresencaMuseuDto museu;
 	
-	private CriaPresencaUserDto autor;
-
 	private LocalDateTime data;	
+	
+	private CriaPresencaUserDto autor;
 }

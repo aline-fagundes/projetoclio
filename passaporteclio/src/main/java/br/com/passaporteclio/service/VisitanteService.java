@@ -101,7 +101,7 @@ public class VisitanteService {
 		}
 		
 		if(!visitanteAlterarSenhaDTO.getSenhaNova().equals(visitanteAlterarSenhaDTO.getConfirmaSenhaNova())) {
-			throw new IllegalArgumentException("Senha nova não confere com confirmação de senha!");
+			throw new IllegalArgumentException("Nova senha e confirmação não conferem!");
 		}
 		
 		if(passwordEncoder.matches(visitanteAlterarSenhaDTO.getSenhaNova(), entityVisitante.getUser().getSenha())) {

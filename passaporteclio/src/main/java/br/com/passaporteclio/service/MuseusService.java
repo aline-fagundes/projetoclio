@@ -18,10 +18,10 @@ public class MuseusService {
 	@Autowired
 	MuseusRepository repository;
 
-	public MuseusDto inserir(MuseusDto museuVo) {
+	public MuseusDto inserir(MuseusDto museuDto) {
 		System.out.println("Iniciando método inserir...");
 
-		var museuEntity = DozerConverter.parseObject(museuVo, Museus.class);
+		var museuEntity = DozerConverter.parseObject(museuDto, Museus.class);
 		var enderecoEntity = museuEntity.getEndereco();
 		enderecoEntity.setMuseu(museuEntity);
 

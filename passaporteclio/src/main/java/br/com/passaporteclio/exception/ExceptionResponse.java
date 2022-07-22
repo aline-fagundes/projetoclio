@@ -25,6 +25,7 @@ public class ExceptionResponse implements Serializable {
 		this.descricao = descricao;
 	}
 	
+	
 	public OffsetDateTime getTimestamp() {
 		return timestamp;
 	}

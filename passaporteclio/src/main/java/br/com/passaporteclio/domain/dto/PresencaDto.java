@@ -1,7 +1,6 @@
 package br.com.passaporteclio.domain.dto;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -23,7 +22,7 @@ public class PresencaDto extends RepresentationModel<PresencaDto> implements Ser
 	private MuseusDto museu;
 
 	@NotNull
-	private LocalDateTime data;
+	private String data;
 	
 	private CriaPresencaUserDto autor;
 }
