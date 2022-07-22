@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
 import br.com.passaporteclio.exception.ExceptionResponse;
+import br.com.passaporteclio.exception.ExceptionResponseDto;
 //import br.com.passaporteclio.exception.ResourceNotFoundException;
 import br.com.passaporteclio.exception.InvalidJwtAuthenticationException;
 import br.com.passaporteclio.exception.OperationNotAllowedException;
@@ -64,12 +65,12 @@ public class GlobalExceptionHandler {
 	
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public List<ExceptionResponse> handle(MethodArgumentNotValidException exception) {
-		List<ExceptionResponse> errosDto = new ArrayList<>();
+	public List<ExceptionResponseDto> handle(MethodArgumentNotValidException exception) {
+		List<ExceptionResponseDto> errosDto = new ArrayList<>();
 		List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
 		fieldErrors.forEach(e -> {
 			String mensagem = messageSource.getMessage(e, LocaleContextHolder.getLocale());
-			ExceptionResponse erro = new ExceptionResponse(OffsetDateTime.now(), e.getField(), mensagem);
+			ExceptionResponseDto erro = new ExceptionResponseDto(e.getField(), mensagem);
 			errosDto.add(erro);
 		});
 		return errosDto;
