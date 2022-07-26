@@ -4,14 +4,6 @@
 Site que tem como proposta conectar pessoas a museus. Nele será possível conhecer mais sobre os museus do estado de São Paulo através de fotos, descrições, localização, informações sobre o funcionamento e avaliações de visitantes que estiveram nas instituições. Como atrativo, a aplicação também terá gamificação da experiência dos usuários por meio de um sistema de pontuação. A partir de determinadas interações – como logar, relatar se esteve em uma instituição e avaliar como foi sua visita – será possível acumular pontos que, então, serão convertidos em títulos. 
 
 <br>
-
-<h2 align="center"> API REST </h2>
-
-Para consultar as funcionalidas implementadas, basta acessar a documentação Swagger através da execução da aplicação e acesso ao link: 
-
-http://localhost:8080/swagger-ui.html
-
-<br>
   
 <h2 align="center"> Conteúdo </h2>
   
@@ -28,6 +20,8 @@ http://localhost:8080/swagger-ui.html
   • <a href="https://www.figma.com/file/oJyw8wJ8eycPPS7B9FbzYl/Passaporte-Clio?node-id=340%3A620">Projeto Figma do site</a> <br>
 	
   • <a href="#Status">Status</a> <br>
+
+  • <a href="#API REST">API REST</a> <br>
 	
   • <a href="#Technologies">Technologies</a> <br>
 	
@@ -125,6 +119,14 @@ Será possível fazer as seguintes interações:
   <h4 align="center"> 
 	🚧 LOADING... 🚧
 </h4>
+
+<br>
+
+<h2 align="center"> <a name=" API REST">  API REST </h2>
+
+Para consultar as funcionalidas implementadas, basta acessar a documentação Swagger através da execução da aplicação e acesso ao link: 
+
+http://localhost:8080/swagger-ui.html
 
 <br>
 
