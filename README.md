@@ -10,8 +10,6 @@ Site que tem como proposta conectar pessoas a museus. Nele será possível conhe
 Para consultar as funcionalidas implementadas, basta acessar a documentação Swagger através da execução da aplicação e acesso ao link: 
 
 http://localhost:8080/swagger-ui.html
-  
-<br>
 
 <br>
   
