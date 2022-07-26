@@ -21,7 +21,7 @@ Site que tem como proposta conectar pessoas a museus. Nele será possível conhe
 	
   • <a href="#Status">Status</a> <br>
 
-  • <a href="#API REST">API REST</a> <br>
+  • <a href="#API-REST">API REST</a> <br>
 	
   • <a href="#Technologies">Technologies</a> <br>
 	
@@ -122,7 +122,7 @@ Será possível fazer as seguintes interações:
 
 <br>
 
-<h2 align="center"> <a name=" API REST">  API REST </h2>
+<h2 align="center"> <a name=" API-REST">  API REST </h2>
 
 Para consultar as funcionalidas implementadas, basta acessar a documentação Swagger através da execução da aplicação e acesso ao link: 
 
