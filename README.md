@@ -29,7 +29,7 @@ http://localhost:8080/swagger-ui.html
 	
   • <a href="#Status">Status</a> <br>
 	
-  • <a href="#Tecnologias">Tecnologias</a> <br>
+  • <a href="#Technologies">Technologies</a> <br>
 	
   • <a href="#Team">Team</a> <br>
 </p>
@@ -128,7 +128,7 @@ Será possível fazer as seguintes interações:
 
 <br>
 
-  <h2 align="center"> <a name="Tecnologias">  Tecnologias </a> </h2>
+  <h2 align="center"> <a name="Technologies">  Technologies </a> </h2>
 
 Ferramentas que serão usadas na construção do projeto:
 
