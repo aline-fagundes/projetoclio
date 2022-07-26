@@ -124,7 +124,7 @@ Será possível fazer as seguintes interações:
 
 <h2 align="center"> <a name="APIREST">  API REST </h2>
 
-Para consultar as funcionalidas implementadas, basta acessar a documentação Swagger através da execução da aplicação e acesso ao link: 
+Para consultar as funcionalidades implementadas, basta acessar a documentação Swagger através da execução da aplicação e acesso ao link: 
 
 http://localhost:8080/swagger-ui.html
 
