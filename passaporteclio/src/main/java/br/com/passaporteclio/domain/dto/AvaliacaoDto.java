@@ -27,4 +27,6 @@ public class AvaliacaoDto extends RepresentationModel<AvaliacaoDto> implements S
 	
 	@NotBlank
 	private MuseusDto museu;
+	
+	private CriaAvaliacaoUserDto autor;
 }

@@ -3,6 +3,9 @@ package br.com.passaporteclio.controller;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +75,21 @@ public class AvaliacaoController {
 		avaliacaoDto.add(linkTo(methodOn(AvaliacaoController.class).findById(id)).withSelfRel());
 		return avaliacaoDto;
 	}
+	
+	@GetMapping(value = "doVisitante/{id}", produces = { "application/json", "application/xml" })
+	@SecurityRequirement(name = "bearer-key")
+	@Operation(summary = "Exibir avaliações de um visitante através de seu User-Id, separadas por museu")
+	@ResponseStatus(value = HttpStatus.OK)
+	public ResponseEntity<Map<String, List<AvaliacaoDto>>> buscarPorIdVisitante(@PathVariable("id") Long id) {
+		
+		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Long idUsuarioLogado = usuarioLogado.getId();
+		String perfilUsuarioLogado = usuarioLogado.getPerfil();
+		
+		Map<String, List<AvaliacaoDto>> avaliacoesDto = service.buscarPorVisitanteSeparadoPorMuseu(id, idUsuarioLogado, perfilUsuarioLogado);
+		
+		return ResponseEntity.ok(avaliacoesDto);	
+	}
 
 	@PostMapping(consumes = { "application/json", "application/xml" }, 
 			produces = { "application/json",
@@ -140,10 +158,6 @@ public class AvaliacaoController {
 			@PageableDefault(sort = "nota", direction = Direction.ASC, page = 0, size = 5) Pageable paginacao) {
 
 		Page<AvaliacaoDto> avaliacoesDenunciadasDto = service.buscarAvaliacoesDenunciadas(paginacao);
-
-		avaliacoesDenunciadasDto.stream()
-				.forEach(p -> p.add(linkTo(methodOn(AvaliacaoController.class).findById(p.getId())).withSelfRel()));
-
 		return ResponseEntity.ok(CollectionModel.of(avaliacoesDenunciadasDto));
 	}
 }

@@ -1,5 +1,10 @@
 package br.com.passaporteclio.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -47,6 +52,31 @@ public class AvaliacaoService {
 	public Page<AvaliacaoDto> buscarPorMuseu(Long idMuseu, Pageable paginacao) {
 		var page = repository.findByMuseuId(idMuseu, paginacao);
 		return page.map(this::convertToAvaliacaoDto);
+	}
+	
+	
+	public Map<String, List<AvaliacaoDto>> buscarPorVisitanteSeparadoPorMuseu(Long id, Long idUsuarioLogado, String perfilUsuarioLogado) {
+		
+		if(!perfilUsuarioLogado.equals("Administrador") && !idUsuarioLogado.equals(id)) {
+			throw new OperationNotAllowedException("Não é possível consultar a lista de avaliações de outro visitante!");
+		}
+		
+		List<Avaliacao> avaliacoesEntity = repository.findByAutorId(id);
+		Map<String, List<AvaliacaoDto>> avaliacoesPorMuseu = new HashMap<String, List<AvaliacaoDto>>();
+		
+		for (Avaliacao avaliacao : avaliacoesEntity) {
+			String nomeMuseu = avaliacao.getMuseu().getNome();
+			
+			if(!avaliacoesPorMuseu.containsKey(nomeMuseu)) {
+				avaliacoesPorMuseu.put(nomeMuseu, new ArrayList<AvaliacaoDto>());
+			}
+			List<AvaliacaoDto> avalicoesDoMuseu = avaliacoesPorMuseu.get(nomeMuseu);
+			
+			AvaliacaoDto avaliacaoDto = DozerConverter.parseObject(avaliacao, AvaliacaoDto.class);						
+			avalicoesDoMuseu.add(avaliacaoDto);
+		}
+		
+		return avaliacoesPorMuseu;
 	}
 
 	
