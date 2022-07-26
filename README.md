@@ -7,10 +7,15 @@ Site que tem como proposta conectar pessoas a museus. Nele será possível conhe
 <h2 align="center"> Conteúdo </h2>
 
   • <a href="#Features">Features</a> <br>
+	
   • <a href="https://miro.com/app/board/uXjVO2d8Fmg=/">Diagrama de funcionalidades</a> <br>
+	
   • <a href="https://miro.com/app/board/uXjVO0p2LbU=/">Diagrama de Classes e tabela de regras</a> <br>
+	
   • <a href="#Status">Status</a> <br>
+	
   • <a href="#Tecnologias">Tecnologias</a> <br>
+	
   • <a href="#Team">Team</a> <br>
 </p>
 
@@ -29,6 +34,8 @@ O site apresentará as seguintes informações de cada instituição:
 - [x] Dados sobre funcionamento (dias e horários);
 
 - [x] Foto oficial do museu;
+
+- [x] Avaliações feitas por visitantes;
 
 <br>
  <h3>FUNCIONALIDADES USUÁRIO</h3>
@@ -72,11 +79,11 @@ Será possível fazer as seguintes interações:
 
 - [x] Realizar cadastro, logar e deslogar no site;
 
-- [x] Alterar e recuperar senha;
+- [x] Alterar senha;
 
-- [x] Moderar comentários (excluir registros indevidos);
+- [x] Moderar avaliações (excluir registros indevidos);
 
-- [x] Acessar informações sobre os usuários;
+- [x] Acessar informações sobre os visitantes cadastrados no site;
 
 - [x] Cadastrar novos museus;
 
@@ -91,6 +98,12 @@ Será possível fazer as seguintes interações:
   <h4 align="center"> 
 	🚧 LOADING... 🚧
 </h4>
+
+<br>
+
+Para consultar as funcionalidas implementadas, acessar a documentação Swagger através da execução da aplicação e acesso ao link: 
+
+http://localhost:8080/swagger-ui.html
   
   <br>
   
