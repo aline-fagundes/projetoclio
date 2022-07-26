@@ -105,7 +105,7 @@ Será possível fazer as seguintes interações:
 
 <br>
 
-Para consultar as funcionalidas implementadas, acessar a documentação Swagger através da execução da aplicação e acesso ao link: 
+Para consultar as funcionalidas implementadas, é posível acessar a documentação Swagger através da execução da aplicação e acesso ao link: 
 
 http://localhost:8080/swagger-ui.html
   
