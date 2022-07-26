@@ -20,7 +20,7 @@ Site que tem como proposta conectar pessoas a museus. Nele será possível conhe
     
 O site apresentará as seguintes informações de cada instituição:
 
-- [x] Endereço (link com maps interativo da localização);
+- [x] Endereço (com mapa da localicação);
 
 - [x] Breve descrição da instituição;
 
@@ -37,19 +37,31 @@ Será possível fazer as seguintes interações:
 
 - [x] Realizar cadastro, logar e deslogar no site;
 
-- [x] Alterar e recuperar senha;
+- [x] Alterar senha;
+
+- [x] Ler sobre o projeto;
 
 - [x] Consultar informações dos museus;
 
+- [x] Buscar uma instituição através do nome;
+
 - [x] Consultar ranking de pontuação;
 
-- [x] Postar registros descrevendo como foi a visita;
+- [x] Consultar seu perfil;
 
-- [x] Avaliar o museu;
+- [x] Registrar presença em um museu;
 
-- [x] Denunciar comentários indevidos para que o conteúdo seja revisado por um administrador;
+- [x] Postar avaliação descrevendo como foi a visita;
 
-- [x] Registrar presença (check-in sem validação);
+- [x] Dar nota ao museu visitado;
+
+- [x] Consultar suas avaliações, filtrando ou não por um museu;
+
+- [x] Editar e excluir suas avaliações;
+
+- [x] Consultar lista de museus que visitou;
+
+- [x] Denunciar avaliações indevidas para que o conteúdo seja revisado por um administrador;
 
 A partir de determinadas interações (realizar cadastro, postar avaliações, registrar presença e dar notas aos museus), será possível acumular pontos e, então, receber títulos.
 
