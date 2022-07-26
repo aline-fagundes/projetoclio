@@ -2,6 +2,15 @@
   <h1 align="center"> Passaporte Clio </h1>
 <p align="center">
 Site que tem como proposta conectar pessoas a museus. Nele será possível conhecer mais sobre os museus do estado de São Paulo através de fotos, descrições, localização, informações sobre o funcionamento e avaliações de visitantes que estiveram nas instituições. Como atrativo, a aplicação também terá gamificação da experiência dos usuários por meio de um sistema de pontuação. A partir de determinadas interações – como logar, relatar se esteve em uma instituição e avaliar como foi sua visita – será possível acumular pontos que, então, serão convertidos em títulos. 
+
+<br>
+
+<h2 align="center"> API REST </h2>
+
+Para consultar as funcionalidas implementadas, basta acessar a documentação Swagger através da execução da aplicação e acesso ao link: 
+
+http://localhost:8080/swagger-ui.html
+  
 <br>
   
 <h2 align="center"> Conteúdo </h2>
@@ -42,6 +51,7 @@ O site apresentará as seguintes informações de cada instituição:
 - [x] Avaliações feitas por visitantes;
 
 <br>
+
  <h3>FUNCIONALIDADES USUÁRIO</h3>
 
 Será possível fazer as seguintes interações:
@@ -77,6 +87,7 @@ Será possível fazer as seguintes interações:
 A partir de determinadas interações (realizar cadastro, postar avaliações, registrar presença e dar notas aos museus), será possível acumular pontos e, então, receber títulos.
 
  <br>
+ 
  <h3>FUNCIONALIDADES ADMINISTRADOR</h3>
 
 Será possível fazer as seguintes interações:
@@ -105,12 +116,6 @@ Será possível fazer as seguintes interações:
 
 <br>
 
-Para consultar as funcionalidas implementadas, é posível acessar a documentação Swagger através da execução da aplicação e acesso ao link: 
-
-http://localhost:8080/swagger-ui.html
-  
-  <br>
-  
   <h2 align="center"> <a name="Tecnologias">  Tecnologias </a> </h2>
 
 Ferramentas que serão usadas na construção do projeto:
