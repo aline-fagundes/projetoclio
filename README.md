@@ -14,9 +14,9 @@ http://localhost:8080/swagger-ui.html
 <br>
   
 <h2 align="center"> Conteúdo </h2>
-
-  • <a href="https://github.com/bela-mad/projetoclio">Front-end do projeto</a> <br>
-	
+  
+  • <a href="#Repositories">Repositories</a> <br>
+  
   • <a href="#Features">Features</a> <br>
 
   • <a href="https://miro.com/app/board/uXjVO0p2LbU=/">UML e tabela de regras</a> <br>
@@ -33,6 +33,16 @@ http://localhost:8080/swagger-ui.html
 	
   • <a href="#Team">Team</a> <br>
 </p>
+
+<h2 align="center"> <a name="Repositories"> Repositories </a> </h2>
+
+Acessos: 
+
+<a href="https://github.com/aline-fagundes/projetoclio">Back-end</a> <br>
+
+<a href="https://github.com/bela-mad/projetoclio">Front-end</a> <br>
+
+<br>
 
 <h2 align="center"> <a name="Features"> Features </a> </h2>
 
