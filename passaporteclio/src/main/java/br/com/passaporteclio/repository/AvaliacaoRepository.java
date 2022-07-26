@@ -13,4 +13,6 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
 	Page<Avaliacao> findByMuseuId(Long idMuseu, Pageable pageable);
 
 	Page<Avaliacao> findByDenunciada(boolean denunciada, Pageable pageable);
+	
+	Page<Avaliacao> findByAutorId(Long autorId, Pageable pageable);
 }

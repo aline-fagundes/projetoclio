@@ -19,6 +19,15 @@ public class PresencaService {
 
 	private PresencaRepository repository;
 
+	public CriaPresencaDto inserir(CriaPresencaDto criacaoPresencaDto) {
+		var presencaEntity = DozerConverter.parseObject(criacaoPresencaDto, Presenca.class);
+		var presencaGravada = DozerConverter.parseObject(repository.save(presencaEntity),
+				CriaPresencaDto.class);
+
+		return presencaGravada;
+	}
+	
+	
 	public PresencaDto buscarPorId(Long id, Long idUsuarioLogado, String perfilUsuarioLogado) {
 		var presencaEntity = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Presença não encontrada!"));
@@ -41,27 +50,18 @@ public class PresencaService {
 		var page = repository.findByMuseuId(museuId, paginacao);
 		return page.map(presenca -> DozerConverter.parseObject(presenca, PresencaDto.class));
 	}
-
 	
-	public CriaPresencaDto inserir(CriaPresencaDto criacaoPresencaDto) {
-		var presencaEntity = DozerConverter.parseObject(criacaoPresencaDto, Presenca.class);
-		var presencaGravada = DozerConverter.parseObject(repository.save(presencaEntity),
-				CriaPresencaDto.class);
-
-		return presencaGravada;
-	}
-
 	
 	public Page<PresencaDto> buscarPorVisitante(Long id, Long idUsuarioLogado, String perfilUsuarioLogado, Pageable paginacao) {
 		
-		if(!perfilUsuarioLogado.equals("Administrador") && idUsuarioLogado.equals(id)) {
+		if(!perfilUsuarioLogado.equals("Administrador") && !idUsuarioLogado.equals(id)) {
 			throw new OperationNotAllowedException("Não é possível consultar presenças de outro visitante!");
 		}
 		
 		var page = repository.findByAutorId(id, paginacao);
 		return page.map(this::convertToPresencaDto);
 	}
-	
+
 	
 	private PresencaDto convertToPresencaDto(Presenca entity) {
 		return DozerConverter.parseObject(entity, PresencaDto.class);

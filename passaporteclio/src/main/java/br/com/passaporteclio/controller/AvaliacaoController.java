@@ -72,6 +72,22 @@ public class AvaliacaoController {
 		avaliacaoDto.add(linkTo(methodOn(AvaliacaoController.class).findById(id)).withSelfRel());
 		return avaliacaoDto;
 	}
+	
+	@GetMapping(value = "doVisitante/{id}", produces = { "application/json", "application/xml" })
+	@SecurityRequirement(name = "bearer-key")
+	@Operation(summary = "Exibir avaliações de um visitante através de seu User-Id")
+	@ResponseStatus(value = HttpStatus.OK)
+	public ResponseEntity<CollectionModel<AvaliacaoDto>> buscarPorIdVisitante(
+			@PathVariable("id") Long id,
+			@PageableDefault(sort = "nota", direction = Direction.DESC, page = 0, size = 5) Pageable paginacao) {
+		
+		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Long idUsuarioLogado = usuarioLogado.getId();
+		String perfilUsuarioLogado = usuarioLogado.getPerfil();
+		
+		Page<AvaliacaoDto> avaliacoesDto = service.buscarPorVisitante(id, idUsuarioLogado, perfilUsuarioLogado, paginacao);
+		return ResponseEntity.ok(CollectionModel.of(avaliacoesDto));	
+	}
 
 	@PostMapping(consumes = { "application/json", "application/xml" }, 
 			produces = { "application/json",
@@ -140,10 +156,6 @@ public class AvaliacaoController {
 			@PageableDefault(sort = "nota", direction = Direction.ASC, page = 0, size = 5) Pageable paginacao) {
 
 		Page<AvaliacaoDto> avaliacoesDenunciadasDto = service.buscarAvaliacoesDenunciadas(paginacao);
-
-		avaliacoesDenunciadasDto.stream()
-				.forEach(p -> p.add(linkTo(methodOn(AvaliacaoController.class).findById(p.getId())).withSelfRel()));
-
 		return ResponseEntity.ok(CollectionModel.of(avaliacoesDenunciadasDto));
 	}
 }

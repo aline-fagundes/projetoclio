@@ -53,12 +53,12 @@ public class PresencaController {
 		if (idMuseu == null) {
 			Page<PresencaDto> presencasDto = service.buscarTodas(paginacao);
 			presencasDto.stream().forEach(
-					p -> p.add(linkTo(methodOn(PresencaController.class).buscarPorId(p.getId())).withSelfRel()));
+					p -> p.add(linkTo(methodOn(PresencaController.class).findById(p.getId())).withSelfRel()));
 			return ResponseEntity.ok(CollectionModel.of(presencasDto));
 		} else {
 			Page<PresencaDto> presencasDto = service.buscarPorMuseu(idMuseu, paginacao);
 			presencasDto.stream().forEach(
-					p -> p.add(linkTo(methodOn(PresencaController.class).buscarPorId(p.getId())).withSelfRel()));
+					p -> p.add(linkTo(methodOn(PresencaController.class).findById(p.getId())).withSelfRel()));
 			return ResponseEntity.ok(CollectionModel.of(presencasDto));
 		}
 	}
@@ -67,20 +67,20 @@ public class PresencaController {
 	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Exibir presença por Id")
 	@ResponseStatus(value = HttpStatus.OK)
-	public PresencaDto buscarPorId(@PathVariable("id") Long id) {
+	public PresencaDto findById(@PathVariable("id") Long id) {
 		
 		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long idUsuarioLogado = usuarioLogado.getId();
 		String perfilUsuarioLogado = usuarioLogado.getPerfil();
 		
 		PresencaDto presencaDto = service.buscarPorId(id, idUsuarioLogado, perfilUsuarioLogado);
-		presencaDto.add(linkTo(methodOn(PresencaController.class).buscarPorId(id)).withSelfRel());
+		presencaDto.add(linkTo(methodOn(PresencaController.class).findById(id)).withSelfRel());
 		return presencaDto;
 	}
 	
 	@GetMapping(value = "doVisitante/{id}", produces = { "application/json", "application/xml" })
 	@SecurityRequirement(name = "bearer-key")
-	@Operation(summary = "Exibir presenças de um visitante por Id")
+	@Operation(summary = "Exibir presenças de um visitante através de seu User-Id")
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<CollectionModel<PresencaDto>> buscarPorIdVisitante(
 			@PathVariable("id") Long id,
@@ -91,8 +91,6 @@ public class PresencaController {
 		String perfilUsuarioLogado = usuarioLogado.getPerfil();
 		
 		Page<PresencaDto> presencasDto = service.buscarPorVisitante(id, idUsuarioLogado, perfilUsuarioLogado, paginacao);
-		presencasDto.stream().forEach(
-				p -> p.add(linkTo(methodOn(PresencaController.class).buscarPorId(p.getId())).withSelfRel()));
 		return ResponseEntity.ok(CollectionModel.of(presencasDto));
 	}
 	

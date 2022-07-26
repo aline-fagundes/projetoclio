@@ -66,9 +66,7 @@ public class MuseusController {
 			@PathVariable("nome") String nome,
 			@PageableDefault(sort = "nome", direction = Direction.ASC, page = 0, size = 9) Pageable paginacao) {
 		
-		Page<MuseusDto> museuDto = service.findByName(nome, paginacao);
-		museuDto.stream()
-				.forEach(p -> p.add(linkTo(methodOn(MuseusController.class).findById(p.getId())).withSelfRel()));
+		Page<MuseusDto> museuDto = service.buscarPorNome(nome, paginacao);
 		return ResponseEntity.ok(CollectionModel.of(museuDto));
 	}
 	

@@ -45,7 +45,7 @@ public class MuseusService {
 	}
 
 	
-	public Page<MuseusDto> findByName(String nome, Pageable paginacao) {
+	public Page<MuseusDto> buscarPorNome(String nome, Pageable paginacao) {
 		var page = repository.findByNome(nome, paginacao);
 		return page.map(this::convertToMuseusDto);
 	}

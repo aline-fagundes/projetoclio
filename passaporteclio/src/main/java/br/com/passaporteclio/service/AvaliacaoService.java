@@ -48,6 +48,17 @@ public class AvaliacaoService {
 		var page = repository.findByMuseuId(idMuseu, paginacao);
 		return page.map(this::convertToAvaliacaoDto);
 	}
+	
+	
+	public Page<AvaliacaoDto> buscarPorVisitante(Long id, Long idUsuarioLogado, String perfilUsuarioLogado, Pageable paginacao) {
+		
+		if(!perfilUsuarioLogado.equals("Administrador") && !idUsuarioLogado.equals(id)) {
+			throw new OperationNotAllowedException("Não é possível consultar a lista de avaliações de outro visitante!");
+		}
+		
+		var page = repository.findByAutorId(id, paginacao);
+		return page.map(this::convertToAvaliacaoDto);
+	}
 
 	
 	public AtualizaAvaliacaoDto atualizar(Long id, AtualizaAvaliacaoDto avaliacao, Long idUsuarioLogado) {
