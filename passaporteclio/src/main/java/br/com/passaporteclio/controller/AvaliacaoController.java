@@ -3,6 +3,9 @@ package br.com.passaporteclio.controller;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,18 +78,17 @@ public class AvaliacaoController {
 	
 	@GetMapping(value = "doVisitante/{id}", produces = { "application/json", "application/xml" })
 	@SecurityRequirement(name = "bearer-key")
-	@Operation(summary = "Exibir avaliações de um visitante através de seu User-Id")
+	@Operation(summary = "Exibir avaliações de um visitante através de seu User-Id, separadas por museu")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<CollectionModel<AvaliacaoDto>> buscarPorIdVisitante(
-			@PathVariable("id") Long id,
-			@PageableDefault(sort = "nota", direction = Direction.DESC, page = 0, size = 5) Pageable paginacao) {
+	public ResponseEntity<Map<String, List<AvaliacaoDto>>> buscarPorIdVisitante(@PathVariable("id") Long id) {
 		
 		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long idUsuarioLogado = usuarioLogado.getId();
 		String perfilUsuarioLogado = usuarioLogado.getPerfil();
 		
-		Page<AvaliacaoDto> avaliacoesDto = service.buscarPorVisitante(id, idUsuarioLogado, perfilUsuarioLogado, paginacao);
-		return ResponseEntity.ok(CollectionModel.of(avaliacoesDto));	
+		Map<String, List<AvaliacaoDto>> avaliacoesDto = service.buscarPorVisitanteSeparadoPorMuseu(id, idUsuarioLogado, perfilUsuarioLogado);
+		
+		return ResponseEntity.ok(avaliacoesDto);	
 	}
 
 	@PostMapping(consumes = { "application/json", "application/xml" }, 

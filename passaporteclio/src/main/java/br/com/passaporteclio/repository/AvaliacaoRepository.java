@@ -1,5 +1,7 @@
 package br.com.passaporteclio.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,5 +16,6 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
 
 	Page<Avaliacao> findByDenunciada(boolean denunciada, Pageable pageable);
 	
-	Page<Avaliacao> findByAutorId(Long autorId, Pageable pageable);
+	List<Avaliacao> findByAutorId(Long autorId);
+	
 }
