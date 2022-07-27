@@ -41,8 +41,8 @@ public class VisitanteController {
 	@Autowired
 	VisitanteService service;
 
-	@GetMapping(produces = { "application/json", "application/xml" })
 	@SecurityRequirement(name = "bearer-key")
+	@GetMapping(produces = { "application/json", "application/xml" })
 	@Operation(summary = "Listar todos os visitantes")
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<CollectionModel<RetornoVisitanteDto>> findAll(
@@ -54,6 +54,7 @@ public class VisitanteController {
 		return ResponseEntity.ok(CollectionModel.of(visitanteAtualizado));
 	}
 	
+	@SecurityRequirement(name = "bearer-key")
 	@GetMapping(value = "/{id}", produces = { "application/json", "application/xml" })
 	@Operation(summary = "Exibir visitante por id")
 	@ResponseStatus(value = HttpStatus.OK)
@@ -78,6 +79,7 @@ public class VisitanteController {
 		return ResponseEntity.ok(visitanteGravado);
 	}
 
+	@SecurityRequirement(name = "bearer-key")
 	@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, 
 			produces = { "application/json", "application/xml" })
 	@Operation(summary = "Alterar nome e sobrenome")

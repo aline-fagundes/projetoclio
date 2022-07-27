@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -32,18 +33,17 @@ import br.com.passaporteclio.service.PresencaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.AllArgsConstructor;
 
 @Tag(name = "Presença Endpoint")
 @RestController
 @RequestMapping("/presenca")
-@AllArgsConstructor
+@SecurityRequirement(name = "bearer-key")
 public class PresencaController {
 
+	@Autowired
 	private PresencaService service;
 
 	@GetMapping(produces = { "application/json", "application/xml" })
-	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Listar todas as presenças ou apenas a do museu especificado")
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<CollectionModel<PresencaDto>> findAll(
@@ -64,7 +64,6 @@ public class PresencaController {
 	}
 
 	@GetMapping(value = "/{id}", produces = { "application/json", "application/xml" })
-	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Exibir presença por Id")
 	@ResponseStatus(value = HttpStatus.OK)
 	public PresencaDto findById(@PathVariable("id") Long id) {
@@ -79,10 +78,9 @@ public class PresencaController {
 	}
 	
 	@GetMapping(value = "doVisitante/{id}", produces = { "application/json", "application/xml" })
-	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Exibir presenças de um visitante através de seu User-Id")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<CollectionModel<PresencaDto>> buscarPorIdVisitante(
+	public ResponseEntity<CollectionModel<PresencaDto>> findByIdVisitante(
 			@PathVariable("id") Long id,
 			@PageableDefault(sort = "data", direction = Direction.DESC, page = 0, size = 3) Pageable paginacao) {
 		
@@ -96,7 +94,6 @@ public class PresencaController {
 	
 	@PostMapping(consumes = { "application/json", "application/xml" }, 
 			produces = { "application/json", "application/xml" })
-	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Cadastrar presença")
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public ResponseEntity<CriaPresencaDto> create(@Valid @RequestBody CriaPresencaDto presenca) {

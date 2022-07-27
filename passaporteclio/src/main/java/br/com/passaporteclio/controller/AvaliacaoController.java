@@ -41,6 +41,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Avaliação Endpoint")
 @RestController
 @RequestMapping("/avaliacao")
+@SecurityRequirement(name = "bearer-key")
 public class AvaliacaoController {
 
 	@Autowired
@@ -77,10 +78,9 @@ public class AvaliacaoController {
 	}
 	
 	@GetMapping(value = "doVisitante/{id}", produces = { "application/json", "application/xml" })
-	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Exibir avaliações de um visitante através de seu User-Id, separadas por museu")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<Map<String, List<AvaliacaoDto>>> buscarPorIdVisitante(@PathVariable("id") Long id) {
+	public ResponseEntity<Map<String, List<AvaliacaoDto>>> findByIdVisitante(@PathVariable("id") Long id) {
 		
 		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long idUsuarioLogado = usuarioLogado.getId();
@@ -94,7 +94,6 @@ public class AvaliacaoController {
 	@PostMapping(consumes = { "application/json", "application/xml" }, 
 			produces = { "application/json",
 			"application/xml" })
-	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Cadastrar avaliação")
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public ResponseEntity<CriaAvaliacaoDto> create(@Valid @RequestBody CriaAvaliacaoDto avaliacao) {
@@ -114,7 +113,6 @@ public class AvaliacaoController {
 	@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, 
 			produces = { "application/json",
 			"application/xml" })
-	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Alterar avaliação")
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<AtualizaAvaliacaoDto> update(
@@ -129,7 +127,6 @@ public class AvaliacaoController {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Deletar avaliação")
 	@ResponseStatus(value = HttpStatus.OK)
 	public void delete(@PathVariable("id") Long id) {
@@ -142,7 +139,6 @@ public class AvaliacaoController {
 	}
 
 	@PostMapping(value = "denunciar/{id}")
-	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Denunciar avaliação")
 	@ResponseStatus(value = HttpStatus.OK)
 	public void report(@PathVariable("id") Long id) {
@@ -151,7 +147,6 @@ public class AvaliacaoController {
 	}
 
 	@GetMapping(value = "/denuncias", produces = { "application/json", "application/xml" })
-	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Listar todas as avaliações denunciadas")
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<CollectionModel<AvaliacaoDto>> findAllReported(

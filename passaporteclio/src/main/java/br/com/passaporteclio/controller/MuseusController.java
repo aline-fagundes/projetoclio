@@ -33,6 +33,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Museus Endpoint")
 @RestController
 @RequestMapping("/museus")
+@SecurityRequirement(name = "bearer-key")
 public class MuseusController {
 
 	@Autowired
@@ -62,7 +63,8 @@ public class MuseusController {
 
 	@GetMapping(value = "/buscarPorNome/{nome}", produces = { "application/json", "application/xml" })
 	@Operation(summary = "Exibir museu por nome")
-	public ResponseEntity<CollectionModel<MuseusDto>> findMuseuByNome(
+	@ResponseStatus(value = HttpStatus.OK)
+	public ResponseEntity<CollectionModel<MuseusDto>> findByNome(
 			@PathVariable("nome") String nome,
 			@PageableDefault(sort = "nome", direction = Direction.ASC, page = 0, size = 9) Pageable paginacao) {
 		
@@ -72,6 +74,7 @@ public class MuseusController {
 	
 	@GetMapping(value = "/notaMedia/{id}", produces = { "application/json", "application/xml" })
 	@Operation(summary = "Exibir nota do museu por id")
+	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<NotaMediaMuseuDto> getNotaMediaMuseu(@PathVariable("id") Long id) {
 		
 		NotaMediaMuseuDto notaMediaDto = service.calculaMedia(id);
@@ -81,7 +84,6 @@ public class MuseusController {
 	@PostMapping(consumes = { "application/json", "application/xml" }, 
 			produces = { "application/json", "application/xml" })
 	@Operation(summary = "Cadastrar museu")
-	@SecurityRequirement(name = "bearer-key")
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public ResponseEntity<MuseusDto> create(@Valid @RequestBody MuseusDto museu) {
 		
@@ -92,7 +94,6 @@ public class MuseusController {
 	@PutMapping(value = "/{id}", consumes = { "application/json", "application/xml" }, 
 			produces = { "application/json",
 			"application/xml" })
-	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Alterar museu")
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<MuseusDto> update(
@@ -104,7 +105,6 @@ public class MuseusController {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	@SecurityRequirement(name = "bearer-key")
 	@Operation(summary = "Deletar museu")
 	@ResponseStatus(value = HttpStatus.OK)
 	public void delete(@PathVariable("id") Long id) {

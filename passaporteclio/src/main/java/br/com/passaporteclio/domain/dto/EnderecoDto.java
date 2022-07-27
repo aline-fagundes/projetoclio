@@ -1,12 +1,15 @@
 package br.com.passaporteclio.domain.dto;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.springframework.hateoas.RepresentationModel;
+import java.io.Serializable;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
+
+import org.springframework.hateoas.RepresentationModel;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper=false)
 @Data
