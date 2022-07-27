@@ -2,6 +2,7 @@ package br.com.passaporteclio.domain.dto;
 
 import java.io.Serializable;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.hateoas.RepresentationModel;
@@ -23,5 +24,6 @@ public class RetornoVisitanteDto extends RepresentationModel<RetornoVisitanteDto
 	@NotBlank
 	private String sobrenome;
 	
+	@Valid
 	private RetornoVisitanteUserDto user;
 }

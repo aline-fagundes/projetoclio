@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.hateoas.RepresentationModel;
 
@@ -23,6 +24,7 @@ public class AvaliacaoDto extends RepresentationModel<AvaliacaoDto> implements S
 	private int nota;
 
 	@NotBlank
+	@Size(max=300)
 	private String avaliacao;
 	
 	@NotBlank

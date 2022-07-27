@@ -6,6 +6,8 @@ import org.springframework.hateoas.RepresentationModel;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import java.io.Serializable;
 
 @EqualsAndHashCode(callSuper = false)
@@ -17,12 +19,15 @@ public class MuseusDto extends RepresentationModel<MuseusDto> implements Seriali
 	private Long id;
 
 	@NotBlank
+	@Size(max=100)
 	private String nome;
 
 	@NotBlank
+	@Size(max=1000)
 	private String descricaoMuseu;
 
 	@NotBlank
+	@Size(max=500)
 	private String funcionamentoMuseu;
 
 	@NotBlank
