@@ -1,17 +1,19 @@
 package br.com.passaporteclio.domain.dto;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.springframework.hateoas.RepresentationModel;
+import java.io.Serializable;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import java.io.Serializable;
+import lombok.*;
+import org.springframework.hateoas.RepresentationModel;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class MuseusDto extends RepresentationModel<MuseusDto> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
