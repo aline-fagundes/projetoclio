@@ -56,9 +56,9 @@ public class MuseusController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public MuseusDto findById(@PathVariable("id") Long id) {
 		
-		MuseusDto museuVO = service.buscarPorId(id);
-		museuVO.add(linkTo(methodOn(MuseusController.class).findById(id)).withSelfRel());
-		return museuVO;
+		MuseusDto museuDto = service.buscarPorId(id);
+		museuDto.add(linkTo(methodOn(MuseusController.class).findById(id)).withSelfRel());
+		return museuDto;
 	}
 
 	@GetMapping(value = "/buscarPorNome/{nome}", produces = { "application/json", "application/xml" })
