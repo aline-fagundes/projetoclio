@@ -1,9 +1,11 @@
 package br.com.passaporteclio.controller;
 
+import br.com.passaporteclio.domain.dto.AvaliacaoDto;
 import br.com.passaporteclio.domain.entity.Museus;
 import br.com.passaporteclio.service.AvaliacaoService;
 import br.com.passaporteclio.util.MuseusGenerator;
 import br.com.passaporteclio.util.TokenGenerator;
+import io.swagger.v3.oas.annotations.Operation;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,13 +14,24 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.net.URI;
 
@@ -153,6 +166,40 @@ public class AvaliacaoControllerTest {
 
     @Test
     @Order(6)
+    public void deveriaDevolver200AoDenunciarAvaliacaoPorIdComReport() throws Exception {
+        URI uri = new URI("/avaliacao/denunciar/1");
+
+                mockMvc.
+                        perform(
+                                MockMvcRequestBuilders
+                                        .post(uri)
+                                        .header("Authorization", "Bearer " + tokenGenerator.obterTokenVisitante(mockMvc)))
+                        .andExpect(MockMvcResultMatchers
+                                .status()
+                                .is(200));
+    }
+
+    @Test
+    @Order(7)
+    public void deveriaDevolver200AoBuscarAvaliacoesDenunciadasComFindAllReported() throws Exception {
+        URI uri = new URI("/avaliacao/denuncias");
+
+        ResultActions result =
+                mockMvc.
+                        perform(
+                                MockMvcRequestBuilders
+                                        .get(uri)
+                                        .header("Authorization", "Bearer " + tokenGenerator.obterTokenAdmin(mockMvc)))
+                        .andExpect(MockMvcResultMatchers
+                                .status()
+                                .is(200));
+
+        String avaliacoesDenunciadas = result.andReturn().getResponse().getContentAsString();
+        assertFalse(avaliacoesDenunciadas.isEmpty());
+    }
+
+    @Test
+    @Order(8)
     public void deveriaDevolver200AoExcluirAvaliacaoComDelete() throws Exception {
         URI uri = new URI("/avaliacao/1");
 
@@ -160,7 +207,7 @@ public class AvaliacaoControllerTest {
                 perform(
                         MockMvcRequestBuilders
                                 .delete(uri)
-                                .header("Authorization", "Bearer " + tokenGenerator.obterTokenVisitante(mockMvc)))
+                                .header("Authorization", "Bearer " + tokenGenerator.obterTokenAdmin(mockMvc)))
                 .andExpect(MockMvcResultMatchers
                         .status()
                         .is(200));
