@@ -28,7 +28,7 @@ public class TokenGenerator {
         return jsonParser.parseMap(resultString).get("token").toString();
     }
 
-    private static void cadastrarVisitante(MockMvc mockMvc) throws Exception {
+    public void cadastrarVisitante(MockMvc mockMvc) throws Exception {
         URI uri = new URI("/visitante");
         String json = "{\r\n"
                 + "    \"nome\": \"Visitante\",\r\n"
@@ -48,7 +48,6 @@ public class TokenGenerator {
     }
 
     public String obterTokenVisitante(MockMvc mockMvc) throws Exception {
-        cadastrarVisitante(mockMvc);
 
         URI uri = new URI("/auth");
         String json = "{\"email\":\"visitante@email.com\",\"senha\":\"123\"}";
@@ -66,4 +65,5 @@ public class TokenGenerator {
         JacksonJsonParser jsonParser = new JacksonJsonParser();
         return jsonParser.parseMap(resultString).get("token").toString();
     }
+
 }

@@ -1,5 +1,7 @@
 package br.com.passaporteclio.config;
 
+import br.com.passaporteclio.security.jwt.JwtConfigurer;
+import br.com.passaporteclio.security.jwt.JwtProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import br.com.passaporteclio.security.jwt.JwtConfigurer;
-import br.com.passaporteclio.security.jwt.JwtProvider;
 
 @EnableWebSecurity
 @Configuration
@@ -62,6 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.GET, "/presenca/doVisitante/*").authenticated()
         .antMatchers(HttpMethod.POST, "/presenca").authenticated()       
         .anyRequest().authenticated()
+		.and().cors()
         .and().csrf().disable()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().apply(new JwtConfigurer(jwtProvider));

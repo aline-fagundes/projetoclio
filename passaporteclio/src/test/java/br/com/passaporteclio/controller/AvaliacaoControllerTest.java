@@ -1,12 +1,11 @@
 package br.com.passaporteclio.controller;
 
+import br.com.passaporteclio.domain.entity.Museus;
 import br.com.passaporteclio.service.AvaliacaoService;
+import br.com.passaporteclio.util.MuseusGenerator;
 import br.com.passaporteclio.util.TokenGenerator;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -32,7 +31,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 @TestMethodOrder(OrderAnnotation.class)
 public class AvaliacaoControllerTest {
 
-    private TokenGenerator generator;
+    private TokenGenerator tokenGenerator;
+
+    private MuseusGenerator museuGenerator;
 
     @Autowired
     private MockMvc mockMvc;
@@ -43,12 +44,17 @@ public class AvaliacaoControllerTest {
     @BeforeEach
     public void beforeEach() {
         MockitoAnnotations.openMocks(this);
-        generator = new TokenGenerator();
+        this.tokenGenerator = new TokenGenerator();
+        this.museuGenerator = new MuseusGenerator();
     }
 
     @Test
     @Order(1)
     public void deveriaDevolver200AoCadastrarAvaliacaoComCreate() throws Exception {
+
+        museuGenerator.cadastrarMuseu(tokenGenerator, mockMvc);
+        tokenGenerator.cadastrarVisitante(mockMvc);
+
         URI uri = new URI("/avaliacao");
         String json = "{\r\n"
                 + "    \"nota\": \"5\",\r\n"
@@ -62,7 +68,7 @@ public class AvaliacaoControllerTest {
                 perform(
                         MockMvcRequestBuilders
                                 .post(uri)
-                                .header("Authorization", "Bearer " + generator.obterTokenVisitante(mockMvc))
+                                .header("Authorization", "Bearer " + tokenGenerator.obterTokenVisitante(mockMvc))
                                 .content(json)
                                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers
@@ -80,7 +86,7 @@ public class AvaliacaoControllerTest {
                         perform(
                                 MockMvcRequestBuilders
                                         .get(uri)
-                                        .header("Authorization", "Bearer " + generator.obterTokenAdmin(mockMvc)))
+                                        .header("Authorization", "Bearer " + tokenGenerator.obterTokenAdmin(mockMvc)))
                         .andExpect(MockMvcResultMatchers
                                 .status()
                                 .is(200));
@@ -99,7 +105,7 @@ public class AvaliacaoControllerTest {
                         perform(
                                 MockMvcRequestBuilders
                                         .get(uri)
-                                        .header("Authorization", "Bearer " + generator.obterTokenAdmin(mockMvc)))
+                                        .header("Authorization", "Bearer " + tokenGenerator.obterTokenAdmin(mockMvc)))
                         .andExpect(MockMvcResultMatchers
                                 .status()
                                 .is(200));
@@ -118,7 +124,7 @@ public class AvaliacaoControllerTest {
                         perform(
                                 MockMvcRequestBuilders
                                         .get(uri)
-                                        .header("Authorization", "Bearer " + generator.obterTokenVisitante(mockMvc)))
+                                        .header("Authorization", "Bearer " + tokenGenerator.obterTokenVisitante(mockMvc)))
                         .andExpect(MockMvcResultMatchers
                                 .status()
                                 .is(200));
@@ -137,7 +143,7 @@ public class AvaliacaoControllerTest {
                 perform(
                         MockMvcRequestBuilders
                                 .put(uri)
-                                .header("Authorization", "Bearer " + generator.obterTokenVisitante(mockMvc))
+                                .header("Authorization", "Bearer " + tokenGenerator.obterTokenVisitante(mockMvc))
                                 .content(json)
                                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers
@@ -154,7 +160,7 @@ public class AvaliacaoControllerTest {
                 perform(
                         MockMvcRequestBuilders
                                 .delete(uri)
-                                .header("Authorization", "Bearer " + generator.obterTokenVisitante(mockMvc)))
+                                .header("Authorization", "Bearer " + tokenGenerator.obterTokenVisitante(mockMvc)))
                 .andExpect(MockMvcResultMatchers
                         .status()
                         .is(200));
