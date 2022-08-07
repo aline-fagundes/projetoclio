@@ -72,7 +72,7 @@ public class MuseusControllerTest {
                 perform(
                         MockMvcRequestBuilders
                                 .post(uri)
-                                .header("Authorization", "Bearer " + generator.obterToken(mockMvc))
+                                .header("Authorization", "Bearer " + generator.obterTokenAdmin(mockMvc))
                                 .content(json)
                                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers
@@ -90,7 +90,7 @@ public class MuseusControllerTest {
                         perform(
                                 MockMvcRequestBuilders
                                         .get(uri)
-                                        .header("Authorization", "Bearer " + generator.obterToken(mockMvc)))
+                                        .header("Authorization", "Bearer " + generator.obterTokenAdmin(mockMvc)))
                         .andExpect(MockMvcResultMatchers
                                 .status()
                                 .is(200));
@@ -109,7 +109,7 @@ public class MuseusControllerTest {
                         perform(
                                 MockMvcRequestBuilders
                                         .get(uri)
-                                        .header("Authorization", "Bearer " + generator.obterToken(mockMvc)))
+                                        .header("Authorization", "Bearer " + generator.obterTokenAdmin(mockMvc)))
                         .andExpect(MockMvcResultMatchers
                                 .status()
                                 .is(200));
@@ -128,7 +128,7 @@ public class MuseusControllerTest {
                         perform(
                                 MockMvcRequestBuilders
                                         .get(uri)
-                                        .header("Authorization", "Bearer " + generator.obterToken(mockMvc)))
+                                        .header("Authorization", "Bearer " + generator.obterTokenAdmin(mockMvc)))
                         .andExpect(MockMvcResultMatchers
                                 .status()
                                 .is(200));
@@ -163,7 +163,7 @@ public class MuseusControllerTest {
                 perform(
                         MockMvcRequestBuilders
                                 .put(uri)
-                                .header("Authorization", "Bearer " + generator.obterToken(mockMvc))
+                                .header("Authorization", "Bearer " + generator.obterTokenAdmin(mockMvc))
                                 .content(json)
                                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers
@@ -179,7 +179,7 @@ public class MuseusControllerTest {
                         perform(
                                 MockMvcRequestBuilders
                                         .delete(uri)
-                                        .header("Authorization", "Bearer " + generator.obterToken(mockMvc)))
+                                        .header("Authorization", "Bearer " + generator.obterTokenAdmin(mockMvc)))
                         .andExpect(MockMvcResultMatchers
                                 .status()
                                 .is(200));
