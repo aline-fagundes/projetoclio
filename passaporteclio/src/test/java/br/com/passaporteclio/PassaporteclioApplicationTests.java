@@ -1,4 +1,4 @@
-package br.com.passaporteclio.passaporteclio;
+package br.com.passaporteclio;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

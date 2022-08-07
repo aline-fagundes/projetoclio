@@ -209,6 +209,7 @@ public class MuseusControllerTest {
                         .status()
                         .is(200));
     }
+
     @Test
     @Order(7)
     public void deveriaDevolver200AoExcluirMuseuComDelete() throws Exception {
