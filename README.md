@@ -14,14 +14,12 @@ Site que tem como proposta conectar pessoas a museus. Nele será possível conhe
   • <a href="#Repositories">Repositories</a> <br>
   
   • <a href="#Features">Features</a> <br>
-
-  • <a href="https://miro.com/app/board/uXjVO0p2LbU=/">UML e tabela de regras</a> <br>
 	
   • <a href="https://miro.com/app/board/uXjVO2d8Fmg=/">Diagrama de funcionalidades</a> <br>
 
   • <a href="https://miro.com/app/board/uXjVOsfh1Sw=/">Diagrama de rotas do site</a> <br>
 
-  • <a href="https://www.figma.com/file/oJyw8wJ8eycPPS7B9FbzYl/Passaporte-Clio?node-id=340%3A620">Projeto Figma do site</a> <br>
+  • <a href="https://www.figma.com/file/oJyw8wJ8eycPPS7B9FbzYl/Passaporte-Clio?node-id=340%3A620">Prototipação no Figma</a> <br>
 	
   • <a href="#Status">Status</a> <br>
 
@@ -116,9 +114,16 @@ Será possível fazer as seguintes interações:
 
 - [x] Gerenciar pontuação e títulos.
 
+</samp>
+ <div align="center">
+  <img align="center" src="https://user-images.githubusercontent.com/102121711/183476595-a8baf2e7-3788-4317-a4f7-56a7b68824bc.png" width="700px"/>
+</div> 
+
+<samp>
+
 <br>
 
-  <h2 align="center"> <a name="Status">  Status </a> </h2>
+<h2 align="center"> <a name="Status">  Status </a> </h2>
 
   <h4 align="center"> 
 	🚧 LOADING... 🚧
@@ -202,5 +207,5 @@ Ferramentas usadas na construção do projeto:
   </tr>
 </table>
 
-  </samp>
+</samp>
 
