@@ -45,9 +45,10 @@ public class MuseusService {
 	}
 
 	
-	public Page<MuseusDto> buscarPorNome(String nome, Pageable paginacao) {
-		var page = repository.findByNome(nome, paginacao);
-		return page.map(this::convertToMuseusDto);
+	public MuseusDto buscarPorNome(String nome) {
+		var museuEntity = repository.findFirstByNome(nome)
+				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse nome!"));
+		return DozerConverter.parseObject(museuEntity, MuseusDto.class);
 	}
 	
 	

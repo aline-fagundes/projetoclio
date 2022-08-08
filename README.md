@@ -1,4 +1,8 @@
- <samp>
+<div align="center">
+  <img align="center" src="https://github.com/bela-mad/projetoclio/blob/master/src/assets/logo_clio.png?raw=true" width="200px"/>
+</div>
+
+<samp>
   <h1 align="center"> Passaporte Clio </h1>
 <p align="center">
 Site que tem como proposta conectar pessoas a museus. Nele será possível conhecer mais sobre os museus do estado de São Paulo através de fotos, descrições, localização, informações sobre o funcionamento e avaliações de visitantes que estiveram nas instituições. Como atrativo, a aplicação também terá gamificação da experiência dos usuários por meio de um sistema de pontuação. A partir de determinadas interações – como logar, relatar se esteve em uma instituição e avaliar como foi sua visita – será possível acumular pontos que, então, serão convertidos em títulos. 
@@ -10,22 +14,23 @@ Site que tem como proposta conectar pessoas a museus. Nele será possível conhe
   • <a href="#Repositories">Repositories</a> <br>
   
   • <a href="#Features">Features</a> <br>
-
-  • <a href="https://miro.com/app/board/uXjVO0p2LbU=/">UML e tabela de regras</a> <br>
 	
-  • <a href="https://miro.com/app/board/uXjVO2d8Fmg=/">Diagrama de funcionalidades</a> <br>
+  • <a href="#UML">UML</a> <br>
+	
+  • <a href="#APIREST">API REST</a> <br>
 
-  • <a href="https://miro.com/app/board/uXjVOsfh1Sw=/">Diagrama de rotas do site</a> <br>
+  • <a href="#Flowchart">Flowchart</a> <br>
 
-  • <a href="https://www.figma.com/file/oJyw8wJ8eycPPS7B9FbzYl/Passaporte-Clio?node-id=340%3A620">Projeto Figma do site</a> <br>
+  • <a href="https://www.figma.com/file/oJyw8wJ8eycPPS7B9FbzYl/Passaporte-Clio?node-id=340%3A620">Figma Prototype</a> <br>
 	
   • <a href="#Status">Status</a> <br>
-
-  • <a href="#APIREST">API REST</a> <br>
 	
   • <a href="#Technologies">Technologies</a> <br>
+
+  • <a href="#Links">Links</a> <br>
 	
   • <a href="#Team">Team</a> <br>
+
 </p>
 
 <h2 align="center"> <a name="Repositories"> Repositories </a> </h2>
@@ -39,6 +44,12 @@ Acessos:
 <br>
 
 <h2 align="center"> <a name="Features"> Features </a> </h2>
+
+ <div align="center">
+  <img src="https://user-images.githubusercontent.com/102121711/183476595-a8baf2e7-3788-4317-a4f7-56a7b68824bc.png" width="700px"/>
+</div> 
+	
+<br><br>
 
   <h3>INFORMAÇÕES MUSEUS</h3>
     
@@ -114,35 +125,117 @@ Será possível fazer as seguintes interações:
 
 <br>
 
-  <h2 align="center"> <a name="Status">  Status </a> </h2>
+<h2 align="center"> <a name="UML">  UML </h2>
+
+Diagrama de classes que compõem a aplicação:
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/102121711/183477754-d00adca9-16d5-46d6-8f1b-f5e0ad77b711.png" width="700px"><br>
+</div> 
+
+<br>
+		
+<h2 align="center"> <a name="APIREST">  API REST </h2>
+
+Para consultar as funcionalidades implementadas, acesse a documentação Swagger através da execução da aplicação e acesso ao link: 
+
+http://localhost:8080/swagger-ui.html
+
+<br>
+
+<h2 align="center"> <a name="Flowchart">  Flowchart</h2>
+
+Fluxogramas de rotas:
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/102121711/183488191-0c0f6db9-d6d3-4c5c-a12a-34ccb31e9c6c.jpg" width="850px"><br>
+</div> 
+
+<br><br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/102121711/183488126-db175095-9b77-4d6c-99c0-9b093696fefa.jpg" width="850px"><br>
+</div> 
+
+<br>
+
+  <h2 align="center"> <a name="Technologies">  Technologies </a> </h2>
+
+Ferramentas usadas na construção do projeto:
+
+- Gerenciamento de sprints:
+<div>
+  <img alt="Clio-Slack" src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=slack&logoColor=white"><br>
+  <img alt="Clio-Trello" src="https://img.shields.io/badge/Trello-0052CC?style=flat&logo=trello&logoColor=white"><br>
+</div> 
+<br>
+
+- Diagramação e prototipação:
+<div>
+  <img alt="Clio-Miro" src="https://img.shields.io/badge/Miro-050038?style=flat&logo=Miro&logoColor=white"><br>
+  <img alt="Clio-Figma" src="https://img.shields.io/badge/Figma-F24E1E??style=flat&logo=figma&logoColor=white"><br>
+</div>  
+<br>
+	
+- Back-end:
+<div>
+  <img alt="Clio-Java" src="https://img.shields.io/badge/Java-ED8B00?style=flat&logo=java&logoColor=white"><br>
+  <img alt="Clio-Spring" src="https://img.shields.io/badge/Spring-6DB33F?style=flat&logo=spring&logoColor=white"><br>
+<img alt="Clio-SpringBoot" src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat&logo=Spring-Boot&logoColor=white"><br>
+<img alt="Clio-SpringData" src="https://img.shields.io/badge/SpringData-6DB33F?style=flat&logo=spring&logoColor=white"><br>
+  <img alt="Clio-SpringSecurity" src="https://img.shields.io/badge/Spring_Security-6DB33F?style=flat&logo=Spring-Security&logoColor=white"><br>
+  <img alt="Clio-MySQL" src="https://img.shields.io/badge/MySQL-00000F?style=flat&logo=mysql&logoColor=white"><br>
+  <img alt="Clio-Postman" src="https://img.shields.io/badge/Postman-FA7343?style=flat&logo=postman&logoColor=white"><br>
+  <img alt="Clio-JUnit" src="https://img.shields.io/badge/JUnit-CC0000?style=flat&logo=JUnit5&logoColor=white"><br>
+</div>	
+<br>
+	
+- Documentação:
+<div>
+  <img alt="Clio-Swagger" src="https://img.shields.io/badge/Swagger-59666C?style=flat&logo=Swagger&logoColor=white"><br>
+</div>
+<br>
+	
+- Front-end:
+<div>
+  <img alt="Clio-HTML" src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white"><br>
+  <img alt="Clio-CSS" src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white"><br>
+  <img alt="Clio-Bootstrap" src="https://img.shields.io/badge/Bootstrap-563D7C?style=flat&logo=bootstrap&logoColor=white"><br>
+  <img alt="Clio-TypeScript" src="https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white"><br>
+  <img alt="Clio-Angular" src="https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white"><br>
+</div> 
+<br>
+	
+- IDE's:
+<div>
+  <img alt="Clio-Eclipse" src="https://img.shields.io/badge/Eclipse-2C2255?style=flat&logo=eclipse&logoColor=white"><br>
+  <img alt="Clio-IntelliJ" src="https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=flat&logo=intellij-idea&logoColor=white"><br>
+  <img alt="Clio-VSCode" src="https://img.shields.io/badge/-VS%20Code-260B02?style=flat&logo=visual-studio-code&logoColor=white">
+</div> 
+
+<br>
+
+<h2 align="center"> <a name="Status">  Status </a> </h2>
 
   <h4 align="center"> 
 	🚧 LOADING... 🚧
 </h4>
 
 <br>
+	
+<h2 align="center"> <a name="Links">  Links </a> </h2>
 
-<h2 align="center"> <a name="APIREST">  API REST </h2>
+Diagramas elaborados no Miro:
 
-Para consultar as funcionalidades implementadas, basta acessar a documentação Swagger através da execução da aplicação e acesso ao link: 
+• <a href="https://miro.com/app/board/uXjVO0p2LbU=/">Diagrama de classes e regras</a> <br> 
 
-http://localhost:8080/swagger-ui.html
+• <a href="https://miro.com/app/board/uXjVO2d8Fmg=/">Diagrama de funcionalidades</a> <br>
+
+• <a href="https://miro.com/app/board/uXjVOsfh1Sw=/">Diagrama de rotas do site</a> <br>
 
 <br>
-
-  <h2 align="center"> <a name="Technologies">  Technologies </a> </h2>
-
-Ferramentas que serão usadas na construção do projeto:
-
-- [Spring](https://spring.io/)
-- [Angular](https://angular.io/)
-- [MySQL Workbench](https://www.mysql.com/products/workbench/)
+	
+<h2 align="center"> <a name="Team">  Team </a> </h2>
   
-  <br>
-
-  <h2 align="center"> <a name="Team">  Team </a> </h2>
-  
-  <table align="center">
+<table align="center">
   <tr>
     <td align="center"><a href="https://github.com/aline-fagundes"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102121711?s=400&u=65912f1e97edf6fc26f36aec52fff6089807cb36&v=4" width="100px;" alt=""/><br /><sub><b>Aline Napoli Fagundes</b></sub></a><br />
     <td align="center"><a href="https://github.com/brendabba"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/48896682?v=4" width="100px;" alt=""/><br /><sub><b>Brenda Alcântara</b></sub></a><br />
@@ -152,5 +245,5 @@ Ferramentas que serão usadas na construção do projeto:
   </tr>
 </table>
 
-  </samp>
+</samp>
 
