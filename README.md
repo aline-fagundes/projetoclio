@@ -15,19 +15,22 @@ Site que tem como proposta conectar pessoas a museus. Nele será possível conhe
   
   • <a href="#Features">Features</a> <br>
 	
-  • <a href="https://miro.com/app/board/uXjVO2d8Fmg=/">Diagrama de funcionalidades</a> <br>
+  • <a href="#UML">UML</a> <br>
+	
+  • <a href="#APIREST">API REST</a> <br>
 
-  • <a href="https://miro.com/app/board/uXjVOsfh1Sw=/">Diagrama de rotas do site</a> <br>
+  • <a href="#Flowchart">Flowchart</a> <br>
 
-  • <a href="https://www.figma.com/file/oJyw8wJ8eycPPS7B9FbzYl/Passaporte-Clio?node-id=340%3A620">Prototipação no Figma</a> <br>
+  • <a href="https://www.figma.com/file/oJyw8wJ8eycPPS7B9FbzYl/Passaporte-Clio?node-id=340%3A620">Figma Prototype</a> <br>
 	
   • <a href="#Status">Status</a> <br>
-
-  • <a href="#APIREST">API REST</a> <br>
 	
   • <a href="#Technologies">Technologies</a> <br>
+
+  • <a href="#Links">Links</a> <br>
 	
   • <a href="#Team">Team</a> <br>
+
 </p>
 
 <h2 align="center"> <a name="Repositories"> Repositories </a> </h2>
@@ -41,6 +44,12 @@ Acessos:
 <br>
 
 <h2 align="center"> <a name="Features"> Features </a> </h2>
+
+ <div align="center">
+  <img src="https://user-images.githubusercontent.com/102121711/183476595-a8baf2e7-3788-4317-a4f7-56a7b68824bc.png" width="700px"/>
+</div> 
+	
+<br><br>
 
   <h3>INFORMAÇÕES MUSEUS</h3>
     
@@ -114,28 +123,37 @@ Será possível fazer as seguintes interações:
 
 - [x] Gerenciar pontuação e títulos.
 
-</samp>
- <div align="center">
-  <img align="center" src="https://user-images.githubusercontent.com/102121711/183476595-a8baf2e7-3788-4317-a4f7-56a7b68824bc.png" width="700px"/>
+<br>
+
+<h2 align="center"> <a name="UML">  UML </h2>
+
+Diagrama de classes que compõem a aplicação:
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/102121711/183477754-d00adca9-16d5-46d6-8f1b-f5e0ad77b711.png" width="700px"><br>
 </div> 
 
-<samp>
-
 <br>
-
-<h2 align="center"> <a name="Status">  Status </a> </h2>
-
-  <h4 align="center"> 
-	🚧 LOADING... 🚧
-</h4>
-
-<br>
-
+		
 <h2 align="center"> <a name="APIREST">  API REST </h2>
 
-Para consultar as funcionalidades implementadas, basta acessar a documentação Swagger através da execução da aplicação e acesso ao link: 
+Para consultar as funcionalidades implementadas, acesse a documentação Swagger através da execução da aplicação e acesso ao link: 
 
 http://localhost:8080/swagger-ui.html
+
+<br>
+
+<h2 align="center"> <a name="Flowchart">  Flowchart</h2>
+
+Fluxogramas de rotas:
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/102121711/183488191-0c0f6db9-d6d3-4c5c-a12a-34ccb31e9c6c.jpg" width="850px"><br>
+</div> 
+
+<br><br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/102121711/183488126-db175095-9b77-4d6c-99c0-9b093696fefa.jpg" width="850px"><br>
+</div> 
 
 <br>
 
@@ -193,11 +211,31 @@ Ferramentas usadas na construção do projeto:
   <img alt="Clio-VSCode" src="https://img.shields.io/badge/-VS%20Code-260B02?style=flat&logo=visual-studio-code&logoColor=white">
 </div> 
 
-  <br>
+<br>
 
-  <h2 align="center"> <a name="Team">  Team </a> </h2>
+<h2 align="center"> <a name="Status">  Status </a> </h2>
+
+  <h4 align="center"> 
+	🚧 LOADING... 🚧
+</h4>
+
+<br>
+	
+<h2 align="center"> <a name="Links">  Links </a> </h2>
+
+Diagramas elaborados no Miro:
+
+• <a href="https://miro.com/app/board/uXjVO0p2LbU=/">Diagrama de classes e regras</a> <br> 
+
+• <a href="https://miro.com/app/board/uXjVO2d8Fmg=/">Diagrama de funcionalidades</a> <br>
+
+• <a href="https://miro.com/app/board/uXjVOsfh1Sw=/">Diagrama de rotas do site</a> <br>
+
+<br>
+	
+<h2 align="center"> <a name="Team">  Team </a> </h2>
   
-  <table align="center">
+<table align="center">
   <tr>
     <td align="center"><a href="https://github.com/aline-fagundes"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102121711?s=400&u=65912f1e97edf6fc26f36aec52fff6089807cb36&v=4" width="100px;" alt=""/><br /><sub><b>Aline Napoli Fagundes</b></sub></a><br />
     <td align="center"><a href="https://github.com/brendabba"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/48896682?v=4" width="100px;" alt=""/><br /><sub><b>Brenda Alcântara</b></sub></a><br />
