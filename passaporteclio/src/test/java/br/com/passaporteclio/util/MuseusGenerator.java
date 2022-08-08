@@ -11,7 +11,7 @@ public class MuseusGenerator {
     public void cadastrarMuseu(TokenGenerator generator, MockMvc mockMvc) throws Exception {
         URI uri = new URI("/museus");
         String json = "{\r\n"
-                + "    \"nome\": \"Teste\",\r\n"
+                + "    \"nome\": \"Teste-Avaliacao\",\r\n"
                 + "    \"descricaoMuseu\": \"Criação de um museu de testes.\",\r\n"
                 + "    \"funcionamentoMuseu\": \"De segunda a segunda, das 10h às 22h.\",\r\n"
                 + "    \"urlFoto\": \"https://www.alura.com.br/artigos/assets/tipos-de-testes-principais-por-que-utiliza-los/imagem1.jpg\",\r\n"

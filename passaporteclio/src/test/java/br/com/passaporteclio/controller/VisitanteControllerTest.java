@@ -2,11 +2,7 @@ package br.com.passaporteclio.controller;
 
 import br.com.passaporteclio.service.VisitanteService;
 import br.com.passaporteclio.util.TokenGenerator;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -30,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-@TestMethodOrder(OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class VisitanteControllerTest {
 
     private TokenGenerator tokenGenerator;

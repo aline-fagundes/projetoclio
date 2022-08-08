@@ -12,6 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -55,12 +56,27 @@ public class PresencaControllerTest {
     public void deveriaDevolver200AoCadastrarPresencaComCreate() throws Exception {
 
         museuGenerator.cadastrarMuseu(tokenGenerator, mockMvc);
+
+        URI uriMuseu = new URI("/museus/buscarPorNome/Teste-Avaliacao");
+
+        ResultActions result =
+                mockMvc.
+                        perform(
+                                MockMvcRequestBuilders
+                                        .get(uriMuseu)
+                                        .header("Authorization", "Bearer " + tokenGenerator.obterTokenAdmin(mockMvc)));
+
+        String resultString = result.andReturn().getResponse().getContentAsString();
+
+        JacksonJsonParser jsonParser = new JacksonJsonParser();
+        String idMuseu = jsonParser.parseMap(resultString).get("id").toString();
+
         tokenGenerator.cadastrarVisitante(mockMvc);
 
         URI uri = new URI("/presenca");
         String json = "{\r\n"
                 + "    \"museu\": {\r\n"
-                + "        \"id\": \"1\"\r\n"
+                + "        \"id\": \"" + idMuseu + "\"\r\n"
                 + "    }\r\n"
                 + "}";
 

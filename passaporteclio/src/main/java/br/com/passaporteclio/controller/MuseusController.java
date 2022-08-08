@@ -64,12 +64,11 @@ public class MuseusController {
 	@GetMapping(value = "/buscarPorNome/{nome}", produces = { "application/json", "application/xml" })
 	@Operation(summary = "Exibir museu por nome")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<CollectionModel<MuseusDto>> findByNome(
-			@PathVariable("nome") String nome,
-			@PageableDefault(sort = "nome", direction = Direction.ASC, page = 0, size = 9) Pageable paginacao) {
-		
-		Page<MuseusDto> museuDto = service.buscarPorNome(nome, paginacao);
-		return ResponseEntity.ok(CollectionModel.of(museuDto));
+	public MuseusDto findByNome(@PathVariable("nome") String nome) {
+
+		MuseusDto museuDto = service.buscarPorNome(nome);
+		museuDto.add(linkTo(methodOn(MuseusController.class).findByNome(nome)).withSelfRel());
+		return museuDto;
 	}
 	
 	@GetMapping(value = "/notaMedia/{id}", produces = { "application/json", "application/xml" })
