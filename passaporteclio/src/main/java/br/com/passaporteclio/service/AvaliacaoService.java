@@ -56,7 +56,7 @@ public class AvaliacaoService {
 	
 	
 	public Map<String, List<AvaliacaoDto>> buscarPorVisitanteSeparadoPorMuseu(Long id, Long idUsuarioLogado, String perfilUsuarioLogado) {
-		
+
 		if(!perfilUsuarioLogado.equals("Administrador") && !idUsuarioLogado.equals(id)) {
 			throw new OperationNotAllowedException("Não é possível consultar a lista de avaliações de outro visitante!");
 		}
