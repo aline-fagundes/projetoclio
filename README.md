@@ -132,23 +132,58 @@ http://localhost:8080/swagger-ui.html
 
   <h2 align="center"> <a name="Technologies">  Technologies </a> </h2>
 
-Ferramentas que serão usadas na construção do projeto:
+Ferramentas usadas na construção do projeto:
 
-- [Miro](https://miro.com/pt/)
-- [Trello](https://trello.com/pt-BR)
-- [Java](https://www.java.com/pt-BR/)
-- [Spring](https://spring.io/)
-- [MySQL Workbench](https://www.mysql.com/products/workbench/)
-- [Postman](https://www.postman.com/)
-- [Swagger](https://swagger.io/)
-- [JUnit](https://junit.org/junit5/)
-- [Figma](https://www.figma.com/)
-- [HTML](https://www.w3schools.com/html/)
-- [CSS](https://www.css3.com/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Bootstrap](https://getbootstrap.com/)
-- [Angular](https://angular.io/)
+- Gerenciamento de sprints:
+<div>
+  <img alt="Clio-Slack" src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=slack&logoColor=white"><br>
+  <img alt="Clio-Trello" src="https://img.shields.io/badge/Trello-0052CC?style=flat&logo=trello&logoColor=white"><br>
+</div> 
+<br>
+
+- Diagramação e prototipação:
+<div>
+  <img alt="Clio-Miro" src="https://img.shields.io/badge/Miro-050038?style=flat&logo=Miro&logoColor=white"><br>
+  <img alt="Clio-Figma" src="https://img.shields.io/badge/Figma-F24E1E??style=flat&logo=figma&logoColor=white"><br>
+</div>  
+<br>
 	
+- Back-end:
+<div>
+  <img alt="Clio-Java" src="https://img.shields.io/badge/Java-ED8B00?style=flat&logo=java&logoColor=white"><br>
+  <img alt="Clio-Spring" src="https://img.shields.io/badge/Spring-6DB33F?style=flat&logo=spring&logoColor=white"><br>
+<img alt="Clio-SpringBoot" src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat&logo=Spring-Boot&logoColor=white"><br>
+<img alt="Clio-SpringData" src="https://img.shields.io/badge/SpringData-6DB33F?style=flat&logo=spring&logoColor=white"><br>
+  <img alt="Clio-SpringSecurity" src="https://img.shields.io/badge/Spring_Security-6DB33F?style=flat&logo=Spring-Security&logoColor=white"><br>
+  <img alt="Clio-MySQL" src="https://img.shields.io/badge/MySQL-00000F?style=flat&logo=mysql&logoColor=white"><br>
+  <img alt="Clio-Postman" src="https://img.shields.io/badge/Postman-FA7343?style=flat&logo=postman&logoColor=white"><br>
+  <img alt="Clio-JUnit" src="https://img.shields.io/badge/JUnit-CC0000?style=flat&logo=JUnit&logoColor=white"><br>
+</div>	
+<br>
+	
+- Documentação:
+<div>
+  <img alt="Clio-Swagger" src="https://img.shields.io/badge/Swagger-59666C?style=flat&logo=Swagger&logoColor=white"><br>
+</div>
+<br>
+	
+- Front-end:
+<div>
+  <img alt="Clio-HTML" src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white"><br>
+  <img alt="Clio-CSS" src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white"><br>
+  <img alt="Clio-Bootstrap" src="https://img.shields.io/badge/Bootstrap-563D7C?style=flat&logo=bootstrap&logoColor=white"><br>
+  <img alt="Clio-TypeScript" src="https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white"><br>
+  <img alt="Clio-Angular" src="https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white"><br>
+</div> 
+<br>
+	
+- IDE's:
+<div>
+  <img alt="Clio-Eclipse" src="https://img.shields.io/badge/Eclipse-2C2255?style=flat&logo=eclipse&logoColor=white"><br>
+  <img alt="Clio-IntelliJ" src="https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=flat&logo=intellij-idea&logoColor=white"><br>
+  <img alt="Clio-VSCode" src="https://img.shields.io/badge/-VS%20Code-260B02?style=flat&logo=visual-studio-code&logoColor=white">
+</div> 
+
   <br>
 
   <h2 align="center"> <a name="Team">  Team </a> </h2>
