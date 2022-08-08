@@ -134,10 +134,21 @@ http://localhost:8080/swagger-ui.html
 
 Ferramentas que serão usadas na construção do projeto:
 
+- [Miro](https://miro.com/pt/)
+- [Trello](https://trello.com/pt-BR)
+- [Java](https://www.java.com/pt-BR/)
 - [Spring](https://spring.io/)
-- [Angular](https://angular.io/)
 - [MySQL Workbench](https://www.mysql.com/products/workbench/)
-  
+- [Postman](https://www.postman.com/)
+- [Swagger](https://swagger.io/)
+- [JUnit](https://junit.org/junit5/)
+- [Figma](https://www.figma.com/)
+- [HTML](https://www.w3schools.com/html/)
+- [CSS](https://www.css3.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Angular](https://angular.io/)
+	
   <br>
 
   <h2 align="center"> <a name="Team">  Team </a> </h2>
