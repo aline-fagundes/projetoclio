@@ -1,4 +1,8 @@
- <samp>
+<div align="center">
+  <img align="center" src="https://github.com/bela-mad/projetoclio/blob/master/src/assets/logo_clio.png?raw=true" width="200px"/>
+</div>
+
+<samp>
   <h1 align="center"> Passaporte Clio </h1>
 <p align="center">
 Site que tem como proposta conectar pessoas a museus. Nele será possível conhecer mais sobre os museus do estado de São Paulo através de fotos, descrições, localização, informações sobre o funcionamento e avaliações de visitantes que estiveram nas instituições. Como atrativo, a aplicação também terá gamificação da experiência dos usuários por meio de um sistema de pontuação. A partir de determinadas interações – como logar, relatar se esteve em uma instituição e avaliar como foi sua visita – será possível acumular pontos que, então, serão convertidos em títulos. 
