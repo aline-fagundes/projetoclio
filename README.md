@@ -157,7 +157,7 @@ Ferramentas usadas na construção do projeto:
   <img alt="Clio-SpringSecurity" src="https://img.shields.io/badge/Spring_Security-6DB33F?style=flat&logo=Spring-Security&logoColor=white"><br>
   <img alt="Clio-MySQL" src="https://img.shields.io/badge/MySQL-00000F?style=flat&logo=mysql&logoColor=white"><br>
   <img alt="Clio-Postman" src="https://img.shields.io/badge/Postman-FA7343?style=flat&logo=postman&logoColor=white"><br>
-  <img alt="Clio-JUnit" src="https://img.shields.io/badge/JUnit-CC0000?style=flat&logo=JUnit&logoColor=white"><br>
+  <img alt="Clio-JUnit" src="https://img.shields.io/badge/JUnit-CC0000?style=flat&logo=JUnit5&logoColor=white"><br>
 </div>	
 <br>
 	
