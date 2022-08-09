@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab0381fb-a21e-4afc-9284-4113c6f6dd85" name="Changes" comment="Ajustes nos testes de VisitanteController e em configurações de banco de dados" />
+    <list default="true" id="ab0381fb-a21e-4afc-9284-4113c6f6dd85" name="Changes" comment="Ajustes nos testes de VisitanteController e em configurações de banco de dados">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +77,7 @@
       <recent name="br.com.passaporteclio.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in passaporteclio">
+  <component name="RunManager" selected="Application.PassaporteClioApplication">
     <configuration name="PassaporteClioApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="DB_PASSWORD" value="#110598amn" />
@@ -191,8 +194,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in passaporteclio" />
         <item itemvalue="Application.PassaporteClioApplication" />
+        <item itemvalue="JUnit.All in passaporteclio" />
         <item itemvalue="JUnit.PresencaControllerTest" />
         <item itemvalue="JUnit.AvaliacaoControllerTest.deveriaDevolver200AoCadastrarAvaliacaoComCreate" />
         <item itemvalue="JUnit.MuseusControllerTest" />

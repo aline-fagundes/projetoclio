@@ -11,9 +11,9 @@
 	
 	<groupId>br.com.passaporteclio</groupId>
 	<artifactId>passaporteclio</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>passaporteclio</name>
-	<description>Aplicação que tem como proposta conectar pessoas a museus. </description>
+	<description>Aplicação que tem como proposta conectar pessoas a museus.</description>
 	
 	<properties>
 		<java.version>17</java.version>
