@@ -108,8 +108,31 @@ public class VisitanteControllerTest {
     @Test
     @Order(4)
     public void deveriaDevolver200AoAtualizarVisitanteComUpdate() throws Exception {
+
+        URI uriCadastro = new URI("/visitante");
+        String jsonCadastro = "{\r\n"
+                + "    \"nome\": \"Teste\",\r\n"
+                + "    \"sobrenome\": \"Testando\",\r\n"
+                + "    \"user\": {\r\n"
+                + "        \"email\": \"teste-atualizar@email.com\",\r\n"
+                + "        \"senha\": \"123\"\r\n"
+                + "    }\r\n"
+                + "}";
+
+        ResultActions resultCadastro =
+                mockMvc.
+                        perform(
+                                MockMvcRequestBuilders
+                                        .post(uriCadastro)
+                                        .content(jsonCadastro)
+                                        .contentType(MediaType.APPLICATION_JSON));
+
+        JacksonJsonParser jsonParser = new JacksonJsonParser();
+        String resultStringCadastro = resultCadastro.andReturn().getResponse().getContentAsString();
+        String idVisitante = jsonParser.parseMap(resultStringCadastro).get("id").toString();
+
         URI uriAutenticacao = new URI("/auth");
-        String jsonAutenticacao = "{\"email\":\"teste@email.com\",\"senha\":\"123\"}";
+        String jsonAutenticacao = "{\"email\":\"teste-atualizar@email.com\",\"senha\":\"123\"}";
 
         ResultActions result =
                 mockMvc.
@@ -119,15 +142,13 @@ public class VisitanteControllerTest {
                                         .content(jsonAutenticacao)
                                         .contentType(MediaType.APPLICATION_JSON));
 
-        String resultString = result.andReturn().getResponse().getContentAsString();
+        String resultStringAuth = result.andReturn().getResponse().getContentAsString();
+        String tokenVisitante = jsonParser.parseMap(resultStringAuth).get("token").toString();
 
-        JacksonJsonParser jsonParser = new JacksonJsonParser();
-        String tokenVisitante = jsonParser.parseMap(resultString).get("token").toString();
-
-        URI uri = new URI("/visitante/1");
+        URI uri = new URI("/visitante/" + idVisitante);
         String json = "{\r\n"
-                + "    \"nome\": \"Testando\",\r\n"
-                + "    \"sobrenome\": \"Teste\"\r\n"
+                + "    \"nome\": \"Testando atualizar\",\r\n"
+                + "    \"sobrenome\": \"Teste atualizar\"\r\n"
                 + "}";
 
         mockMvc.
@@ -145,8 +166,31 @@ public class VisitanteControllerTest {
     @Test
     @Order(5)
     public void deveriaDevolver200AoAtualizarSenhaDoVisitanteComUpdatePassword() throws Exception {
+
+        URI uriCadastro = new URI("/visitante");
+        String jsonCadastro = "{\r\n"
+                + "    \"nome\": \"Teste\",\r\n"
+                + "    \"sobrenome\": \"Testando\",\r\n"
+                + "    \"user\": {\r\n"
+                + "        \"email\": \"teste-atualizar-senha@email.com\",\r\n"
+                + "        \"senha\": \"123\"\r\n"
+                + "    }\r\n"
+                + "}";
+
+        ResultActions resultCadastro =
+                mockMvc.
+                        perform(
+                                MockMvcRequestBuilders
+                                        .post(uriCadastro)
+                                        .content(jsonCadastro)
+                                        .contentType(MediaType.APPLICATION_JSON));
+
+        JacksonJsonParser jsonParser = new JacksonJsonParser();
+        String resultStringCadastro = resultCadastro.andReturn().getResponse().getContentAsString();
+        String idVisitante = jsonParser.parseMap(resultStringCadastro).get("id").toString();
+
         URI uriAutenticacao = new URI("/auth");
-        String jsonAutenticacao = "{\"email\":\"teste@email.com\",\"senha\":\"123\"}";
+        String jsonAutenticacao = "{\"email\":\"teste-atualizar-senha@email.com\",\"senha\":\"123\"}";
 
         ResultActions result =
                 mockMvc.
@@ -156,12 +200,10 @@ public class VisitanteControllerTest {
                                         .content(jsonAutenticacao)
                                         .contentType(MediaType.APPLICATION_JSON));
 
-        String resultString = result.andReturn().getResponse().getContentAsString();
+        String resultStringAuth = result.andReturn().getResponse().getContentAsString();
+        String tokenVisitante = jsonParser.parseMap(resultStringAuth).get("token").toString();
 
-        JacksonJsonParser jsonParser = new JacksonJsonParser();
-        String tokenVisitante = jsonParser.parseMap(resultString).get("token").toString();
-
-        URI uri = new URI("/visitante/alterar-senha/1");
+        URI uri = new URI("/visitante/alterar-senha/" + idVisitante);
         String json = "{\r\n"
                 + "    \"senhaAntiga\": \"123\",\r\n"
                 + "    \"senhaNova\": \"321\",\r\n"
