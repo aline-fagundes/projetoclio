@@ -20,53 +20,32 @@ import java.net.URI;
 @ActiveProfiles("test")
 public class AuthControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+	@Autowired
+	private MockMvc mockMvc;
 
-    @Test
-    public void deveriaDevolver200CasoOsDadosDeAutenticacaoEstejamCorretos() throws Exception {
-        URI uri = new URI("/auth");
-        String json = "{\"email\":\"admin@email.com\",\"senha\":\"123\"}";
-        mockMvc
-                .perform(
-                        MockMvcRequestBuilders
-                                .post(uri)
-                                .content(json)
-                                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers
-                        .status()
-                        .is(200));
-    }
+	@Test
+	public void deveriaDevolver200CasoOsDadosDeAutenticacaoEstejamCorretos() throws Exception {
+		URI uri = new URI("/auth");
+		String json = "{\"email\":\"admin@email.com\",\"senha\":\"123\"}";
+		mockMvc.perform(MockMvcRequestBuilders.post(uri).content(json).contentType(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().is(200));
+	}
 
-    @Test
-    public void deveriaDevolver500CasoEmailParaAutenticacaoEstejaIncorreto() throws Exception {
-        URI uri = new URI("/auth");
-        String json = "{\"email\":\"invalido@email.com\",\"senha\":\"123\"}";
+	@Test
+	public void deveriaDevolver500CasoEmailParaAutenticacaoEstejaIncorreto() throws Exception {
+		URI uri = new URI("/auth");
+		String json = "{\"email\":\"invalido@email.com\",\"senha\":\"123\"}";
 
-        mockMvc
-                .perform(
-                        MockMvcRequestBuilders
-                                .post(uri)
-                                .content(json)
-                                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers
-                        .status()
-                        .is(500));
-    }
+		mockMvc.perform(MockMvcRequestBuilders.post(uri).content(json).contentType(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().is(500));
+	}
 
-    @Test
-    public void deveriaDevolver500CasoSenhaParaAutenticacaoEstejaIncorreta() throws Exception {
-        URI uri = new URI("/auth");
-        String json = "{\"email\":\"admin@email.com\",\"senha\":\"abc\"}";
+	@Test
+	public void deveriaDevolver500CasoSenhaParaAutenticacaoEstejaIncorreta() throws Exception {
+		URI uri = new URI("/auth");
+		String json = "{\"email\":\"admin@email.com\",\"senha\":\"abc\"}";
 
-        mockMvc
-                .perform(
-                        MockMvcRequestBuilders
-                                .post(uri)
-                                .content(json)
-                                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers
-                        .status()
-                        .is(500));
-    }
+		mockMvc.perform(MockMvcRequestBuilders.post(uri).content(json).contentType(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().is(500));
+	}
 }

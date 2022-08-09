@@ -1,6 +1,5 @@
-package br.com.passaporteclio.passaporteclio;
+package br.com.passaporteclio;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest

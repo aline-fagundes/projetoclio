@@ -46,6 +46,5 @@ public class Avaliacao implements Serializable {
 	
 	@NotNull
 	@ManyToOne
-	private User autor;
-		
+	private User autor;		
 }

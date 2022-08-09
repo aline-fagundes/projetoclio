@@ -1,8 +1,11 @@
 package br.com.passaporteclio.service;
 
-import br.com.passaporteclio.domain.entity.User;
-import br.com.passaporteclio.repository.UserRepository;
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,9 +16,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import br.com.passaporteclio.domain.entity.User;
+import br.com.passaporteclio.repository.UserRepository;
 
 @ExtendWith(SpringExtension.class)
 public class UserServiceTest {
@@ -46,10 +48,10 @@ public class UserServiceTest {
 
         UserDetails userReturned = userService.loadUserByUsername("testev@email.com");
 
-        Assert.assertEquals("testev@email.com", userReturned.getUsername());
+        assertEquals("testev@email.com", userReturned.getUsername());
     }
 
-    @Test //(expected = UsernameNotFoundException.class)
+    @Test // (expected = UsernameNotFoundException.class)
     public void testloadUserByUsernameComErro() {
         {
             UsernameNotFoundException exception = assertThrows(

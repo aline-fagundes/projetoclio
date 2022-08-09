@@ -1,8 +1,14 @@
 package br.com.passaporteclio.controller;
 
-import br.com.passaporteclio.service.VisitanteService;
-import br.com.passaporteclio.util.TokenGenerator;
-import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import java.net.URI;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -18,9 +24,8 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.net.URI;
-
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import br.com.passaporteclio.service.VisitanteService;
+import br.com.passaporteclio.util.TokenGenerator;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
