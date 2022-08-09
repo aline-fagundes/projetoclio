@@ -1,15 +1,5 @@
 package br.com.passaporteclio.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import lombok.Builder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-
 import br.com.passaporteclio.adapter.DozerConverter;
 import br.com.passaporteclio.domain.dto.AlteraSenhaVisitanteDto;
 import br.com.passaporteclio.domain.dto.AlteraVisitanteDto;
@@ -22,9 +12,16 @@ import br.com.passaporteclio.exception.ResourceNotFoundException;
 import br.com.passaporteclio.repository.PermissionRepository;
 import br.com.passaporteclio.repository.UserRepository;
 import br.com.passaporteclio.repository.VisitanteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
-@Builder
 public class VisitanteService {
 
 	@Autowired
