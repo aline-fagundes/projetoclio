@@ -7,9 +7,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Permission implements GrantedAuthority, Serializable {
 
 	private static final long serialVersionUID = 1L;

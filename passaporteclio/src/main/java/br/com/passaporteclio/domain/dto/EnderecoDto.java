@@ -6,13 +6,14 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper=false)
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class EnderecoDto extends RepresentationModel<EnderecoDto> implements Serializable{
 
 	private static final long serialVersionUID = 1L;

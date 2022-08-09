@@ -12,10 +12,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements UserDetails, Serializable {
 
 	private static final long serialVersionUID = 1L;
