@@ -10,12 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Visitante implements Serializable{
 	 
 	private static final long serialVersionUID = 1L;

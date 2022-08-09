@@ -4,13 +4,14 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotBlank;
 
+import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class AlteraVisitanteDto extends RepresentationModel<AlteraVisitanteDto> implements Serializable {
 
 	private static final long serialVersionUID = 1L;

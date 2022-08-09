@@ -3,6 +3,7 @@ package br.com.passaporteclio.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +24,7 @@ import br.com.passaporteclio.repository.UserRepository;
 import br.com.passaporteclio.repository.VisitanteRepository;
 
 @Service
+@Builder
 public class VisitanteService {
 
 	@Autowired

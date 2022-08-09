@@ -4,19 +4,20 @@ import br.com.passaporteclio.domain.entity.User;
 import br.com.passaporteclio.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 public class UserServiceTest {
 
     @InjectMocks
@@ -26,9 +27,11 @@ public class UserServiceTest {
     private UserRepository userRepository;
 
     @Before
-    public void setUp() { MockitoAnnotations.openMocks(this); }
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
-    public User mockUserEntity(){
+    public User mockUserEntity() {
         return User.builder()
                 .id(1L)
                 .perfil("TESTE")
@@ -38,7 +41,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testloadUserByUsernameComSucesso(){
+    public void testloadUserByUsernameComSucesso() {
         when(userRepository.findByEmail(any())).thenReturn(mockUserEntity());
 
         UserDetails userReturned = userService.loadUserByUsername("testev@email.com");
@@ -46,10 +49,17 @@ public class UserServiceTest {
         Assert.assertEquals("testev@email.com", userReturned.getUsername());
     }
 
-    @Test(expected = UsernameNotFoundException.class)
-    public void testloadUserByUsernameComErro(){
-        when(userRepository.findByEmail(any())).thenReturn(null);
+    @Test //(expected = UsernameNotFoundException.class)
+    public void testloadUserByUsernameComErro() {
+        {
+            UsernameNotFoundException exception = assertThrows(
+                    UsernameNotFoundException.class, () -> {
+                        when(userRepository.findByEmail(any())).thenReturn(null);
 
-        userService.loadUserByUsername("testev@email.com");
+                        userService.loadUserByUsername("testev@email.com");
+                    }
+            );
+            assertFalse(exception.getMessage().equals("Email incorreto"));
+        }
     }
 }

@@ -9,8 +9,8 @@ import br.com.passaporteclio.exception.ResourceNotFoundException;
 import br.com.passaporteclio.repository.MuseusRepository;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -18,15 +18,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Collections;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 public class MuseusServiceTest {
 	
 	@InjectMocks
@@ -102,11 +104,15 @@ public class MuseusServiceTest {
 		Assert.assertNotNull(museuReturned);
 
 	}
-	@Test(expected = ResourceNotFoundException.class)
+	@Test
 	public void testBuscarPorIdSemSucesso(){
-		when(museuRepository.findById(any())).thenReturn(Optional.empty());
-
-		museuService.buscarPorId(1L);
+		ResourceNotFoundException exception = assertThrows(
+				ResourceNotFoundException.class, () -> {
+					when(museuRepository.findById(any())).thenReturn(Optional.empty());
+					museuService.buscarPorId(1L);
+				}
+		);
+		assertTrue(exception.getMessage().equals("Não foi encontrado registro com esse Id!"));
 	}
 	@Test
 	public void testBuscarTodos(){
@@ -121,13 +127,11 @@ public class MuseusServiceTest {
 
 	@Test
 	public void testBuscarPorNome(){
-		Pageable pageable = PageRequest.of(0, 8);
+		when(museuRepository.findFirstByNome("Teste")).thenReturn(Optional.of(mockMuseusEntity()));
 
-		when(museuRepository.findByNome("Teste",pageable)).thenReturn(mockPageMuseus());
+		MuseusDto museusDto = museuService.buscarPorNome("Teste");
 
-		Page<MuseusDto> museusDtoPage = museuService.buscarPorNome("Teste",pageable);
-
-		Assert.assertEquals(1L, museusDtoPage.getTotalElements());
+		Assert.assertTrue(museusDto.getId() == 1L);
 	}
 
 	@Test
@@ -140,13 +144,17 @@ public class MuseusServiceTest {
 		verify(museuRepository).delete(any());
 	}
 
-	@Test(expected = ResourceNotFoundException.class)
+	@Test//(expected = ResourceNotFoundException.class)
 	public void testDeletarSemSucesso(){
-		when(museuRepository.findById(any())).thenReturn(Optional.empty());
-		doNothing().when(museuRepository).delete(any());
+		ResourceNotFoundException exception = assertThrows(
+				ResourceNotFoundException.class, () -> {
+					when(museuRepository.findById(any())).thenReturn(Optional.empty());
+					doNothing().when(museuRepository).delete(any());
 
-		museuService.deletar(1L);
-
+					museuService.deletar(1L);
+				}
+		);
+		assertTrue(exception.getMessage().equals("Não foi encontrado registro com esse Id!"));
 	}
 
 	@Test
@@ -160,14 +168,17 @@ public class MuseusServiceTest {
 		Assert.assertEquals(1L, (long) museuReturned.getId());
 	}
 
-	@Test(expected = ResourceNotFoundException.class)
+	@Test//(expected = ResourceNotFoundException.class)
 	public void testAtualizarSemSucesso(){
-		when(museuRepository.findById(any())).thenReturn(Optional.empty());
+			ResourceNotFoundException exception = assertThrows(
+					ResourceNotFoundException.class, () -> {
+						when(museuRepository.findById(any())).thenReturn(Optional.empty());
 
-		MuseusDto museuReturned = museuService.atualizar(1L,mockMuseusDtoWithoutId());
-
-		Assert.assertEquals(1L, (long) museuReturned.getId());
-	}
+						MuseusDto museuReturned = museuService.atualizar(1L,mockMuseusDtoWithoutId());
+					}
+			);
+	assertTrue(exception.getMessage().equals("Não foi encontrado registro com esse Id!"));
+}
 
 	@Test
 	public void testNotaMediaComSucesso(){
@@ -179,13 +190,16 @@ public class MuseusServiceTest {
 		Assert.assertEquals(10.0, mediaReturned.getNotaMedia(), 0.0);
 	}
 
-	@Test(expected = ResourceNotFoundException.class)
+	@Test//(expected = ResourceNotFoundException.class)
 	public void testNotaMediaSemSucesso(){
-		when(museuRepository.findById(any())).thenReturn(Optional.empty());
-		when(museuRepository.getNotaMedia(1L)).thenReturn(10.0);
+		ResourceNotFoundException exception = assertThrows(
+				ResourceNotFoundException.class, () -> {	when(museuRepository.findById(any())).thenReturn(Optional.empty());
+					when(museuRepository.getNotaMedia(1L)).thenReturn(10.0);
 
-		NotaMediaMuseuDto mediaReturned = museuService.calculaMedia(1L);
+					NotaMediaMuseuDto mediaReturned = museuService.calculaMedia(1L);
+				});
 
-		Assert.assertEquals(10.0, mediaReturned.getNotaMedia(), 0.0);
+		assertTrue(exception.getMessage().equals("Não foi encontrado registro com esse Id!"));
+		//Assert.assertEquals(10.0, mediaReturned.getNotaMedia(), 0.0);
 	}
 }
