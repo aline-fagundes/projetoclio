@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab0381fb-a21e-4afc-9284-4113c6f6dd85" name="Changes" comment="Ajustes nos testes de VisitanteController e em configurações de banco de dados" />
+    <list default="true" id="ab0381fb-a21e-4afc-9284-4113c6f6dd85" name="Changes" comment="Ajustes finais para padronização do projeto">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/domain/dto/CriaPresencaDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/domain/dto/CriaPresencaDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/service/AvaliacaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/service/AvaliacaoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/service/PresencaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/service/PresencaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/passaporteclio/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/passaporteclio/service/UserServiceTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,17 +55,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/acmna/Documents/PROGRAMAÇÃO/projetoclio/passaporteclio/pom.xml",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/acmna/Documents/PROGRAMAÇÃO/projetoclio/passaporteclio/pom.xml&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\acmna\Documents\PROGRAMAÇÃO\projetoclio\passaporteclio\src\main\resources" />
@@ -74,7 +80,7 @@
       <recent name="br.com.passaporteclio.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PassaporteClioApplication">
+  <component name="RunManager" selected="JUnit.All in passaporteclio">
     <configuration name="PassaporteClioApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="DB_PASSWORD" value="#110598amn" />
@@ -191,8 +197,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PassaporteClioApplication" />
         <item itemvalue="JUnit.All in passaporteclio" />
+        <item itemvalue="Application.PassaporteClioApplication" />
         <item itemvalue="JUnit.PresencaControllerTest" />
         <item itemvalue="JUnit.AvaliacaoControllerTest.deveriaDevolver200AoCadastrarAvaliacaoComCreate" />
         <item itemvalue="JUnit.MuseusControllerTest" />
@@ -327,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660005177752</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Ajustes finais para padronização do projeto">
+      <created>1660086317948</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1660086317948</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -357,7 +370,8 @@
     <MESSAGE value="Remoção de importações que não serão mais utilizadas" />
     <MESSAGE value="Refactor dos testes de Controllers" />
     <MESSAGE value="Ajustes nos testes de VisitanteController e em configurações de banco de dados" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajustes nos testes de VisitanteController e em configurações de banco de dados" />
+    <MESSAGE value="Ajustes finais para padronização do projeto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustes finais para padronização do projeto" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/passaporteclio$AuthControllerTest.ic" NAME="AuthControllerTest Coverage Results" MODIFIED="1659911797971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

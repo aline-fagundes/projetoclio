@@ -43,7 +43,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testloadUserByUsernameComSucesso() {
+    public void testaloadUserByUsernameComSucesso() {
         when(userRepository.findByEmail(any())).thenReturn(mockUserEntity());
 
         UserDetails userReturned = userService.loadUserByUsername("testev@email.com");
@@ -52,7 +52,7 @@ public class UserServiceTest {
     }
 
     @Test // (expected = UsernameNotFoundException.class)
-    public void testloadUserByUsernameComErro() {
+    public void testaloadUserByUsernameComErro() {
         {
             UsernameNotFoundException exception = assertThrows(
                     UsernameNotFoundException.class, () -> {

@@ -1,5 +1,6 @@
 package br.com.passaporteclio.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import lombok.AllArgsConstructor;
 @Service
 public class PresencaService {
 
+	@Autowired
 	private PresencaRepository repository;
 
 	public CriaPresencaDto inserir(CriaPresencaDto criacaoPresencaDto) {
