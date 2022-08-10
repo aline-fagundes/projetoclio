@@ -20,7 +20,6 @@ import br.com.passaporteclio.exception.ResourceNotFoundException;
 import br.com.passaporteclio.repository.AvaliacaoRepository;
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 @Service
 public class AvaliacaoService {
 
@@ -37,25 +36,25 @@ public class AvaliacaoService {
 		return avaliacaoGravada;
 	}
 
-	
+
 	public Page<AvaliacaoDto> buscarTodas(Pageable paginacao) {
 		var page = repository.findAll(paginacao);
 		return page.map(this::convertToAvaliacaoDto);
 	}
 
-	
+
 	public AvaliacaoDto buscarPorId(Long id) {
 		var avaliacaoEntity = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
 		return DozerConverter.parseObject(avaliacaoEntity, AvaliacaoDto.class);
 	}
-	
-	
+
+
 	public Page<AvaliacaoDto> buscarPorMuseu(Long idMuseu, Pageable paginacao) {
 		var page = repository.findByMuseuId(idMuseu, paginacao);
 		return page.map(this::convertToAvaliacaoDto);
 	}
-	
+
 	
 	public Map<String, List<AvaliacaoDto>> buscarPorVisitanteSeparadoPorMuseu(Long id, Long idUsuarioLogado, String perfilUsuarioLogado) {
 
@@ -81,7 +80,7 @@ public class AvaliacaoService {
 		return avaliacoesPorMuseu;
 	}
 
-	
+
 	public AtualizaAvaliacaoDto atualizar(Long id, AtualizaAvaliacaoDto avaliacao, Long idUsuarioLogado) {
 		System.out.println("Iniciando método atualizar...");
 		
@@ -101,7 +100,7 @@ public class AvaliacaoService {
 		return avaliacaoAlterada;
 	}
 
-	
+
 	public void deletar(Long id, Long idUsuarioLogado, String perfilUsuarioLogado) {
 		System.out.println("Iniciando método deletar...");
 		
@@ -117,8 +116,8 @@ public class AvaliacaoService {
 			
 			System.out.println("Finalizando método deletar...");
 		}
-	
-	
+
+
 	public void denunciar(Long id) {
 		var avaliacaoEntity = repository.findById(id)
 				.orElseThrow(() ->
@@ -127,14 +126,14 @@ public class AvaliacaoService {
 		avaliacaoEntity.setDenunciada(true);
 		repository.save(avaliacaoEntity);
 	}		
-	
-	
+
+
 	public Page<AvaliacaoDto> buscarAvaliacoesDenunciadas(Pageable paginacao) {
 		var page = repository.findByDenunciada(true, paginacao);
 		return page.map(this::convertToAvaliacaoDto);
 	}
-	
-	
+
+
 	private AvaliacaoDto convertToAvaliacaoDto(Avaliacao entity) {
 		return DozerConverter.parseObject(entity, AvaliacaoDto.class);
 	}

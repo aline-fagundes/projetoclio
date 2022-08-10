@@ -1,8 +1,6 @@
 package br.com.passaporteclio.domain.dto;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.validation.Valid;
@@ -12,6 +10,8 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class VisitanteDto extends RepresentationModel<VisitanteDto> implements Serializable {
 
 	private static final long serialVersionUID = 1L;

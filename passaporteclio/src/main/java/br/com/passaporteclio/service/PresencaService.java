@@ -14,7 +14,6 @@ import br.com.passaporteclio.exception.ResourceNotFoundException;
 import br.com.passaporteclio.repository.PresencaRepository;
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 @Service
 public class PresencaService {
 
