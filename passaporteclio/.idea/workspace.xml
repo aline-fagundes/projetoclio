@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab0381fb-a21e-4afc-9284-4113c6f6dd85" name="Changes" comment="Ajustes finais para padronização do projeto">
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/domain/dto/VisitanteDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/domain/dto/VisitanteDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/service/AvaliacaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/service/AvaliacaoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/service/PresencaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/service/PresencaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/passaporteclio/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/br.com.passaporteclio/passaporteclio/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/br.com.passaporteclio/passaporteclio/pom.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,8 +85,9 @@
     <configuration name="PassaporteClioApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="DB_PASSWORD" value="#110598amn" />
-        <env name="DB_USERNAME" value="root" />
         <env name="DB_URL" value="jdbc:mysql://localhost:3306/passaporte_clio?createDatabaseIfNotExist=true&amp;serverTimezone=true&amp;serverTimezone=UTC" />
+        <env name="DB_USERNAME" value="root" />
+        <env name="PORT" value="8080" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="br.com.passaporteclio.PassaporteClioApplication" />
       <module name="passaporteclio" />

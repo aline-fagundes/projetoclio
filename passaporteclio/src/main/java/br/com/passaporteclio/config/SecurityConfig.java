@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 		.antMatchers("/swagger-ui/**", "/swagger-ui.html").permitAll()
 		.antMatchers(HttpMethod.POST, "/auth").permitAll()
-        .antMatchers(HttpMethod.GET, "/museus").authenticated()
+        .antMatchers(HttpMethod.GET, "/museus").permitAll()
         .antMatchers(HttpMethod.GET, "/museus/notaMedia/*").authenticated()
         .antMatchers(HttpMethod.POST, "/museus").hasRole("ADMINISTRADOR")
         .antMatchers(HttpMethod.PUT, "/museus/*").hasRole("ADMINISTRADOR")
