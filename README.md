@@ -19,6 +19,8 @@ Site que tem como proposta conectar pessoas a museus. Nele será possível conhe
 	
   • <a href="#Documentation">Documentation</a> <br>
 
+  • <a href="#Deploy">Deploy</a> <br>
+
   • <a href="#Flowchart">Flowchart</a> <br>
 
   • <a href="https://www.figma.com/file/oJyw8wJ8eycPPS7B9FbzYl/Passaporte-Clio?node-id=340%3A620">Figma Prototype</a> <br>
@@ -138,7 +140,7 @@ Diagrama de classes que compõem a aplicação:
 
 - Acesso:
 
-Para consultar as funcionalidades implementadas, acesse a documentação Swagger através do link: 
+Para consultar as funcionalidades da API implementadas, acesse a documentação Swagger através do link: 
 https://api-passaporteclio.herokuapp.com/swagger-ui/index.html
 <br>
 	
@@ -201,6 +203,16 @@ Credencial com permissão de administrador para testes:
 
 <br>
 
+<h2 align="center"> <a name="Deploy">  Deploy </h2>
+
+A API e o banco de dados estão hospedados nos seguintes links: 
+
+- https://db-passaporteclio.herokuapp.com
+
+- https://api-passaporteclio.herokuapp.com
+
+<br>
+
 <h2 align="center"> <a name="Flowchart">  Flowchart</h2>
 
 Fluxogramas de rotas:
@@ -247,6 +259,14 @@ Ferramentas usadas na construção do projeto:
   <img alt="Clio-SpringSecurity" src="https://img.shields.io/badge/Spring_Security-6DB33F?style=flat&logo=Spring-Security&logoColor=white">
 </div>	
 <br>
+
+- Versionamento:
+<div>
+  <img alt="Clio-Git" src="https://img.shields.io/badge/GIT-E44C30?style=flat&logo=git&logoColor=white">
+  <img alt="Clio-GitHub" src="https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white"><br>
+</div>
+<br>
+
 	
 - Documentação:
 <div>
