@@ -263,7 +263,7 @@ Ferramentas usadas na construção do projeto:
 
 - Versionamento:
 <div>
-  <img alt="Clio-Git" src="https://img.shields.io/badge/GIT-E44C30?style=flat&logo=git&logoColor=white">
+  <img alt="Clio-Git" src="https://img.shields.io/badge/Git-E44C30?style=flat&logo=git&logoColor=white">
   <img alt="Clio-GitHub" src="https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white"><br>
 </div>
 <br>
