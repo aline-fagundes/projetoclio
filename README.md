@@ -194,7 +194,14 @@ Ferramentas usadas na construção do projeto:
   <img alt="Clio-Swagger" src="https://img.shields.io/badge/Swagger-59666C?style=flat&logo=Swagger&logoColor=white"><br>
 </div>
 <br>
-	
+
+- Deploy:
+<div>
+  <img alt="Clio-Docker" src="https://img.shields.io/badge/Docker-0078D4?style=flat&logo=Docker&logoColor=white">
+  <img alt="Clio-Heroku" src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white">
+</div>
+<br>
+
 - Front-end:
 <div>
   <img alt="Clio-HTML" src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white">
