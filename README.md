@@ -57,7 +57,7 @@ Acessos:
     
 O site apresentará as seguintes informações de cada instituição:
 
-- [x] Endereço (com mapa da localicação);
+- [x] Endereço;
 
 - [x] Breve descrição da instituição;
 
@@ -111,7 +111,7 @@ A partir de determinadas interações (realizar cadastro, postar avaliações, r
 
 Será possível fazer as seguintes interações:
 
-- [x] Realizar cadastro, logar e deslogar no site;
+- [x] Logar e deslogar no site;
 
 - [x] Alterar senha;
 
