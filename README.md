@@ -17,7 +17,7 @@ Site que tem como proposta conectar pessoas a museus. Nele será possível conhe
 	
   • <a href="#UML">UML</a> <br>
 	
-  • <a href="#APIREST">API REST</a> <br>
+  • <a href="#Documentation">Documentation</a> <br>
 
   • <a href="#Flowchart">Flowchart</a> <br>
 
@@ -134,11 +134,70 @@ Diagrama de classes que compõem a aplicação:
 
 <br>
 		
-<h2 align="center"> <a name="APIREST">  API REST </h2>
+<h2 align="center"> <a name="Documentation">  Documentation </h2>
 
-Para consultar as funcionalidades implementadas, acesse a documentação Swagger através da execução da aplicação e acesso ao link: 
+- Acesso:
 
-http://localhost:8080/swagger-ui.html
+Para consultar as funcionalidades implementadas, acesse a documentação Swagger através do link: 
+https://api-passaporteclio.herokuapp.com/swagger-ui/index.html
+<br>
+	
+- Autenticação:
+
+Para fazer requisições com `Try it out` que requerem permissão, é preciso obter um token de autenticação através do endpoint `/auth`.
+
+![image](https://user-images.githubusercontent.com/102121711/184142546-2343e686-fd3b-4276-a6b8-5a9a34b7d5ca.png)
+
+Credencial com permissão de administrador para testes:
+```json
+{
+  "email": "admin@email.com",
+  "senha": "123"
+}
+```
+<br>	
+	
+- Endpoints:
+	
+<details>
+<summary>Autenticação</summary>
+ 
+  |![image](https://user-images.githubusercontent.com/102121711/184140603-8bc2b0ee-85d0-4b09-b9e5-6c57dedbb693.png)|
+  |:--:|
+  | <b>Autenticação Endpoint</b>|
+</details>
+	
+<details>
+<summary>Visitante</summary>
+ 
+  |![image](https://user-images.githubusercontent.com/102121711/184139061-20e8f03d-a9df-46b8-861e-192c106ec175.png)|
+  |:--:|
+  | <b>Visitante Endpoint</b>|
+</details>
+
+<details>
+<summary>Museus</summary>
+ 
+  |![image](https://user-images.githubusercontent.com/102121711/184140814-a17e852d-05dd-4d14-98b7-cdc61d1d2ba1.png)|
+  |:--:|
+  | <b>Museus Endpoint</b>|
+</details>
+	
+<details>
+<summary>Avaliação</summary>
+ 
+  |![image](https://user-images.githubusercontent.com/102121711/184140957-e5533fb8-345d-486d-98f0-d0d4e69fd7e7.png)|
+  |:--:|
+  | <b>Avaliação Endpoint</b>|
+</details>
+
+<details>
+<summary>Presença</summary>
+ 
+  |![image](https://user-images.githubusercontent.com/102121711/184141055-4a585e95-b8c8-43fa-9a07-eb5cb732ceeb.png)|
+  |:--:|
+  | <b>Presença Endpoint</b>|
+</details>
 
 <br>
 
