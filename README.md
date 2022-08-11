@@ -141,6 +141,7 @@ Diagrama de classes que compõem a aplicação:
 - Acesso:
 
 Para consultar as funcionalidades da API implementadas, acesse a documentação Swagger através do link: 
+<br>
 https://api-passaporteclio.herokuapp.com/swagger-ui/index.html
 <br>
 	
@@ -162,7 +163,7 @@ Credencial com permissão de administrador para testes:
 - Endpoints:
 	
 <details>
-<summary>Autenticação</summary>
+<summary>Autenticação</summary><br>
  
   |![image](https://user-images.githubusercontent.com/102121711/184140603-8bc2b0ee-85d0-4b09-b9e5-6c57dedbb693.png)|
   |:--:|
@@ -170,7 +171,7 @@ Credencial com permissão de administrador para testes:
 </details>
 	
 <details>
-<summary>Visitante</summary>
+<summary>Visitante</summary><br>
  
   |![image](https://user-images.githubusercontent.com/102121711/184139061-20e8f03d-a9df-46b8-861e-192c106ec175.png)|
   |:--:|
@@ -178,7 +179,7 @@ Credencial com permissão de administrador para testes:
 </details>
 
 <details>
-<summary>Museus</summary>
+<summary>Museus</summary><br>
  
   |![image](https://user-images.githubusercontent.com/102121711/184140814-a17e852d-05dd-4d14-98b7-cdc61d1d2ba1.png)|
   |:--:|
@@ -186,7 +187,7 @@ Credencial com permissão de administrador para testes:
 </details>
 	
 <details>
-<summary>Avaliação</summary>
+<summary>Avaliação</summary><br>
  
   |![image](https://user-images.githubusercontent.com/102121711/184140957-e5533fb8-345d-486d-98f0-d0d4e69fd7e7.png)|
   |:--:|
@@ -194,7 +195,7 @@ Credencial com permissão de administrador para testes:
 </details>
 
 <details>
-<summary>Presença</summary>
+<summary>Presença</summary><br>
  
   |![image](https://user-images.githubusercontent.com/102121711/184141055-4a585e95-b8c8-43fa-9a07-eb5cb732ceeb.png)|
   |:--:|
@@ -333,4 +334,3 @@ Diagramas elaborados no Miro:
 </table>
 
 </samp>
-
