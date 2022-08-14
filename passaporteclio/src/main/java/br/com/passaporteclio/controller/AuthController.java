@@ -55,6 +55,7 @@ public class AuthController {
 			}
 			
 			Map<Object, Object> model = new HashMap<>();
+			model.put("userId", user.getId());
 			model.put("username", email);
 			model.put("token", token);
 
