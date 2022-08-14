@@ -17,4 +17,6 @@ public class CriaAvaliacaoUserDto extends RepresentationModel<CriaAvaliacaoUserD
 	
 	@NotNull
 	private Long id;
+
+	private String email;
 }
