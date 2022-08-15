@@ -17,7 +17,9 @@ Site que tem como proposta conectar pessoas a museus. Nele será possível conhe
 	
   • <a href="#UML">UML</a> <br>
 	
-  • <a href="#APIREST">API REST</a> <br>
+  • <a href="#Documentation">Documentation</a> <br>
+
+  • <a href="#Deploy">Deploy</a> <br>
 
   • <a href="#Flowchart">Flowchart</a> <br>
 
@@ -55,7 +57,7 @@ Acessos:
     
 O site apresentará as seguintes informações de cada instituição:
 
-- [x] Endereço (com mapa da localicação);
+- [x] Endereço;
 
 - [x] Breve descrição da instituição;
 
@@ -109,7 +111,7 @@ A partir de determinadas interações (realizar cadastro, postar avaliações, r
 
 Será possível fazer as seguintes interações:
 
-- [x] Realizar cadastro, logar e deslogar no site;
+- [x] Logar e deslogar no site;
 
 - [x] Alterar senha;
 
@@ -134,11 +136,81 @@ Diagrama de classes que compõem a aplicação:
 
 <br>
 		
-<h2 align="center"> <a name="APIREST">  API REST </h2>
+<h2 align="center"> <a name="Documentation">  Documentation </h2>
 
-Para consultar as funcionalidades implementadas, acesse a documentação Swagger através da execução da aplicação e acesso ao link: 
+- Acesso:
 
-http://localhost:8080/swagger-ui.html
+Para consultar as funcionalidades da API implementadas, acesse a documentação Swagger através do link: 
+<br>
+https://api-passaporteclio.herokuapp.com/swagger-ui/index.html
+<br>
+	
+- Autenticação:
+
+Para fazer requisições com `Try it out` que requerem permissão, é preciso obter um token de autenticação através do endpoint `/auth`.
+
+![image](https://user-images.githubusercontent.com/102121711/184142546-2343e686-fd3b-4276-a6b8-5a9a34b7d5ca.png)
+
+Credencial com permissão de administrador para testes:
+```json
+{
+  "email": "admin@email.com",
+  "senha": "123"
+}
+```
+<br>	
+	
+- Endpoints:
+	
+<details>
+<summary>Autenticação</summary><br>
+ 
+  |![image](https://user-images.githubusercontent.com/102121711/184140603-8bc2b0ee-85d0-4b09-b9e5-6c57dedbb693.png)|
+  |:--:|
+  | <b>Autenticação Endpoint</b>|
+</details>
+	
+<details>
+<summary>Visitante</summary><br>
+ 
+  |![image](https://user-images.githubusercontent.com/102121711/184139061-20e8f03d-a9df-46b8-861e-192c106ec175.png)|
+  |:--:|
+  | <b>Visitante Endpoint</b>|
+</details>
+
+<details>
+<summary>Museus</summary><br>
+ 
+  |![image](https://user-images.githubusercontent.com/102121711/184140814-a17e852d-05dd-4d14-98b7-cdc61d1d2ba1.png)|
+  |:--:|
+  | <b>Museus Endpoint</b>|
+</details>
+	
+<details>
+<summary>Avaliação</summary><br>
+ 
+  |![image](https://user-images.githubusercontent.com/102121711/184140957-e5533fb8-345d-486d-98f0-d0d4e69fd7e7.png)|
+  |:--:|
+  | <b>Avaliação Endpoint</b>|
+</details>
+
+<details>
+<summary>Presença</summary><br>
+ 
+  |![image](https://user-images.githubusercontent.com/102121711/184141055-4a585e95-b8c8-43fa-9a07-eb5cb732ceeb.png)|
+  |:--:|
+  | <b>Presença Endpoint</b>|
+</details>
+
+<br>
+
+<h2 align="center"> <a name="Deploy">  Deploy </h2>
+
+A API e o banco de dados estão hospedados nos seguintes links: 
+
+- https://db-passaporteclio.herokuapp.com
+
+- https://api-passaporteclio.herokuapp.com
 
 <br>
 
@@ -188,13 +260,28 @@ Ferramentas usadas na construção do projeto:
   <img alt="Clio-SpringSecurity" src="https://img.shields.io/badge/Spring_Security-6DB33F?style=flat&logo=Spring-Security&logoColor=white">
 </div>	
 <br>
+
+- Versionamento:
+<div>
+  <img alt="Clio-Git" src="https://img.shields.io/badge/Git-E44C30?style=flat&logo=git&logoColor=white">
+  <img alt="Clio-GitHub" src="https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white"><br>
+</div>
+<br>
+
 	
 - Documentação:
 <div>
   <img alt="Clio-Swagger" src="https://img.shields.io/badge/Swagger-59666C?style=flat&logo=Swagger&logoColor=white"><br>
 </div>
 <br>
-	
+
+- Deploy:
+<div>
+  <img alt="Clio-Docker" src="https://img.shields.io/badge/Docker-0078D4?style=flat&logo=Docker&logoColor=white">
+  <img alt="Clio-Heroku" src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white">
+</div>
+<br>
+
 - Front-end:
 <div>
   <img alt="Clio-HTML" src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white">
@@ -247,4 +334,3 @@ Diagramas elaborados no Miro:
 </table>
 
 </samp>
-

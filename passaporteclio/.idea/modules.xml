@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/projetoclio.iml" filepath="$PROJECT_DIR$/.idea/projetoclio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/passaporteclio.iml" filepath="$PROJECT_DIR$/passaporteclio.iml" />
     </modules>
   </component>
 </project>
