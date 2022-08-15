@@ -68,7 +68,20 @@ public class VisitanteController {
 		visitanteDto.add(linkTo(methodOn(VisitanteController.class).findById(id)).withSelfRel());
 		return visitanteDto;
 	}
-	
+
+	@SecurityRequirement(name = "bearer-key")
+	@GetMapping(value = "/userid", produces = { "application/json", "application/xml" })
+	@Operation(summary = "Exibir visitante por user id")
+	@ResponseStatus(value = HttpStatus.OK)
+	public RetornoVisitanteDto findByUsuarioLogado() {
+
+		User usuarioLogado = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Long idUsuarioLogado = usuarioLogado.getId();
+
+		RetornoVisitanteDto visitanteDto = service.buscarPorUserId(idUsuarioLogado);
+		return visitanteDto;
+	}
+
 	@PostMapping(consumes = { "application/json", "application/xml" }, 
 			produces = { "application/json", "application/xml" })
 	@Operation(summary = "Cadastrar visitante")
