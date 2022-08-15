@@ -126,7 +126,12 @@ public class VisitanteService {
 		return page.map(this::convertToVisitanteDTO);
 	}
 
-	
+	public RetornoVisitanteDto buscarPorUserId(Long idUsuarioLogado){
+		var entityVisitante = repository.findFistByUserId(idUsuarioLogado)
+				.orElseThrow(() -> new ResourceNotFoundException("Não foi encontrado registro com esse Id!"));
+
+		return DozerConverter.parseObject(entityVisitante, RetornoVisitanteDto.class);
+	}
 	public RetornoVisitanteDto buscarPorId(Long id, Long idUsuarioLogado, String perfilUsuarioLogado) {
 			
 		var entityVisitante = repository.findById(id)

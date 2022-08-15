@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import br.com.passaporteclio.domain.entity.Visitante;
 
+import java.util.Optional;
+
 @Repository
 public interface VisitanteRepository extends JpaRepository<Visitante, Long> {
-	
+    Optional<Visitante> findFistByUserId(Long userId);
 }
