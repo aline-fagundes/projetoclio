@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ab0381fb-a21e-4afc-9284-4113c6f6dd85" name="Changes" comment="Adição do arquivo Dockerfile para gerar imagem">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +69,7 @@
       <recent name="C:\Users\acmna\Documents\PROGRAMAÇÃO\projetoclio\passaporteclio\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\acmna\Documents\PROGRAMAÇÃO\projetoclio\passaporteclio\src\main\resources" />
       <recent name="C:\Users\acmna\Documents\PROGRAMAÇÃO\projetoclio\passaporteclio\src\test\resources" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -77,7 +79,7 @@
       <recent name="br.com.passaporteclio.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PassaporteClioApplication">
+  <component name="RunManager" selected="JUnit.All in passaporteclio">
     <configuration name="PassaporteClioApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="DB_PASSWORD" value="#110598amn" />
@@ -109,67 +111,12 @@
     <configuration name="All in passaporteclio" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="passaporteclio" />
       <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <envs>
         <env name="DB_PASSWORD" value="#110598amn" />
-      </envs>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AvaliacaoControllerTest.deveriaDevolver200AoCadastrarAvaliacaoComCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="passaporteclio" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="br.com.passaporteclio.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="br.com.passaporteclio.controller" />
-      <option name="MAIN_CLASS_NAME" value="br.com.passaporteclio.controller.AvaliacaoControllerTest" />
-      <option name="METHOD_NAME" value="deveriaDevolver200AoCadastrarAvaliacaoComCreate" />
-      <option name="TEST_OBJECT" value="method" />
-      <envs>
-        <env name="DB_PASSWORD" value="#110598amn" />
-      </envs>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MuseusControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="passaporteclio" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="br.com.passaporteclio.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="br.com.passaporteclio.controller" />
-      <option name="MAIN_CLASS_NAME" value="br.com.passaporteclio.controller.MuseusControllerTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <envs>
-        <env name="DB_PASSWORD" value="#110598amn" />
-      </envs>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PresencaControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="passaporteclio" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="br.com.passaporteclio.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="br.com.passaporteclio.controller" />
-      <option name="MAIN_CLASS_NAME" value="br.com.passaporteclio.controller.PresencaControllerTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <envs>
-        <env name="DB_PASSWORD" value="#110598amn" />
+        <env name="PORT" value="8080" />
       </envs>
       <method v="2">
         <option name="Make" enabled="true" />
@@ -188,18 +135,12 @@
     </configuration>
     <list>
       <item itemvalue="Application.PassaporteClioApplication" />
-      <item itemvalue="JUnit.AvaliacaoControllerTest.deveriaDevolver200AoCadastrarAvaliacaoComCreate" />
-      <item itemvalue="JUnit.MuseusControllerTest" />
-      <item itemvalue="JUnit.PresencaControllerTest" />
       <item itemvalue="JUnit.All in passaporteclio" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PassaporteClioApplication" />
         <item itemvalue="JUnit.All in passaporteclio" />
-        <item itemvalue="JUnit.PresencaControllerTest" />
-        <item itemvalue="JUnit.AvaliacaoControllerTest.deveriaDevolver200AoCadastrarAvaliacaoComCreate" />
-        <item itemvalue="JUnit.MuseusControllerTest" />
+        <item itemvalue="Application.PassaporteClioApplication" />
       </list>
     </recent_temporary>
   </component>
