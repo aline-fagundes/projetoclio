@@ -433,7 +433,7 @@ Ferramentas usadas na construção do projeto:
 
   <h4 align="center"> 🚧 LOADING... 🚧 </h4>
 
-<h3>RELEASES FUTUROS</h3>
+<h4>RELEASES FUTUROS</h4>
 
 - [x] Implementação de pontuação e ranking;
 
