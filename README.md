@@ -272,28 +272,28 @@ Para consultar as telas prototipadas no Figma, acesse o link:
 </details>	
 
 <details>
-<summary>Inicial</summary><br>
+<summary>Iniciar</summary><br>
 <div>
   <img src="https://user-images.githubusercontent.com/102121711/185140842-e00ef8c5-b6b2-4575-82a0-2719886ff5d4.png" width="300px"><br>
 </div>
 </details>
 
 <details>
-<summary>Ranking</summary><br>
+<summary>Consultar Ranking</summary><br>
 <div>
   <img src="https://user-images.githubusercontent.com/102121711/185140910-7ae99f55-c56e-47df-86d1-37b38f6122c8.png" width="300px"><br>
 </div> 
 </details>
 
 <details>
-<summary>Museus</summary><br>
+<summary>Consultar Museus</summary><br>
 <div>
   <img src="https://user-images.githubusercontent.com/102121711/185140997-934d2743-5a05-4aef-ab7e-24f368649f3d.png" width="300px"><br>
 </div>
 </details>
 
 <details>
-<summary>Museu</summary><br>
+<summary>Consultar Museu</summary><br>
 <div>
   <img src="https://user-images.githubusercontent.com/102121711/185141864-1c31201f-4e59-492c-8544-4be54995024e.png" width="300px"><br>
 </div> 
@@ -328,28 +328,28 @@ Para consultar as telas prototipadas no Figma, acesse o link:
 </details>
 
 <details>
-<summary>Moderação</summary><br>
+<summary>Moderar</summary><br>
 <div>
   <img src="https://user-images.githubusercontent.com/102121711/185140662-fe0061a9-370e-45d2-93b9-8a774b40a67c.png" width="300px"><br>
 </div> 
 </details>
 
 <details>
-<summary>Termos e condições</summary><br>
+<summary>Consultar Termos e Condições</summary><br>
 <div>
   <img src="https://user-images.githubusercontent.com/102121711/185141553-f8c9e28f-b4d5-4a61-8931-6f41bf3b091f.png" width="300px"><br>
 </div> 
 </details>
 
 <details>
-<summary>Termos de Privacidade</summary><br>
+<summary>Consultar Termos de Privacidade</summary><br>
 <div>
   <img src="https://user-images.githubusercontent.com/102121711/185145619-efde541f-be6d-4ee1-8b94-1789252e4ae3.png" width="300px"><br>
 </div> 
 </details>
 
 <details>
-<summary>Sobre</summary><br>
+<summary>Consultar Sobre</summary><br>
 <div>
   <img src="https://user-images.githubusercontent.com/102121711/185141425-6b86e71f-7a82-4144-8d90-de35f74b0306.png" width="300px"><br>
 </div> 
