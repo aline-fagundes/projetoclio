@@ -23,7 +23,7 @@ Site que tem como proposta conectar pessoas a museus. Nele será possível conhe
 
   • <a href="#Flowchart">Flowchart</a> <br>
 
-  • <a href="https://www.figma.com/file/oJyw8wJ8eycPPS7B9FbzYl/Passaporte-Clio?node-id=340%3A620">Figma Prototype</a> <br>
+  • <a href="#Prototype">Prototype</a> <br>
 	
   • <a href="#Status">Status</a> <br>
 	
@@ -226,6 +226,134 @@ Fluxogramas de rotas:
 <div align="center">
   <img src="https://user-images.githubusercontent.com/102121711/183488126-db175095-9b77-4d6c-99c0-9b093696fefa.jpg" width="850px"><br>
 </div> 
+
+<br>
+
+ <h2 align="center"> <a name="Prototype"> Prototype </a> </h2>
+
+- Acesso:
+
+Para consultar as telas prototipadas no Figma, acesse o link: 
+<br>
+<a href="https://www.figma.com/file/oJyw8wJ8eycPPS7B9FbzYl/Passaporte-Clio?node-id=340%3A620">https://www.figma.com/passaporte-clio</a>
+<br>
+
+- Paleta de cores: 
+
+<br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/102121711/185117201-34d3382d-2e19-4857-a0ef-11ce20b14ffc.jpg" width="400px"><br>
+</div> 
+
+<br>
+
+- Telas:
+
+<details>
+<summary>Logar</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185129738-15563a56-e624-4801-8eaa-10373184e7e4.png" width="300px"><br>
+</div> 
+</details>
+
+<details>
+<summary>Cadastrar</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185137391-da6d85a2-be47-44d5-adb2-77c031fe3849.png" width="300px"><br>
+</div> 
+</details>
+
+<details>
+<summary>Alterar Senha</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185138175-a6b2e18a-07c8-47ba-a082-b1fc028e290d.png" width="300px"><br>
+</div>
+</details>	
+
+<details>
+<summary>Inicial</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185140842-e00ef8c5-b6b2-4575-82a0-2719886ff5d4.png" width="300px"><br>
+</div>
+</details>
+
+<details>
+<summary>Ranking</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185140910-7ae99f55-c56e-47df-86d1-37b38f6122c8.png" width="300px"><br>
+</div> 
+</details>
+
+<details>
+<summary>Museus</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185140997-934d2743-5a05-4aef-ab7e-24f368649f3d.png" width="300px"><br>
+</div>
+</details>
+
+<details>
+<summary>Museu</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185141864-1c31201f-4e59-492c-8544-4be54995024e.png" width="300px"><br>
+</div> 
+</details>
+
+<details>
+<summary>Cadastrar Museu</summary><br>
+ <div>
+  <img src="https://user-images.githubusercontent.com/102121711/185139347-47cd96c2-e62f-4706-9673-92a7e37b3c4d.png" width="300px"><br>
+</div>
+</details>
+
+<details>
+<summary>Alterar Museu</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185140345-bd5c22ba-c485-411d-a6e0-0a6fe98aa718.png" width="300px"><br>
+</div> 
+</details>
+
+<details>
+<summary>Perfil Visitante</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185146597-1b05ffa2-adaf-4dff-a9f3-5077ab05cbfd.png" width="300px"><br>
+</div> 
+</details>
+
+<details>
+<summary>Perfil Administrador</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185139789-889cada1-18b7-4e2b-aa0c-6f4bfee94158.png" width="300px"><br>
+</div> 
+</details>
+
+<details>
+<summary>Moderação</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185140662-fe0061a9-370e-45d2-93b9-8a774b40a67c.png" width="300px"><br>
+</div> 
+</details>
+
+<details>
+<summary>Termos e condições</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185141553-f8c9e28f-b4d5-4a61-8931-6f41bf3b091f.png" width="300px"><br>
+</div> 
+</details>
+
+<details>
+<summary>Termos de Privacidade</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185145619-efde541f-be6d-4ee1-8b94-1789252e4ae3.png" width="300px"><br>
+</div> 
+</details>
+
+<details>
+<summary>Sobre</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185141425-6b86e71f-7a82-4144-8d90-de35f74b0306.png" width="300px"><br>
+</div> 
+</details>
 
 <br>
 
