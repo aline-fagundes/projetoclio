@@ -251,6 +251,20 @@ Para consultar as telas prototipadas no Figma, acesse o link:
 - Telas:
 
 <details>
+<summary>Sobre</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185141425-6b86e71f-7a82-4144-8d90-de35f74b0306.png" width="300px"><br>
+</div> 
+</details>
+
+<details>
+<summary>Iniciar</summary><br>
+<div>
+  <img src="https://user-images.githubusercontent.com/102121711/185140842-e00ef8c5-b6b2-4575-82a0-2719886ff5d4.png" width="300px"><br>
+</div>
+</details>
+
+<details>
 <summary>Logar</summary><br>
 <div>
   <img src="https://user-images.githubusercontent.com/102121711/185129738-15563a56-e624-4801-8eaa-10373184e7e4.png" width="300px"><br>
@@ -270,13 +284,6 @@ Para consultar as telas prototipadas no Figma, acesse o link:
   <img src="https://user-images.githubusercontent.com/102121711/185138175-a6b2e18a-07c8-47ba-a082-b1fc028e290d.png" width="300px"><br>
 </div>
 </details>	
-
-<details>
-<summary>Iniciar</summary><br>
-<div>
-  <img src="https://user-images.githubusercontent.com/102121711/185140842-e00ef8c5-b6b2-4575-82a0-2719886ff5d4.png" width="300px"><br>
-</div>
-</details>
 
 <details>
 <summary>Consultar Ranking</summary><br>
@@ -328,30 +335,23 @@ Para consultar as telas prototipadas no Figma, acesse o link:
 </details>
 
 <details>
-<summary>Moderar</summary><br>
+<summary>Moderar Avaliações</summary><br>
 <div>
   <img src="https://user-images.githubusercontent.com/102121711/185140662-fe0061a9-370e-45d2-93b9-8a774b40a67c.png" width="300px"><br>
 </div> 
 </details>
 
 <details>
-<summary>Consultar Termos e Condições</summary><br>
+<summary>Termos e Condições</summary><br>
 <div>
   <img src="https://user-images.githubusercontent.com/102121711/185141553-f8c9e28f-b4d5-4a61-8931-6f41bf3b091f.png" width="300px"><br>
 </div> 
 </details>
 
 <details>
-<summary>Consultar Termos de Privacidade</summary><br>
+<summary>Termos de Privacidade</summary><br>
 <div>
   <img src="https://user-images.githubusercontent.com/102121711/185145619-efde541f-be6d-4ee1-8b94-1789252e4ae3.png" width="300px"><br>
-</div> 
-</details>
-
-<details>
-<summary>Consultar Sobre</summary><br>
-<div>
-  <img src="https://user-images.githubusercontent.com/102121711/185141425-6b86e71f-7a82-4144-8d90-de35f74b0306.png" width="300px"><br>
 </div> 
 </details>
 
