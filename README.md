@@ -235,7 +235,7 @@ Fluxogramas de rotas:
 
 Para consultar as telas prototipadas no Figma, acesse o link: 
 <br>
-<a href="https://www.figma.com/file/oJyw8wJ8eycPPS7B9FbzYl/Passaporte-Clio?node-id=340%3A620">https://www.figma.com/passaporte-clio</a>
+<a href="https://www.figma.com/file/oJyw8wJ8eycPPS7B9FbzYl/Passaporte-Clio?node-id=340%3A620">Figma - Passaporte Clio</a>
 <br>
 
 - Paleta de cores: 
