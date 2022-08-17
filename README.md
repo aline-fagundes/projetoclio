@@ -431,9 +431,19 @@ Ferramentas usadas na construção do projeto:
 
 <h2 align="center"> <a name="Status">  Status </a> </h2>
 
-  <h4 align="center"> 
-	🚧 LOADING... 🚧
-</h4>
+  <h4 align="center"> 🚧 LOADING... 🚧 </h4>
+
+<h3>RELEASES FUTUROS</h3>
+
+- [x] Implementação de pontuação e ranking;
+
+- [x] Construção de “Esqueceu sua senha”;
+
+- [x] Correção de bugs;
+
+- [x] Elaboração de testes automatizados no front-end;
+
+- [x] Publicação do front-end.
 
 <br>
 	
