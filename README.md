@@ -295,7 +295,7 @@ Para consultar as telas prototipadas no Figma, acesse o link:
 <details>
 <summary>Consultar Museus</summary><br>
 <div>
-  <img src="(https://user-images.githubusercontent.com/102121711/185632834-e8955ddb-44fa-418a-ac96-9e4c832d8af8.png" width="350px"><br>
+  <img src="https://user-images.githubusercontent.com/102121711/185636149-b81a3897-d151-4604-82f1-7c63c364024b.png" width="350px"><br>
 </div>
 </details>
 
