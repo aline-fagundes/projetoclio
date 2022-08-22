@@ -348,8 +348,7 @@ Para consultar as telas prototipadas no Figma, acesse o link:
 </div> 
 </details>
 
-<details>
-<summary>Termos de Privacidade</summary><br>
+<details>Política de Privacidade</summary><br>
 <div>
   <img src="https://user-images.githubusercontent.com/102121711/185633966-5f0f7755-cebf-472f-8757-890687a8acf6.png" width="350px"><br>
 </div> 
